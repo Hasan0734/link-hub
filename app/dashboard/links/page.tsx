@@ -1,6 +1,6 @@
-
-"use client"
+"use client";
 import AddLinkDialog from "@/components/AddLinkDialog";
+import AppHeader from "@/components/AppHeader";
 import LinkCard from "@/components/LinkCard";
 import { Button } from "@/components/ui/button";
 import { Globe, Instagram, Plus, Twitter, Youtube } from "lucide-react";
@@ -71,62 +71,65 @@ const Links = () => {
     setLinks(links.map((l) => (l.id === id ? { ...l, active: !l.active } : l)));
   };
   return (
-    <div>
-      <div className="max-w-4xl mx-auto space-y-8">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold">Links</h1>
-            <p className="text-muted-foreground mt-1">
-              Manage your links and their order
-            </p>
+    <>
+      <AppHeader title="Links" details="  Manage your links and their order" />
+
+      <div className="flex flex-1 flex-col relative">
+        <div className="@container/main flex flex-1 flex-col gap-2">
+          <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6 px-4 lg:px-6">
+            <div className="max-w-4xl mx-auto space-y-8">
+              <div className="flex items-center justify-between">
+                <div></div>
+                <Button
+                  size="lg"
+                  onClick={() => {
+                    setEditingLink(null);
+                    setDialogOpen(true);
+                  }}
+                >
+                  <Plus className="w-4 h-4 mr-2" />
+                  Add Link
+                </Button>
+              </div>
+
+              <div className="space-y-3">
+                {links.map((link) => (
+                  <LinkCard
+                    key={link.id}
+                    title={link.title}
+                    url={link.url}
+                    icon={iconMap[link.icon]}
+                    active={link.active}
+                    onEdit={() => handleEdit(link)}
+                    onDelete={() => handleDelete(link.id)}
+                    onToggle={() => handleToggle(link.id)}
+                  />
+                ))}
+              </div>
+
+              {links.length === 0 && (
+                <div className="text-center py-12">
+                  <p className="text-muted-foreground mb-4">
+                    No links yet. Add your first link to get started!
+                  </p>
+                  <Button onClick={() => setDialogOpen(true)}>
+                    <Plus className="w-4 h-4 mr-2" />
+                    Add Your First Link
+                  </Button>
+                </div>
+              )}
+
+              <AddLinkDialog
+                open={dialogOpen}
+                onOpenChange={setDialogOpen}
+                onSave={handleSave}
+                editLink={editingLink}
+              />
+            </div>
           </div>
-          <Button
-            size="lg"
-            onClick={() => {
-              setEditingLink(null);
-              setDialogOpen(true);
-            }}
-          >
-            <Plus className="w-4 h-4 mr-2" />
-            Add Link
-          </Button>
         </div>
-
-        <div className="space-y-3">
-          {links.map((link) => (
-            <LinkCard
-              key={link.id}
-              title={link.title}
-              url={link.url}
-              icon={iconMap[link.icon]}
-              active={link.active}
-              onEdit={() => handleEdit(link)}
-              onDelete={() => handleDelete(link.id)}
-              onToggle={() => handleToggle(link.id)}
-            />
-          ))}
-        </div>
-
-        {links.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-muted-foreground mb-4">
-              No links yet. Add your first link to get started!
-            </p>
-            <Button onClick={() => setDialogOpen(true)}>
-              <Plus className="w-4 h-4 mr-2" />
-              Add Your First Link
-            </Button>
-          </div>
-        )}
-
-        <AddLinkDialog
-          open={dialogOpen}
-          onOpenChange={setDialogOpen}
-          onSave={handleSave}
-          editLink={editingLink}
-        />
       </div>
-    </div>
+    </>
   );
 };
 

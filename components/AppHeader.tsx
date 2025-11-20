@@ -5,14 +5,20 @@ import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 import { Moon, Sun } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { useTheme } from "next-themes";
 
-const AppHeader = ({ title }: { title: string }) => {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+const AppHeader = ({ title, details }: { title: string; details?: string }) => {
+  const { theme, setTheme } = useTheme();
 
   const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    document.documentElement.classList.toggle("dark");
+    if (theme === "dark") {
+      setTheme("light");
+      return
+    }
+
+    if(theme === "light") {
+      setTheme("dark")
+    }
   };
 
   return (
@@ -23,7 +29,12 @@ const AppHeader = ({ title }: { title: string }) => {
           orientation="vertical"
           className="mr-2 data-[orientation=vertical]:h-4"
         />
-        <h1 className="text-base font-medium">{title}</h1>
+        <div>
+          <h1 className="text-base font-medium">{title}</h1>
+          {details && (
+            <p className="text-muted-foreground text-sm">{details}</p>
+          )}
+        </div>
 
         <div className="ml-auto flex items-center gap-2">
           <Button size="icon" onClick={toggleTheme}>

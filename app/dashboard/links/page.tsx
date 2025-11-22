@@ -72,26 +72,26 @@ const Links = () => {
   };
   return (
     <>
-      <AppHeader title="Links" details="  Manage your links and their order" />
+      <AppHeader
+        title="Links"
+        details="  Manage your links and their order"
+        actionButton={
+          <Button
+            onClick={() => {
+              setEditingLink(null);
+              setDialogOpen(true);
+            }}
+          >
+            <Plus className="w-4 h-4 mr-2" />
+            Add Link
+          </Button>
+        }
+      />
 
       <div className="flex flex-1 flex-col relative">
         <div className="@container/main flex flex-1 flex-col gap-2">
           <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6 px-4 lg:px-6">
             <div className="max-w-4xl mx-auto space-y-8">
-              <div className="flex items-center justify-between">
-                <div></div>
-                <Button
-                  size="lg"
-                  onClick={() => {
-                    setEditingLink(null);
-                    setDialogOpen(true);
-                  }}
-                >
-                  <Plus className="w-4 h-4 mr-2" />
-                  Add Link
-                </Button>
-              </div>
-
               <div className="space-y-3">
                 {links.map((link) => (
                   <LinkCard

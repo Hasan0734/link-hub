@@ -1,5 +1,4 @@
 "use client";
-import React, { useState } from "react";
 import { SidebarTrigger } from "./ui/sidebar";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
@@ -7,17 +6,25 @@ import { Moon, Sun } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useTheme } from "next-themes";
 
-const AppHeader = ({ title, details }: { title: string; details?: string }) => {
+const AppHeader = ({
+  title,
+  details,
+  actionButton,
+}: {
+  title: string;
+  details?: string;
+  actionButton?: React.ReactNode
+}) => {
   const { theme, setTheme } = useTheme();
 
   const toggleTheme = () => {
     if (theme === "dark") {
       setTheme("light");
-      return
+      return;
     }
 
-    if(theme === "light") {
-      setTheme("dark")
+    if (theme === "light") {
+      setTheme("dark");
     }
   };
 
@@ -37,6 +44,7 @@ const AppHeader = ({ title, details }: { title: string; details?: string }) => {
         </div>
 
         <div className="ml-auto flex items-center gap-2">
+          {actionButton}
           <Button size="icon" onClick={toggleTheme}>
             {theme === "light" ? (
               <Moon className="w-5 h-5" />

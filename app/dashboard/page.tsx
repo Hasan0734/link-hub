@@ -47,7 +47,7 @@ const Dashboard = () => {
                 {/* <h1 className="text-3xl font-bold">Dashboard</h1> */}
                 <p className=" mt-1 text-3xl font-bold">Welcome back, John!</p>
               </div>
-              <Button size="lg">
+              <Button >
                 <Eye className="w-4 h-4 mr-2" />
                 Preview Page
               </Button>
@@ -78,7 +78,6 @@ const Dashboard = () => {
             </div>
 
             <div className="grid grid-cols-1 gap-4 @xl/main:grid-cols-2 ">
-              {/* Analytics Chart Placeholder */}
               <Card className="shadow-md hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle>Analytics Overview</CardTitle>
@@ -98,7 +97,6 @@ const Dashboard = () => {
                 </CardContent>
               </Card>
 
-              {/* Recent Activity */}
               <Card className="shadow-md hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle>Recent Activity</CardTitle>

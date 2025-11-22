@@ -10,9 +10,11 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { ColorPicker, ColorPickerAlpha, ColorPickerEyeDropper, ColorPickerFormat,
+   ColorPickerHue, ColorPickerOutput, ColorPickerSelection } from "@/components/ui/shadcn-io/color-picker";
 import { Textarea } from "@/components/ui/textarea";
 import { Upload } from "lucide-react";
-import React from "react";
+
 
 const Appearance = () => {
   const themes = [
@@ -39,11 +41,13 @@ const Appearance = () => {
       accent: "bg-white",
     },
   ];
+
   return (
     <>
       <AppHeader
         title="Appearance"
         details="Customize how your profile looks"
+        actionButton={<Button>Save Changes</Button>}
       />
       <div className="flex flex-1 flex-col relative">
         <div className="@container/main flex flex-1 flex-col gap-2">
@@ -136,7 +140,7 @@ const Appearance = () => {
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
+                    {/* <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="bg-color">Background Color</Label>
                         <div className="flex gap-2">
@@ -161,12 +165,23 @@ const Appearance = () => {
                           <Input defaultValue="#0ea5e9" className="flex-1" />
                         </div>
                       </div>
-                    </div>
+                    </div> */}
+                    <ColorPicker className="max-w-sm rounded-md border bg-background p-4 shadow-sm">
+                      <ColorPickerSelection />
+                      <div className="flex items-center gap-4">
+                        <ColorPickerEyeDropper />
+                        <div className="grid w-full gap-1">
+                          <ColorPickerHue />
+                          <ColorPickerAlpha />
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <ColorPickerOutput />
+                        <ColorPickerFormat />
+                      </div>
+                    </ColorPicker>
                   </CardContent>
                 </Card>
-              </div>
-              <div className="flex">
-                <Button size="lg">Save Changes</Button>
               </div>
             </div>
           </div>

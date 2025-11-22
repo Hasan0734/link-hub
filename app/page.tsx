@@ -1,9 +1,8 @@
 import { Button } from "@/components/ui/button";
+import getUsers from "@/lib/helper/getUser";
 import { ArrowRight, Check, LinkIcon } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
 
-export default function Home() {
+import Link from "next/link";
    const features = [
     "Unlimited links",
     "Custom themes & colors",
@@ -12,6 +11,9 @@ export default function Home() {
     "Social media integration",
     "Easy to use interface"
   ];
+export default  async function Home() {
+
+
   return (
    <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
       {/* Navbar */}

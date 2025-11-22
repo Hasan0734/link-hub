@@ -7,42 +7,66 @@ import { useForm } from "react-hook-form";
 import { createUser } from "@/app/register/actions";
 import * as z from "zod";
 import { Form } from "../ui/form";
-const initialState = {
-  message: "",
-};
 
-const formSchema = z.object({
-  title: z
+export const UserSchema = z.object({
+  name: z.string().min(4).max(100),
+  username: z.string().min(2).max(50),
+  email: z.string().email(),
+  password: z
     .string()
-    .min(5, "Bug title must be at least 5 characters.")
-    .max(32, "Bug title must be at most 32 characters."),
-  description: z
-    .string()
-    .min(20, "Description must be at least 20 characters.")
-    .max(100, "Description must be at most 100 characters."),
+    .min(8, "Password must be at least 8 characters long")
+    .max(15, "Password cannot be more than 15 characters long")
+    .regex(/.*[A-Z].*/, "Password must contain at least one uppercase letter")
+    .regex(/.*[a-z].*/, "Password must contain at least one lowercase letter")
+    .regex(/.*\d.*/, "Password must contain at least one number")
+    .regex(
+      /.*[!@#$%^&*(),.?":{}|<>]/,
+      "Password must contain at least one special character"
+    ),
 });
 
 const RegisterForm = () => {
   //   const [state, formAction, pending] = useActionState(createUser, initialState);
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof UserSchema>>({
+    resolver: zodResolver(UserSchema),
     defaultValues: {
-      title: "",
-      description: "",
+      name: "",
+      username: "",
+      email: "",
+      password: "",
     },
   });
-  function onSubmit(data: z.infer<typeof formSchema>) {
+  function onSubmit(data: z.infer<typeof UserSchema>) {
     console.log(data);
   }
 
   return (
     <Form {...form}>
-      <form className="space-y-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <LabelAndInput
           name="name"
           form={form}
           title="Name"
           placeholder="John Doe"
+        />
+        <LabelAndInput
+          name="username"
+          form={form}
+          title="Username"
+          placeholder="johndoe"
+        />
+        <LabelAndInput
+          name="email"
+          form={form}
+          title="Email"
+          placeholder="name@example.com"
+        />
+        <LabelAndInput
+          name="password"
+          form={form}
+          title="Password"
+          placeholder="••••••••"
+          type="password"
         />
 
         <Button className="w-full" size="lg">

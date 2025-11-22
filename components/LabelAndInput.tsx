@@ -14,12 +14,16 @@ const LabelAndInput = ({
   name,
   placeholder,
   type = "text",
+  description,
+  showErrorMsg,
   form,
 }: {
   title: string;
   name: string;
   placeholder?: string;
   type?: string;
+  description?: string;
+  showErrorMsg?: boolean;
   [key: string]: any;
 }) => {
   return (
@@ -43,8 +47,8 @@ const LabelAndInput = ({
           <FormControl>
             <Input placeholder={placeholder} type={type} {...field} />
           </FormControl>
-          <FormDescription>This is your public display name.</FormDescription>
-          <FormMessage />
+          {description && <FormDescription>{description}</FormDescription>}
+          {showErrorMsg && <FormMessage />}
         </FormItem>
       )}
     />

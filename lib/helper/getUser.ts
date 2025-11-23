@@ -1,8 +1,8 @@
 import { db } from '@/db';
-import { users } from '@/db/schema';
+import { user } from '@/db/schema';
 
 async function getUsers() {
-  return await db.select().from(users);
+  return await db.select().from(user);
 }
 
 export default getUsers;

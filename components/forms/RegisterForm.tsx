@@ -35,21 +35,15 @@ export const RegisterForm = () => {
 
     startTransition(async () => {
       const result = await createUser(data);
-
-      if (!result.success && result.fieldErrors) {
-        Object.entries(result.fieldErrors).forEach(([key, value]) => {
-          form.setError(key as keyof UserWithConfirmSchemaType, {
-            type: "server",
-            message: value,
-          });
-        });
-
-        toast.error(result.message || "Registration failed.");
-      } else {
-        toast.success("Registration successful)");
-
+      if (result.success) {
+        toast.success(result.message);
         redirect("/login");
       }
+      if (result.error) {
+        toast.error(result.error.message || "Registration failed");
+        return;
+      }
+      toast.error(result.message || "Registration failed");
     });
   }
 

@@ -5,6 +5,7 @@ import { Button } from "./ui/button";
 import { Moon, Sun } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useTheme } from "next-themes";
+import LogoutButton from "./LogoutButton";
 
 const AppHeader = ({
   title,
@@ -13,7 +14,7 @@ const AppHeader = ({
 }: {
   title: string;
   details?: string;
-  actionButton?: React.ReactNode
+  actionButton?: React.ReactNode;
 }) => {
   const { theme, setTheme } = useTheme();
 
@@ -57,6 +58,8 @@ const AppHeader = ({
             <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
+
+          <LogoutButton />
         </div>
       </div>
     </header>

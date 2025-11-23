@@ -10,7 +10,12 @@ import {
   loginUserSchema,
   LoginUserSchemaType,
 } from "@/features/auth/auth.schema";
-import { loginUser } from "@/features/auth/server/auth.actions";
+import { signIn } from "@/features/auth/server/auth.actions";
+
+import { Spinner } from "../ui/spinner";
+import { toast } from "sonner";
+import { redirect } from "next/navigation";
+
 
 const defaultValues = {
   email: "",
@@ -28,10 +33,17 @@ const LoginForm = () => {
 
   function onSubmit(data: LoginUserSchemaType) {
     startTransition(async () => {
-      const result = await loginUser(data);
+      const result = await signIn(data);
 
-      setActionResult(result);
-      console.log(result);
+      if (result.success) {
+        redirect("/dashboard");
+      }
+
+      if (result.error) {
+        toast.error(result.error.message || "Registration failed");
+        return;
+      }
+      toast.error(result.message || "Registration failed");
     });
   }
   return (
@@ -54,8 +66,8 @@ const LoginForm = () => {
           isPassword
         />
 
-        <Button className="w-full" size="lg">
-          Sign In
+        <Button disabled={isPending} className="w-full" size="lg">
+          <Spinner /> Sign In
         </Button>
       </form>
     </Form>

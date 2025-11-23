@@ -8,6 +8,20 @@
       "when": 1763797851374,
       "tag": "0000_green_george_stacy",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1763881124735,
+      "tag": "0001_optimal_night_thrasher",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1763886677142,
+      "tag": "0002_talented_solo",
+      "breakpoints": true
     }
   ]
 }

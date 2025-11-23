@@ -1,13 +1,14 @@
+import { relations } from "drizzle-orm";
 import {
   boolean,
   integer,
   pgEnum,
   pgTable,
-  serial,
-  text,
   timestamp,
-  uuid,
+  text,
   varchar,
+  index,
+  uuid,
 } from "drizzle-orm/pg-core";
 
 /* ---------------- ENUMS ---------------- */
@@ -21,20 +22,79 @@ export const themeTypesEnum = pgEnum("themeTypes", [
 ]);
 export const roleEnum = pgEnum("role", ["admin", "user"]);
 
-/* ---------------- USERS ---------------- */
-
-export const users = pgTable("users", {
-  id: uuid("id").primaryKey().defaultRandom(),
-  email: varchar("email").notNull().unique(),
-  password: varchar("password", { length: 255 }).notNull(),
+/* ---------------- USER AUTH MANAGEMENT ---------------- */
+export const user = pgTable("user", {
+  id: text("id").primaryKey(),
+  name: text("name").notNull(),
+  email: text("email").notNull().unique(),
+  emailVerified: boolean("email_verified").default(false).notNull(),
+  image: text("image"),
   role: roleEnum("role").default("user").notNull(),
-
-  createdAt: timestamp("created_At").defaultNow().notNull(),
-  updatedAt: timestamp("updated_At")
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at")
     .defaultNow()
-    .$onUpdate(() => new Date())
+    .$onUpdate(() => /* @__PURE__ */ new Date())
     .notNull(),
 });
+
+export const session = pgTable(
+  "session",
+  {
+    id: text("id").primaryKey(),
+    expiresAt: timestamp("expires_at").notNull(),
+    token: text("token").notNull().unique(),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at")
+      .$onUpdate(() => /* @__PURE__ */ new Date())
+      .notNull(),
+    ipAddress: text("ip_address"),
+    userAgent: text("user_agent"),
+    userId: text("user_id")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+  },
+  (table) => [index("session_userId_idx").on(table.userId)]
+);
+
+export const account = pgTable(
+  "account",
+  {
+    id: text("id").primaryKey(),
+    accountId: text("account_id").notNull(),
+    providerId: text("provider_id").notNull(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    accessToken: text("access_token"),
+    refreshToken: text("refresh_token"),
+    idToken: text("id_token"),
+    accessTokenExpiresAt: timestamp("access_token_expires_at"),
+    refreshTokenExpiresAt: timestamp("refresh_token_expires_at"),
+    scope: text("scope"),
+    password: text("password"),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at")
+      .$onUpdate(() => /* @__PURE__ */ new Date())
+      .notNull(),
+  },
+  (table) => [index("account_userId_idx").on(table.userId)]
+);
+
+export const verification = pgTable(
+  "verification",
+  {
+    id: text("id").primaryKey(),
+    identifier: text("identifier").notNull(),
+    value: text("value").notNull(),
+    expiresAt: timestamp("expires_at").notNull(),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+    updatedAt: timestamp("updated_at")
+      .defaultNow()
+      .$onUpdate(() => new Date())
+      .notNull(),
+  },
+  (table) => [index("verification_identifier_idx").on(table.identifier)]
+);
 
 /* ---------------- THEMES ---------------- */
 
@@ -51,8 +111,8 @@ export const themes = pgTable("themes", {
 
 export const profiles = pgTable("profiles", {
   id: uuid("id").primaryKey().defaultRandom(),
-  userId: uuid("user_id")
-    .references(() => users.id, { onDelete: "cascade" })
+  userId: text("user_id")
+    .references(() => user.id, { onDelete: "cascade" })
     .unique()
     .notNull(),
   username: varchar("username", { length: 50 }).notNull().unique(),
@@ -69,8 +129,8 @@ export const profiles = pgTable("profiles", {
 
 export const links = pgTable("links", {
   id: uuid("id").primaryKey().defaultRandom(),
-  userId: uuid("user_id")
-    .references(() => users.id, { onDelete: "cascade" })
+  userId: text("user_id")
+    .references(() => user.id, { onDelete: "cascade" })
     .notNull(),
   title: varchar("title", { length: 255 }).notNull(),
   url: text("url").notNull(),
@@ -90,8 +150,8 @@ export const links = pgTable("links", {
 export const pages = pgTable("pages", {
   id: uuid("id").primaryKey().defaultRandom(),
 
-  userId: uuid("user_id")
-    .references(() => users.id, { onDelete: "cascade" })
+  userId: text("user_id")
+    .references(() => user.id, { onDelete: "cascade" })
     .notNull(),
 
   title: varchar("title", { length: 100 }).notNull(),
@@ -113,12 +173,32 @@ export const pages = pgTable("pages", {
     .notNull(),
 });
 
+/* ---------------- PAGE TABS (MISSING TABLE) ---------------- */
+
+export const pageTabs = pgTable("page_tabs", {
+  id: uuid("id").primaryKey().defaultRandom(),
+
+  pageId: uuid("page_id")
+    .notNull()
+    .references(() => pages.id, { onDelete: "cascade" }),
+
+  themeId: uuid("theme_id").references(() => themes.id, {
+    onDelete: "set null",
+  }),
+
+  title: varchar("title", { length: 50 }).notNull(),
+  url: text("url").notNull(),
+  displayOrder: integer("display_order").default(0),
+
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
 /* ---------------- PAGE VISITS ---------------- */
 
 export const pageVisits = pgTable("page_visits", {
   id: uuid("id").primaryKey().defaultRandom(),
-  userId: uuid("user_id")
-    .references(() => users.id, { onDelete: "cascade" })
+  userId: text("user_id")
+    .references(() => user.id, { onDelete: "cascade" })
     .notNull(),
   ip: varchar("ip", { length: 100 }),
   userAgent: text("user_agent"),
@@ -129,8 +209,8 @@ export const pageVisits = pgTable("page_visits", {
 
 export const linkClicks = pgTable("link_clicks", {
   id: uuid("id").primaryKey().defaultRandom(),
-  userId: uuid("user_id")
-    .references(() => users.id, { onDelete: "cascade" })
+  userId: text("user_id")
+    .references(() => user.id, { onDelete: "cascade" })
     .notNull(),
   linkId: uuid("link_id")
     .references(() => links.id, { onDelete: "cascade" })
@@ -144,8 +224,8 @@ export const linkClicks = pgTable("link_clicks", {
 
 export const shortLinks = pgTable("short_links", {
   id: uuid("id").primaryKey().defaultRandom(),
-  userId: uuid("user_id")
-    .references(() => users.id, { onDelete: "cascade" })
+  userId: text("user_id")
+    .references(() => user.id, { onDelete: "cascade" })
     .notNull(),
   originalUrl: text("original_url").notNull(),
   shortCode: varchar("short_code", { length: 20 }).unique().notNull(),
@@ -159,7 +239,7 @@ export const shortLinks = pgTable("short_links", {
 /* ---------------- SHORT LINK VISITS ---------------- */
 
 export const shortLinkVisits = pgTable("short_link_visits", {
-  id: uuid("id").defaultRandom().primaryKey(),
+  id: uuid("id").primaryKey().defaultRandom(),
   shortLinkId: uuid("short_link_id")
     .references(() => shortLinks.id, { onDelete: "cascade" })
     .notNull(),
@@ -190,9 +270,9 @@ export const plans = pgTable("plans", {
 export const userSubscriptions = pgTable("user_subscriptions", {
   id: uuid("id").primaryKey().defaultRandom(),
 
-  userId: uuid("user_id")
+  userId: text("user_id")
     .notNull()
-    .references(() => users.id, { onDelete: "cascade" }),
+    .references(() => user.id, { onDelete: "cascade" }),
 
   planId: uuid("plan_id")
     .notNull()
@@ -210,11 +290,11 @@ export const userSubscriptions = pgTable("user_subscriptions", {
 /* ---------------- USAGE LIMITS ---------------- */
 
 export const usageLimits = pgTable("usage_limits", {
-  id: serial("id").primaryKey(),
+  id: uuid("id").primaryKey().defaultRandom(),
 
-  userId: uuid("user_id") // FIXED
+  userId: text("user_id") // FIXED
     .notNull()
-    .references(() => users.id, { onDelete: "cascade" }),
+    .references(() => user.id, { onDelete: "cascade" }),
 
   pagesUsed: integer("pages_used").default(0),
   shortUrlsUsed: integer("short_urls_used").default(0),
@@ -222,3 +302,6 @@ export const usageLimits = pgTable("usage_limits", {
 
   resetAt: timestamp("reset_at").defaultNow(),
 });
+
+export const schema = { user, session, account, verification };
+// export * from './schema.relations';

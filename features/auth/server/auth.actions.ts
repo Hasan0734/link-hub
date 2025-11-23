@@ -10,11 +10,6 @@ import {
 } from "@/features/auth/auth.schema";
 import { eq } from "drizzle-orm";
 
-type ActionResult = {
-  success: boolean;
-  message?: string;
-  fieldErrors?: Record<keyof UserSchemaType, string>;
-};
 
 export async function createUser(data: UserSchemaType) {
   const validatedFields = registerUserSchema.safeParse(data);
@@ -34,31 +29,31 @@ export async function createUser(data: UserSchemaType) {
   const hashPaassword = await bcrypt.hash(password, 10);
 
   try {
-    // const existuser = await db
-    //   .select()
-    //   .from(users)
-    //   .where(eq(users.email, email));
+    const checkUsername = await db
+      .select()
+      .from(profiles)
+      .where(eq(profiles.username, username));
 
-    // if (existuser.length > 0) {
-    //   return {
-    //     success: false,
-    //     message: "Email already in used.",
-    //     fieldErrors: { email: "This email is already registered." },
-    //   };
-    // }
+    if (checkUsername.length > 0) {
+      return {
+        success: false,
+        message: "Username already taken.",
+        fieldErrors: { username: "Username already taken." },
+      };
+    }
 
-    // const checkUsername = await db
-    //   .select()
-    //   .from(profiles)
-    //   .where(eq(profiles.username, username));
+    const existuser = await db
+      .select()
+      .from(users)
+      .where(eq(users.email, email));
 
-    // if (checkUsername.length > 0) {
-    //   return {
-    //     success: false,
-    //     message: "Username already taken.",
-    //     fieldErrors: { username: "Username already taken." },
-    //   };
-    // }
+    if (existuser.length > 0) {
+      return {
+        success: false,
+        message: "Email already in used.",
+        fieldErrors: { email: "This email is already registered." },
+      };
+    }
 
     const user = await db
       .insert(users)
@@ -76,12 +71,12 @@ export async function createUser(data: UserSchemaType) {
         userId: user[0].id,
       })
       .returning();
-
-    return { success: false, message: "Registration successful!" };
-  } catch (error) {
+     
+    return { success: true, message: "Registration successful!" };
+  } catch (error: unknown) {
     return {
       success: false,
-      errors: { message: "User creation failed", error },
+      message: "User creation failed",
     };
   }
 }

@@ -1,5 +1,5 @@
 "use client";
-import React, { useActionState, useState, useTransition } from "react";
+import { useTransition } from "react";
 import { Button } from "../ui/button";
 import LabelAndInput from "../LabelAndInput";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,6 +10,9 @@ import {
   registerUserWithConfirmSchema,
   UserWithConfirmSchemaType,
 } from "@/features/auth/auth.schema";
+import { toast } from "sonner";
+import { redirect } from "next/navigation";
+import { Spinner } from "../ui/spinner";
 
 const defaultValues = {
   name: "",
@@ -21,31 +24,33 @@ const defaultValues = {
 
 export const RegisterForm = () => {
   const [isPending, startTransition] = useTransition();
-  const [actionResult, setActionResult] = useState<any>(null);
 
   const form = useForm({
     resolver: zodResolver(registerUserWithConfirmSchema),
     defaultValues,
   });
 
-  async function onSubmit(data: UserWithConfirmSchemaType) {
-    setActionResult(null);
+  function onSubmit(data: UserWithConfirmSchemaType) {
     form.clearErrors();
 
-    const result = await createUser(data);
+    startTransition(async () => {
+      const result = await createUser(data);
 
-    if (!result.success && result.fieldErrors) {
-      Object.entries(result.fieldErrors).forEach(([key, value]) => {
-        form.setError(key as keyof UserWithConfirmSchemaType, {
-          type: "server",
-          message: value,
+      if (!result.success && result.fieldErrors) {
+        Object.entries(result.fieldErrors).forEach(([key, value]) => {
+          form.setError(key as keyof UserWithConfirmSchemaType, {
+            type: "server",
+            message: value,
+          });
         });
-      });
-      setActionResult(result);
-      console.log(result)
-    } else {
-      setActionResult(result);
-    }
+
+        toast.error(result.message || "Registration failed.");
+      } else {
+        toast.success("Registration successful)");
+
+        redirect("/login");
+      }
+    });
   }
 
   return (
@@ -90,9 +95,8 @@ export const RegisterForm = () => {
           showErrorMsg
           isPassword
         />
-
-        <Button className="w-full" size="lg">
-          Create Account
+        <Button className="w-full" size="lg" disabled={isPending} type="submit">
+          {isPending && <Spinner />} Create Account
         </Button>
       </form>
     </Form>

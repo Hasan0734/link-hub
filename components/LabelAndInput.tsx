@@ -1,5 +1,4 @@
-import { Label } from "./ui/label";
-import { Input } from "./ui/input";
+import { useState } from "react";
 import {
   FormControl,
   FormDescription,
@@ -8,6 +7,14 @@ import {
   FormLabel,
   FormMessage,
 } from "./ui/form";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+} from "./ui/input-group";
+import { Eye, EyeOff } from "lucide-react";
+import { Input } from "./ui/input";
 
 const LabelAndInput = ({
   title,
@@ -17,6 +24,7 @@ const LabelAndInput = ({
   description,
   showErrorMsg,
   form,
+  isPassword,
 }: {
   title: string;
   name: string;
@@ -24,31 +32,45 @@ const LabelAndInput = ({
   type?: string;
   description?: string;
   showErrorMsg?: boolean;
+  isPassword?: boolean;
   [key: string]: any;
 }) => {
-  return (
-    // <div className="space-y-2">
-    //   {title && <Label htmlFor={id}>{title}</Label>}
-    //   <Input
-    //     id={id}
-    //     name={name}
-    //     type={type}
-    //     placeholder={placeholder}
-    //     {...props}
-    //   />
-    // </div>
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
+  return (
     <FormField
       control={form.control}
       name={name}
-      render={({ field }) => (
+      render={({ field, fieldState }) => (
         <FormItem>
           {title && <FormLabel>{title}</FormLabel>}
           <FormControl>
-            <Input placeholder={placeholder} type={type} {...field} />
+            <InputGroup >
+              <InputGroupInput
+                aria-invalid={fieldState.invalid}
+                placeholder={placeholder}
+                type={passwordVisible ? "text" : type}
+                {...field}
+              />
+
+              {isPassword && (
+                <InputGroupAddon align="inline-end">
+                  <InputGroupButton
+                    onClick={() => setPasswordVisible(!passwordVisible)}
+                    variant="ghost"
+                  >
+                    {passwordVisible ? (
+                      <EyeOff className="h-4 w-4" />
+                    ) : (
+                      <Eye className="h-4 w-4" />
+                    )}
+                  </InputGroupButton>
+                </InputGroupAddon>
+              )}
+            </InputGroup>
           </FormControl>
           {description && <FormDescription>{description}</FormDescription>}
-          {showErrorMsg && <FormMessage />}
+          {showErrorMsg && <FormMessage className="text-xs"/>}
         </FormItem>
       )}
     />

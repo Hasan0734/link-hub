@@ -1,43 +1,51 @@
 "use client";
-import React, { useActionState } from "react";
+import React, { useActionState, useState, useTransition } from "react";
 import { Button } from "../ui/button";
 import LabelAndInput from "../LabelAndInput";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { createUser } from "@/app/register/actions";
-import * as z from "zod";
 import { Form } from "../ui/form";
+import { createUser } from "@/features/auth/server/auth.actions";
+import {
+  registerUserWithConfirmSchema,
+  UserWithConfirmSchemaType,
+} from "@/features/auth/auth.schema";
 
-export const UserSchema = z.object({
-  name: z.string().min(4).max(100),
-  username: z.string().min(2).max(50),
-  email: z.string().email(),
-  password: z
-    .string()
-    .min(8, "Password must be at least 8 characters long")
-    .max(15, "Password cannot be more than 15 characters long")
-    .regex(/.*[A-Z].*/, "Password must contain at least one uppercase letter")
-    .regex(/.*[a-z].*/, "Password must contain at least one lowercase letter")
-    .regex(/.*\d.*/, "Password must contain at least one number")
-    .regex(
-      /.*[!@#$%^&*(),.?":{}|<>]/,
-      "Password must contain at least one special character"
-    ),
-});
+const defaultValues = {
+  name: "",
+  username: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
 
-const RegisterForm = () => {
-  //   const [state, formAction, pending] = useActionState(createUser, initialState);
-  const form = useForm<z.infer<typeof UserSchema>>({
-    resolver: zodResolver(UserSchema),
-    defaultValues: {
-      name: "",
-      username: "",
-      email: "",
-      password: "",
-    },
+export const RegisterForm = () => {
+  const [isPending, startTransition] = useTransition();
+  const [actionResult, setActionResult] = useState<any>(null);
+
+  const form = useForm({
+    resolver: zodResolver(registerUserWithConfirmSchema),
+    defaultValues,
   });
-  function onSubmit(data: z.infer<typeof UserSchema>) {
-    console.log(data);
+
+  async function onSubmit(data: UserWithConfirmSchemaType) {
+    setActionResult(null);
+    form.clearErrors();
+
+    const result = await createUser(data);
+
+    if (!result.success && result.fieldErrors) {
+      Object.entries(result.fieldErrors).forEach(([key, value]) => {
+        form.setError(key as keyof UserWithConfirmSchemaType, {
+          type: "server",
+          message: value,
+        });
+      });
+      setActionResult(result);
+      console.log(result)
+    } else {
+      setActionResult(result);
+    }
   }
 
   return (
@@ -48,18 +56,21 @@ const RegisterForm = () => {
           form={form}
           title="Name"
           placeholder="John Doe"
+          showErrorMsg
         />
         <LabelAndInput
           name="username"
           form={form}
           title="Username"
           placeholder="johndoe"
+          showErrorMsg
         />
         <LabelAndInput
           name="email"
           form={form}
           title="Email"
           placeholder="name@example.com"
+          showErrorMsg
         />
         <LabelAndInput
           name="password"
@@ -67,6 +78,17 @@ const RegisterForm = () => {
           title="Password"
           placeholder="••••••••"
           type="password"
+          showErrorMsg
+          isPassword
+        />
+        <LabelAndInput
+          name="confirmPassword"
+          form={form}
+          title="Confirm Password"
+          placeholder="••••••••"
+          type="password"
+          showErrorMsg
+          isPassword
         />
 
         <Button className="w-full" size="lg">
@@ -76,20 +98,3 @@ const RegisterForm = () => {
     </Form>
   );
 };
-
-export default RegisterForm;
-
-//  <LabelAndInput title="Full Name" id="name" placeholder="John Doe" />
-// <LabelAndInput title="Username" id="username" placeholder="johndoe" />
-// <LabelAndInput
-//   title="Email"
-//   id="email"
-//   type="email"
-//   placeholder="name@example.com"
-// />
-// <LabelAndInput
-//   title="Password"
-//   id="password"
-//   type="password"
-//   placeholder="••••••••"
-// />

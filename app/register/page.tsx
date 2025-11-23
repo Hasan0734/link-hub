@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Link as LinkIcon } from "lucide-react";
 import Link from "next/link";
-import RegisterForm from "@/components/forms/RegisterForm";
+import {RegisterForm} from "@/components/forms/RegisterForm";
 
 const RegisterPage = () => {
   return (

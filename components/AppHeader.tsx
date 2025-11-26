@@ -1,11 +1,8 @@
-"use client";
 import { SidebarTrigger } from "./ui/sidebar";
 import { Separator } from "./ui/separator";
-import { Button } from "./ui/button";
-import { Moon, Sun } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { useTheme } from "next-themes";
 import LogoutButton from "./LogoutButton";
+import ThemeToggle from "./theme-toggle";
 
 const AppHeader = ({
   title,
@@ -16,19 +13,6 @@ const AppHeader = ({
   details?: string;
   actionButton?: React.ReactNode;
 }) => {
-  const { theme, setTheme } = useTheme();
-
-  const toggleTheme = () => {
-    if (theme === "dark") {
-      setTheme("light");
-      return;
-    }
-
-    if (theme === "light") {
-      setTheme("dark");
-    }
-  };
-
   return (
     <header className="flex border-b h-[65px]  shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
       <div className="flex items-center gap-2 px-4 w-full">
@@ -44,15 +28,9 @@ const AppHeader = ({
           )}
         </div>
 
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ml-auto flex items-center gap-4">
           {actionButton}
-          <Button size="icon" onClick={toggleTheme}>
-            {theme === "light" ? (
-              <Moon className="w-5 h-5" />
-            ) : (
-              <Sun className="w-5 h-5" />
-            )}
-          </Button>
+          <ThemeToggle />
 
           <Avatar>
             <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />

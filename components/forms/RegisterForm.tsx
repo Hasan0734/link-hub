@@ -11,7 +11,7 @@ import {
   UserWithConfirmSchemaType,
 } from "@/features/auth/auth.schema";
 import { toast } from "sonner";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { Spinner } from "../ui/spinner";
 
 const defaultValues = {
@@ -24,6 +24,7 @@ const defaultValues = {
 
 export const RegisterForm = () => {
   const [isPending, startTransition] = useTransition();
+  const router = useRouter();
 
   const form = useForm({
     resolver: zodResolver(registerUserWithConfirmSchema),
@@ -37,7 +38,7 @@ export const RegisterForm = () => {
       const result = await createUser(data);
       if (result.success) {
         toast.success(result.message);
-        redirect("/login");
+        router.push("/dashboard");
       }
       if (result.error) {
         toast.error(result.error.message || "Registration failed");

@@ -14,8 +14,7 @@ import { signIn } from "@/features/auth/server/auth.actions";
 
 import { Spinner } from "../ui/spinner";
 import { toast } from "sonner";
-import { redirect } from "next/navigation";
-
+import { redirect, useRouter } from "next/navigation";
 
 const defaultValues = {
   email: "",
@@ -24,7 +23,7 @@ const defaultValues = {
 
 const LoginForm = () => {
   const [isPending, startTransition] = useTransition();
-  const [actionResult, setActionResult] = useState<any>(null);
+  const router = useRouter();
 
   const form = useForm({
     resolver: zodResolver(loginUserSchema),
@@ -36,7 +35,9 @@ const LoginForm = () => {
       const result = await signIn(data);
 
       if (result.success) {
-        redirect("/dashboard");
+        toast.success(result.message);
+        router.push("/dashboard");
+        return;
       }
 
       if (result.error) {
@@ -46,6 +47,7 @@ const LoginForm = () => {
       toast.error(result.message || "Registration failed");
     });
   }
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -63,11 +65,10 @@ const LoginForm = () => {
           placeholder="••••••••"
           type="password"
           showErrorMsg
-          isPassword
         />
 
         <Button disabled={isPending} className="w-full" size="lg">
-          <Spinner /> Sign In
+          {isPending && <Spinner />} Sign In
         </Button>
       </form>
     </Form>

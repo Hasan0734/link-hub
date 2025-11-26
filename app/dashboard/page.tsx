@@ -4,38 +4,37 @@ import { Button } from "@/components/ui/button";
 import { Eye, MousePointerClick, TrendingUp, Calendar } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 
+const stats = [
+  {
+    title: "Total Views",
+    value: "12,345",
+    change: "+12.3%",
+    icon: Eye,
+    trend: "up",
+  },
+  {
+    title: "Total Clicks",
+    value: "8,234",
+    change: "+8.1%",
+    icon: MousePointerClick,
+    trend: "up",
+  },
+  {
+    title: "Last 7 Days",
+    value: "1,543",
+    change: "+23.5%",
+    icon: Calendar,
+    trend: "up",
+  },
+  {
+    title: "Click Rate",
+    value: "66.7%",
+    change: "+5.2%",
+    icon: TrendingUp,
+    trend: "up",
+  },
+];
 const Dashboard = () => {
-  const stats = [
-    {
-      title: "Total Views",
-      value: "12,345",
-      change: "+12.3%",
-      icon: Eye,
-      trend: "up",
-    },
-    {
-      title: "Total Clicks",
-      value: "8,234",
-      change: "+8.1%",
-      icon: MousePointerClick,
-      trend: "up",
-    },
-    {
-      title: "Last 7 Days",
-      value: "1,543",
-      change: "+23.5%",
-      icon: Calendar,
-      trend: "up",
-    },
-    {
-      title: "Click Rate",
-      value: "66.7%",
-      change: "+5.2%",
-      icon: TrendingUp,
-      trend: "up",
-    },
-  ];
-
   return (
     <>
       <AppHeader title={"Dashboard"} />
@@ -47,7 +46,7 @@ const Dashboard = () => {
                 {/* <h1 className="text-3xl font-bold">Dashboard</h1> */}
                 <p className=" mt-1 text-3xl font-bold">Welcome back, John!</p>
               </div>
-              <Button >
+              <Button>
                 <Eye className="w-4 h-4 mr-2" />
                 Preview Page
               </Button>

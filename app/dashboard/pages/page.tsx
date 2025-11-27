@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/dialog";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
+import DashboardTitle from "@/components/DashboardTitle";
 
 const Pages = () => {
   const [pages, setPages] = useState([
@@ -99,8 +100,7 @@ const Pages = () => {
   return (
     <>
       <AppHeader
-        title="Appearance"
-        details="Customize how your profile looks"
+      
         actionButton={<Button>Save Changes</Button>}
       />
       <div className="flex flex-1 flex-col relative">
@@ -108,14 +108,11 @@ const Pages = () => {
           <div className="flex flex-col gap-5 py-4 md:gap-6 md:py-6 px-4 lg:px-6">
             <div className="space-y-6">
               <div className="flex items-center justify-between">
-                <div>
-                  <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                    Pages Management
-                  </h1>
-                  <p className="text-muted-foreground mt-2">
-                    Create and manage multiple profile pages
-                  </p>
-                </div>
+                <DashboardTitle
+                  title="Pages Management"
+                  details="Create and manage multiple profile pages"
+                />
+
                 <Button onClick={handleAddPage}>
                   <Plus className="h-4 w-4 mr-2" />
                   Add Page

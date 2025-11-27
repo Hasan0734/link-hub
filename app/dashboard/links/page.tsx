@@ -1,6 +1,7 @@
 "use client";
 import AddLinkDialog from "@/components/AddLinkDialog";
 import AppHeader from "@/components/AppHeader";
+import DashboardTitle from "@/components/DashboardTitle";
 import LinkCard from "@/components/LinkCard";
 import { Button } from "@/components/ui/button";
 import { Globe, Instagram, Plus, Twitter, Youtube } from "lucide-react";
@@ -73,8 +74,7 @@ const Links = () => {
   return (
     <>
       <AppHeader
-        title="Links"
-        details="  Manage your links and their order"
+       
         actionButton={
           <Button
             onClick={() => {
@@ -91,7 +91,12 @@ const Links = () => {
       <div className="flex flex-1 flex-col relative">
         <div className="@container/main flex flex-1 flex-col gap-2">
           <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6 px-4 lg:px-6">
-            <div className="max-w-4xl mx-auto space-y-8">
+            <div className="space-y-6">
+               <DashboardTitle
+                  title="Links Management"
+                  details="Add, edit, and organize your profile links"
+                />
+              
               <div className="space-y-3">
                 {links.map((link) => (
                   <LinkCard

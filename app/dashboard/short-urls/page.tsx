@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import AppHeader from "@/components/AppHeader";
 import { useState } from "react";
@@ -15,6 +15,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
+import DashboardTitle from "@/components/DashboardTitle";
 
 interface ShortUrl {
   id: string;
@@ -94,20 +95,17 @@ const ShortUrls = () => {
   };
   return (
     <>
-      <AppHeader title="Short URLs" />
+      <AppHeader  />
       <div className="flex flex-1 flex-col relative">
         <div className="@container/main flex flex-1 flex-col gap-2">
           <div className="flex flex-col gap-5 py-4 md:gap-6 md:py-6 px-4 lg:px-6">
             <div className="space-y-6">
               <div className="flex items-center justify-between">
-                <div>
-                  <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                    Short URLs
-                  </h1>
-                  <p className="text-muted-foreground mt-2">
-                    Create and manage short links with analytics
-                  </p>
-                </div>
+                <DashboardTitle
+                  title="Short URLs"
+                  details="Create and manage short links with analytics"
+                />
+
                 <Button onClick={() => setIsDialogOpen(true)}>
                   <Plus className="h-4 w-4 mr-2" />
                   Create Short URL

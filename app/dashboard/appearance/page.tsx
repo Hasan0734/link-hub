@@ -1,4 +1,5 @@
 import AppHeader from "@/components/AppHeader";
+import DashboardTitle from "@/components/DashboardTitle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,11 +11,17 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ColorPicker, ColorPickerAlpha, ColorPickerEyeDropper, ColorPickerFormat,
-   ColorPickerHue, ColorPickerOutput, ColorPickerSelection } from "@/components/ui/shadcn-io/color-picker";
+import {
+  ColorPicker,
+  ColorPickerAlpha,
+  ColorPickerEyeDropper,
+  ColorPickerFormat,
+  ColorPickerHue,
+  ColorPickerOutput,
+  ColorPickerSelection,
+} from "@/components/ui/shadcn-io/color-picker";
 import { Textarea } from "@/components/ui/textarea";
 import { Upload } from "lucide-react";
-
 
 const Appearance = () => {
   const themes = [
@@ -45,14 +52,17 @@ const Appearance = () => {
   return (
     <>
       <AppHeader
-        title="Appearance"
-        details="Customize how your profile looks"
+       
         actionButton={<Button>Save Changes</Button>}
       />
       <div className="flex flex-1 flex-col relative">
         <div className="@container/main flex flex-1 flex-col gap-2">
           <div className="flex flex-col gap-5 py-4 md:gap-6 md:py-6 px-4 lg:px-6">
-            <div className="max-w-5xl mx-auto space-y-5">
+            <div className=" space-y-6">
+              <DashboardTitle
+                title="Theme Customization"
+                details="Choose a theme or customize your own colors"
+              />
               <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 ">
                 <Card className="shadow-md">
                   <CardHeader>

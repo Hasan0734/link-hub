@@ -1,4 +1,5 @@
 import AppHeader from "@/components/AppHeader";
+import DashboardTitle from "@/components/DashboardTitle";
 import {
   Card,
   CardContent,
@@ -8,7 +9,6 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BarChart3, TrendingUp, Users, MousePointerClick } from "lucide-react";
-
 
 const AnalyticsPage = () => {
   const pageVisits = [
@@ -29,19 +29,15 @@ const AnalyticsPage = () => {
   ];
   return (
     <>
-      <AppHeader title="Analytics" />
+      <AppHeader/>
       <div className="flex flex-1 flex-col relative">
         <div className="@container/main flex flex-1 flex-col gap-2">
           <div className="flex flex-col gap-5 py-4 md:gap-6 md:py-6 px-4 lg:px-6">
             <div className="space-y-6">
-              <div>
-                <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  Analytics
-                </h1>
-                <p className="text-muted-foreground mt-2">
-                  Track your profile performance and engagement
-                </p>
-              </div>
+              <DashboardTitle
+                title="Analytics"
+                details="Track your profile performance and engagement"
+              />
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {[

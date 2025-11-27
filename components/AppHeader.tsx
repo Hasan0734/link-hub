@@ -9,7 +9,7 @@ const AppHeader = ({
   details,
   actionButton,
 }: {
-  title: string;
+  title?: string;
   details?: string;
   actionButton?: React.ReactNode;
 }) => {

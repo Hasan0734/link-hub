@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Check, Crown, Zap } from "lucide-react";
+import DashboardTitle from "@/components/DashboardTitle";
 
 const plans = [
   {
@@ -74,20 +75,16 @@ const usage = {
 const Subcription = () => {
   return (
     <>
-      <AppHeader title="Subscription & Billing" />
+      <AppHeader  />
 
       <div className="flex flex-1 flex-col relative">
         <div className="@container/main flex flex-1 flex-col gap-2">
           <div className="flex flex-col gap-5 py-4 md:gap-6 md:py-6 px-4 lg:px-6">
             <div className="space-y-8">
-              <div>
-                <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  Subscription & Billing
-                </h1>
-                <p className="text-muted-foreground mt-2">
-                  Manage your plan and usage limits
-                </p>
-              </div>
+              <DashboardTitle
+                title="Subscription & Billing"
+                details="Manage your plan and usage limits"
+              />
 
               <Card className="border-primary/20 bg-card/50 backdrop-blur-sm">
                 <CardHeader>
@@ -154,7 +151,7 @@ const Subcription = () => {
                     >
                       {plan.popular && (
                         <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                          <Badge className="bg-gradient-to-r from-primary to-accent">
+                          <Badge className="">
                             <Crown className="h-3 w-3 mr-1" />
                             Most Popular
                           </Badge>

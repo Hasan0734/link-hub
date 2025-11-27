@@ -20,7 +20,11 @@ const DashboardLayout = async ({ children }: DashboardLayoutProps) => {
   return (
     <SidebarProvider>
       <AppSidebar variant="inset" />
-      <SidebarInset>{children}</SidebarInset>
+      <SidebarInset>
+        
+        {children}
+        
+        </SidebarInset>
     </SidebarProvider>
   );
 };

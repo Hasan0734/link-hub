@@ -11,10 +11,16 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import {
+  ChartBar,
+  CreditCard,
+  FileText,
   LayoutDashboard,
-  Link as LinkIcon,
+  LinkIcon,
+  Link2,
   Palette,
   Settings,
+  User,
+  Wallet,
 } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
@@ -23,9 +29,15 @@ import { Separator } from "./ui/separator";
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-  { name: "Links", href: "/dashboard/links", icon: LinkIcon },
+  { name: "Links", href: "/dashboard/links", icon: Link2 },
+  { name: "Pages", href: "/dashboard/pages", icon: FileText },
+  { name: "Short URls", href: "/dashboard/short-urls", icon: LinkIcon },
   { name: "Appearance", href: "/dashboard/appearance", icon: Palette },
+  { name: "Analytics", href: "/dashboard/analytics", icon: ChartBar },
+  { name: "Subcription", href: "/dashboard/subscription", icon: CreditCard },
   { name: "Settings", href: "/dashboard/settings", icon: Settings },
+  { name: "Profile", href: "/dashboard/profile", icon: User },
+
 ];
 
 const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {

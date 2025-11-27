@@ -1,4 +1,3 @@
-import { relations } from "drizzle-orm";
 import {
   boolean,
   integer,
@@ -304,4 +303,6 @@ export const usageLimits = pgTable("usage_limits", {
 });
 
 export const schema = { user, session, account, verification };
+
+
 // export * from './schema.relations';

@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Eye, MousePointerClick, TrendingUp, Calendar } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
+import DashboardTitle from "@/components/DashboardTitle";
 
 const stats = [
   {
@@ -37,15 +38,12 @@ const stats = [
 const Dashboard = () => {
   return (
     <>
-      <AppHeader title={"Dashboard"} />
+      <AppHeader />
       <div className="flex flex-1 flex-col relative">
         <div className="@container/main flex flex-1 flex-col gap-2">
           <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6 px-4 lg:px-6">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div>
-                {/* <h1 className="text-3xl font-bold">Dashboard</h1> */}
-                <p className=" mt-1 text-3xl font-bold">Welcome back, John!</p>
-              </div>
+              <DashboardTitle title="Dashboard" details="Welcome back, John!" />
               <Button>
                 <Eye className="w-4 h-4 mr-2" />
                 Preview Page

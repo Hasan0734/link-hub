@@ -51,10 +51,8 @@ const Appearance = () => {
 
   return (
     <>
-      <AppHeader
-       
-        actionButton={<Button>Save Changes</Button>}
-      />
+      <AppHeader actionButton={<Button>Save Changes</Button>} />
+
       <div className="flex flex-1 flex-col relative">
         <div className="@container/main flex flex-1 flex-col gap-2">
           <div className="flex flex-col gap-5 py-4 md:gap-6 md:py-6 px-4 lg:px-6">
@@ -63,47 +61,9 @@ const Appearance = () => {
                 title="Theme Customization"
                 details="Choose a theme or customize your own colors"
               />
+
               <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 ">
-                <Card className="shadow-md">
-                  <CardHeader>
-                    <CardTitle>Profile Information</CardTitle>
-                    <CardDescription>
-                      Update your profile picture and bio
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-6">
-                    <div className="flex items-center gap-6">
-                      <Avatar className="w-24 h-24">
-                        <AvatarImage src="https://api.dicebear.com/7.x/avataaars/svg?seed=John" />
-                        <AvatarFallback>JD</AvatarFallback>
-                      </Avatar>
-                      <div className="space-y-2">
-                        <Button variant="outline">
-                          <Upload className="w-4 h-4 mr-2" />
-                          Upload Photo
-                        </Button>
-                        <p className="text-sm text-muted-foreground">
-                          JPG, PNG or GIF. Max 2MB.
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="username">Username</Label>
-                      <Input id="username" defaultValue="johndoe" />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="bio">Bio</Label>
-                      <Textarea
-                        id="bio"
-                        placeholder="Tell us about yourself..."
-                        defaultValue="Product Designer & Developer 🎨✨"
-                        rows={4}
-                      />
-                    </div>
-                  </CardContent>
-                </Card>
+        
 
                 <Card className="shadow-md">
                   <CardHeader>
@@ -150,33 +110,7 @@ const Appearance = () => {
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    {/* <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="bg-color">Background Color</Label>
-                        <div className="flex gap-2">
-                          <Input
-                            id="bg-color"
-                            type="color"
-                            defaultValue="#ffffff"
-                            className="w-16 h-10"
-                          />
-                          <Input defaultValue="#ffffff" className="flex-1" />
-                        </div>
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="button-color">Button Color</Label>
-                        <div className="flex gap-2">
-                          <Input
-                            id="button-color"
-                            type="color"
-                            defaultValue="#0ea5e9"
-                            className="w-16 h-10"
-                          />
-                          <Input defaultValue="#0ea5e9" className="flex-1" />
-                        </div>
-                      </div>
-                    </div> */}
-                    <ColorPicker className="max-w-sm rounded-md border bg-background p-4 shadow-sm">
+                    <ColorPicker className="h-[300px] max-w-sm rounded-md border bg-background p-4 shadow-sm">
                       <ColorPickerSelection />
                       <div className="flex items-center gap-4">
                         <ColorPickerEyeDropper />

@@ -10,7 +10,7 @@ const DashboardTitle = ({
   return (
     <div>
       {title && (
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+        <h1 className="text-4xl font-bold text-primary">
           {title}
         </h1>
       )}

@@ -1,5 +1,6 @@
 import AppHeader from "@/components/AppHeader";
 import DashboardTitle from "@/components/DashboardTitle";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -8,7 +9,13 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BarChart3, TrendingUp, Users, MousePointerClick } from "lucide-react";
+import {
+  BarChart3,
+  TrendingUp,
+  Users,
+  MousePointerClick,
+  Plus,
+} from "lucide-react";
 
 const AnalyticsPage = () => {
   const pageVisits = [
@@ -29,7 +36,7 @@ const AnalyticsPage = () => {
   ];
   return (
     <>
-      <AppHeader/>
+      <AppHeader />
       <div className="flex flex-1 flex-col relative">
         <div className="@container/main flex flex-1 flex-col gap-2">
           <div className="flex flex-col gap-5 py-4 md:gap-6 md:py-6 px-4 lg:px-6">

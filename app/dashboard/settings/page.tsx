@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,91 +11,180 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { AlertCircle } from "lucide-react";
+import { AlertCircle, Save, Trash2 } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
+import DashboardTitle from "@/components/DashboardTitle";
+import { Switch } from "@/components/ui/switch";
+import { Separator } from "@/components/ui/separator";
 const Settings = () => {
+  const [settings, setSettings] = useState({
+    email: "john@example.com",
+    name: "John Doe",
+    emailNotifications: true,
+    marketingEmails: false,
+    twoFactorAuth: false,
+  });
+
+  const handleSave = () => {
+    alert("Settings saved successfully!");
+  };
   return (
     <>
-      <AppHeader
-        title="Settings"
-        details="Manage your account settings and preferences"
-      />
+      <AppHeader />
 
       <div className="flex flex-1 flex-col relative">
         <div className="@container/main flex flex-1 flex-col gap-2">
           <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6 px-4 lg:px-6">
-            <div className="max-w-4xl mx-auto space-y-8">
-              {/* Account Settings */}
-              <Card className="shadow-md">
+            <div className="space-y-6">
+              <DashboardTitle
+                title="Settings"
+                details="Manage your account preferences"
+              />
+
+              <Card className="border-primary/20 bg-card/50 backdrop-blur-sm">
                 <CardHeader>
-                  <CardTitle>Account Settings</CardTitle>
+                  <CardTitle>Account Information</CardTitle>
                   <CardDescription>
-                    Update your account information
+                    Update your personal details
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-6">
+                <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Full Name</Label>
-                    <Input id="name" defaultValue="John Doe" />
+                    <Label htmlFor="name">Name</Label>
+                    <Input
+                      id="name"
+                      value={settings.name}
+                      onChange={(e) =>
+                        setSettings({ ...settings, name: e.target.value })
+                      }
+                    />
                   </div>
+
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email Address</Label>
+                    <Label htmlFor="email">Email</Label>
                     <Input
                       id="email"
                       type="email"
-                      defaultValue="john@example.com"
+                      value={settings.email}
+                      onChange={(e) =>
+                        setSettings({ ...settings, email: e.target.value })
+                      }
                     />
                   </div>
-                  <Button>Update Account</Button>
+
+                  <Button onClick={handleSave}>
+                    <Save className="h-4 w-4 mr-2" />
+                    Save Changes
+                  </Button>
                 </CardContent>
               </Card>
 
-              {/* Password */}
-              <Card className="shadow-md">
+              <Card className="border-primary/20 bg-card/50 backdrop-blur-sm">
                 <CardHeader>
-                  <CardTitle>Change Password</CardTitle>
+                  <CardTitle>Notifications</CardTitle>
                   <CardDescription>
-                    Update your password to keep your account secure
+                    Manage your notification preferences
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="current-password">Current Password</Label>
-                    <Input id="current-password" type="password" />
+                  <div className="flex items-center justify-between">
+                    <div className="space-y-0.5">
+                      <Label>Email Notifications</Label>
+                      <p className="text-sm text-muted-foreground">
+                        Receive email updates about your account
+                      </p>
+                    </div>
+                    <Switch
+                      checked={settings.emailNotifications}
+                      onCheckedChange={(checked: boolean) =>
+                        setSettings({
+                          ...settings,
+                          emailNotifications: checked,
+                        })
+                      }
+                    />
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="new-password">New Password</Label>
-                    <Input id="new-password" type="password" />
+
+                  <Separator />
+
+                  <div className="flex items-center justify-between">
+                    <div className="space-y-0.5">
+                      <Label>Marketing Emails</Label>
+                      <p className="text-sm text-muted-foreground">
+                        Receive emails about new features and updates
+                      </p>
+                    </div>
+                    <Switch
+                      checked={settings.marketingEmails}
+                      onCheckedChange={(checked) =>
+                        setSettings({ ...settings, marketingEmails: checked })
+                      }
+                    />
                   </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="confirm-password">
-                      Confirm New Password
-                    </Label>
-                    <Input id="confirm-password" type="password" />
-                  </div>
-                  <Button>Change Password</Button>
                 </CardContent>
               </Card>
 
-              {/* Danger Zone */}
-              <Card className="shadow-md border-destructive/50">
+              <Card className="border-primary/20 bg-card/50 backdrop-blur-sm">
                 <CardHeader>
-                  <CardTitle className="text-destructive flex items-center gap-2">
-                    <AlertCircle className="w-5 h-5" />
+                  <CardTitle>Security</CardTitle>
+                  <CardDescription>
+                    Manage your account security settings
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div className="flex items-center justify-between">
+                    <div className="space-y-0.5">
+                      <Label>Two-Factor Authentication</Label>
+                      <p className="text-sm text-muted-foreground">
+                        Add an extra layer of security to your account
+                      </p>
+                    </div>
+                    <Switch
+                      checked={settings.twoFactorAuth}
+                      onCheckedChange={(checked) =>
+                        setSettings({ ...settings, twoFactorAuth: checked })
+                      }
+                    />
+                  </div>
+
+                  <Separator />
+
+                  <div className="space-y-4">
+                    <Label>Change Password</Label>
+                    <div className="space-y-2">
+                      <Input type="password" placeholder="Current password" />
+                      <Input type="password" placeholder="New password" />
+                      <Input
+                        type="password"
+                        placeholder="Confirm new password"
+                      />
+                    </div>
+                    <Button variant="outline">Update Password</Button>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="border-destructive/50 bg-card/50 backdrop-blur-sm">
+                <CardHeader>
+                  <CardTitle className="text-destructive">
                     Danger Zone
                   </CardTitle>
                   <CardDescription>
                     Irreversible actions for your account
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-6">
-                  <div>
-                    <h3 className="font-semibold mb-2">Delete Account</h3>
-                    <p className="text-sm text-muted-foreground mb-4">
-                      Once you delete your account, there is no going back.
-                      Please be certain.
-                    </p>
-                    <Button variant="destructive">Delete My Account</Button>
+                <CardContent className="space-y-4">
+                  <div className="flex items-center justify-between p-4 border border-destructive/20 rounded-lg">
+                    <div>
+                      <p className="font-medium">Delete Account</p>
+                      <p className="text-sm text-muted-foreground">
+                        Permanently delete your account and all data
+                      </p>
+                    </div>
+                    <Button variant="destructive">
+                      <Trash2 className="h-4 w-4 mr-2" />
+                      Delete
+                    </Button>
                   </div>
                 </CardContent>
               </Card>

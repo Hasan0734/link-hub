@@ -95,7 +95,7 @@ const Subcription = () => {
                         Monitor your usage and limits
                       </CardDescription>
                     </div>
-                    <Badge className="bg-gradient-to-r from-primary to-accent">
+                    <Badge className="">
                       Active
                     </Badge>
                   </div>

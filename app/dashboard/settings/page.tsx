@@ -1,6 +1,4 @@
-"use client";
 
-import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -16,18 +14,24 @@ import AppHeader from "@/components/AppHeader";
 import DashboardTitle from "@/components/DashboardTitle";
 import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
-const Settings = () => {
-  const [settings, setSettings] = useState({
-    email: "john@example.com",
-    name: "John Doe",
-    emailNotifications: true,
-    marketingEmails: false,
-    twoFactorAuth: false,
+import { auth } from "@/lib/auth";
+import AccountInformation from "@/components/AccountInformation";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+
+const Settings = async () => {
+  const session = await auth.api.getSession({
+    headers: await headers(),
   });
 
-  const handleSave = () => {
-    alert("Settings saved successfully!");
-  };
+
+  if(!session) {
+    redirect("/login")
+  }
+
+  console.log(session)
+
+
   return (
     <>
       <AppHeader />
@@ -35,50 +39,14 @@ const Settings = () => {
       <div className="flex flex-1 flex-col relative">
         <div className="@container/main flex flex-1 flex-col gap-2">
           <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6 px-4 lg:px-6">
-            <div className="space-y-6">
+            <div className="space-y-6 max-w-3xl">
               <DashboardTitle
                 title="Settings"
                 details="Manage your account preferences"
               />
 
-              <Card className="border-primary/20 bg-card/50 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle>Account Information</CardTitle>
-                  <CardDescription>
-                    Update your personal details
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Name</Label>
-                    <Input
-                      id="name"
-                      value={settings.name}
-                      onChange={(e) =>
-                        setSettings({ ...settings, name: e.target.value })
-                      }
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={settings.email}
-                      onChange={(e) =>
-                        setSettings({ ...settings, email: e.target.value })
-                      }
-                    />
-                  </div>
-
-                  <Button onClick={handleSave}>
-                    <Save className="h-4 w-4 mr-2" />
-                    Save Changes
-                  </Button>
-                </CardContent>
-              </Card>
-
+              <AccountInformation  user={session.user}/>
+{/* 
               <Card className="border-primary/20 bg-card/50 backdrop-blur-sm">
                 <CardHeader>
                   <CardTitle>Notifications</CardTitle>
@@ -162,7 +130,7 @@ const Settings = () => {
                     <Button variant="outline">Update Password</Button>
                   </div>
                 </CardContent>
-              </Card>
+              </Card> */}
 
               <Card className="border-destructive/50 bg-card/50 backdrop-blur-sm">
                 <CardHeader>

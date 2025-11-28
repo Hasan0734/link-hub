@@ -4,6 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Eye, MousePointerClick, TrendingUp, Calendar } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import DashboardTitle from "@/components/DashboardTitle";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
 const stats = [
   {
@@ -35,7 +38,15 @@ const stats = [
     trend: "up",
   },
 ];
-const Dashboard = () => {
+const Dashboard = async () => {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (!session) {
+    redirect("/login");
+  }
+
   return (
     <>
       <AppHeader />
@@ -43,7 +54,10 @@ const Dashboard = () => {
         <div className="@container/main flex flex-1 flex-col gap-2">
           <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6 px-4 lg:px-6">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <DashboardTitle title="Dashboard" details="Welcome back, John!" />
+              <DashboardTitle
+                title="Dashboard"
+                details={`Welcome back, ${session.user.name}!`}
+              />
               <Button>
                 <Eye className="w-4 h-4 mr-2" />
                 Preview Page

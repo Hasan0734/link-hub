@@ -13,21 +13,31 @@ interface LinkCardProps {
   onToggle: () => void;
 }
 
-const LinkCard = ({ title, url, icon, active, onEdit, onDelete, onToggle }: LinkCardProps) => {
+const LinkCard = ({
+  title,
+  url,
+  icon,
+  active,
+  onEdit,
+  onDelete,
+  onToggle,
+}: LinkCardProps) => {
   return (
-    <Card className="p-4 shadow-sm hover:shadow-md transition-shadow">
+    <Card className="p-4 shadow-sm hover:shadow-md  bg-accent/20 hover:bg-accent/30 transition-all duration-200">
       <div className="flex items-center gap-4">
         <Button variant="ghost" size="icon" className="cursor-grab">
           <GripVertical className="w-4 h-4 text-muted-foreground" />
         </Button>
-        
+
         <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
           {icon}
         </div>
 
         <div className="flex-1 min-w-0">
           <h3 className="font-semibold truncate">{title}</h3>
-          <p className="text-sm text-muted-foreground truncate">{url}</p>
+          <a href={url} target="_blank" className="text-sm text-muted-foreground truncate">
+            {url}
+          </a>
         </div>
 
         <div className="flex items-center gap-2">

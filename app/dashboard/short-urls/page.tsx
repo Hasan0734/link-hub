@@ -95,7 +95,7 @@ const ShortUrls = () => {
   };
   return (
     <>
-      <AppHeader  />
+      <AppHeader />
       <div className="flex flex-1 flex-col relative">
         <div className="@container/main flex flex-1 flex-col gap-2">
           <div className="flex flex-col gap-5 py-4 md:gap-6 md:py-6 px-4 lg:px-6">
@@ -118,11 +118,11 @@ const ShortUrls = () => {
                     key={url.id}
                     className="border-primary/20 bg-card/50 backdrop-blur-sm hover:shadow-lg transition-all duration-200"
                   >
-                    <CardContent className="pt-6">
+                    <CardContent className="pt-">
                       <div className="flex items-start gap-4">
                         <div className="flex-1 space-y-3">
                           <div className="flex items-center gap-2">
-                            <code className="text-lg font-mono font-bold bg-accent/20 px-3 py-1 rounded">
+                            <code className="text-lg font-mono font-bold bg-accent/50 px-3 py-1 rounded-full">
                               linkhub.app/{url.customAlias || url.shortCode}
                             </code>
                             {url.password && (
@@ -139,23 +139,27 @@ const ShortUrls = () => {
                             )}
                           </div>
 
-                          <div className="text-sm text-muted-foreground truncate max-w-2xl">
+                          <a
+                            href={url.originalUrl}
+                            target="_blank"
+                            className="text-sm text-muted-foreground truncate max-w-2xl"
+                          >
                             → {url.originalUrl}
-                          </div>
+                          </a>
 
                           <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                            <span className="flex items-center gap-1">
+                            <Badge className="flex items-center gap-1">
                               <Eye className="h-4 w-4" />
                               {url.clicks} clicks
-                            </span>
+                            </Badge>
                             <span>Created {url.createdAt}</span>
                           </div>
                         </div>
 
                         <div className="flex gap-2">
                           <Button
-                            variant="outline"
-                            size="sm"
+                            variant="ghost"
+                            size="icon-sm"
                             onClick={() =>
                               handleCopy(url.shortCode, url.customAlias)
                             }
@@ -163,10 +167,9 @@ const ShortUrls = () => {
                             <Copy className="h-4 w-4" />
                           </Button>
                           <Button
-                            variant="outline"
-                            size="sm"
+                            variant="destructive"
+                            size="icon-sm"
                             onClick={() => handleDelete(url.id)}
-                            className="text-destructive"
                           >
                             <Trash2 className="h-4 w-4" />
                           </Button>

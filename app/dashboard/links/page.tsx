@@ -23,6 +23,7 @@ import {
 import { Switch } from "@/components/ui/switch";
 import AppHeader from "@/components/AppHeader";
 import DashboardTitle from "@/components/DashboardTitle";
+import LinkCard from "@/components/LinkCard";
 
 const Links = () => {
   const [links, setLinks] = useState([
@@ -79,12 +80,12 @@ const Links = () => {
     setIsDialogOpen(true);
   };
 
-  const handleEditLink = (link: any) => {
+  const handleEdit = (link: any) => {
     setEditingLink({ ...link });
     setIsDialogOpen(true);
   };
 
-  const handleSaveLink = () => {
+  const handleSave = () => {
     if (editingLink.id) {
       setLinks(links.map((l) => (l.id === editingLink.id ? editingLink : l)));
     } else {
@@ -101,15 +102,16 @@ const Links = () => {
     setEditingLink(null);
   };
 
-  const handleDeleteLink = (id: string) => {
+  const handleDelete = (id: string) => {
     setLinks(links.filter((l) => l.id !== id));
   };
 
-  const handleToggleActive = (id: string) => {
+  const handleToggle = (id: string) => {
     setLinks(
       links.map((l) => (l.id === id ? { ...l, isActive: !l.isActive } : l))
     );
   };
+
 
   return (
     <>
@@ -129,7 +131,7 @@ const Links = () => {
                 </Button>
               </div>
 
-              <Card className="border-primary/20 bg-card/50 backdrop-blur-sm">
+              <Card className="border-primary/20 bg-card/50 backdrop-blur-sm shadow-2xl">
                 <CardHeader>
                   <CardTitle>Your Links ({links.length})</CardTitle>
                   <CardDescription>
@@ -139,50 +141,60 @@ const Links = () => {
                 <CardContent>
                   <div className="space-y-3">
                     {links.map((link) => (
-                      <div
+                      <LinkCard
                         key={link.id}
-                        className="flex items-center gap-4 p-4 rounded-lg bg-accent/20 hover:bg-accent/30 transition-all duration-200 group"
-                      >
-                        <GripVertical className="h-5 w-5 text-muted-foreground cursor-grab active:cursor-grabbing" />
+                        title={link.title}
+                        url={link.url}
+                        icon={[link.icon]}
+                        active={link.isActive}
+                        onEdit={() => handleEdit(link)}
+                        onDelete={() => handleDelete(link.id)}
+                        onToggle={() => handleToggle(link.id)}
+                      />
+                      // <div
+                      //   key={link.id}
+                      //   className="flex items-center gap-4 p-4 rounded-lg bg-accent/20 hover:bg-accent/30 transition-all duration-200 group"
+                      // >
+                      //   <GripVertical className="h-5 w-5 text-muted-foreground cursor-grab active:cursor-grabbing" />
 
-                        <div className="flex items-center gap-3 flex-1">
-                          <span className="text-2xl">{link.icon}</span>
-                          <div className="flex-1">
-                            <h3 className="font-medium">{link.title}</h3>
-                            <a
-                              href={link.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-sm text-muted-foreground hover:text-primary flex items-center gap-1"
-                            >
-                              {link.url} <ExternalLink className="h-3 w-3" />
-                            </a>
-                          </div>
-                        </div>
+                      //   <div className="flex items-center gap-3 flex-1">
+                      //     <span className="text-2xl">{link.icon}</span>
+                      //     <div className="flex-1">
+                      //       <h3 className="font-medium">{link.title}</h3>
+                      //       <a
+                      //         href={link.url}
+                      //         target="_blank"
+                      //         rel="noopener noreferrer"
+                      //         className="text-sm text-muted-foreground hover:text-primary flex items-center gap-1"
+                      //       >
+                      //         {link.url} <ExternalLink className="h-3 w-3" />
+                      //       </a>
+                      //     </div>
+                      //   </div>
 
-                        <div className="flex items-center gap-2">
-                          <Switch
-                            checked={link.isActive}
-                            onCheckedChange={() => handleToggleActive(link.id)}
-                          />
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => handleEditLink(link)}
-                            className="opacity-0 group-hover:opacity-100 transition-opacity"
-                          >
-                            <Edit2 className="h-4 w-4" />
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => handleDeleteLink(link.id)}
-                            className="opacity-0 group-hover:opacity-100 transition-opacity text-destructive"
-                          >
-                            <Trash2 className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      </div>
+                      //   <div className="flex items-center gap-2">
+                      //     <Switch
+                      //       checked={link.isActive}
+                      //       onCheckedChange={() => handleToggleActive(link.id)}
+                      //     />
+                      //     <Button
+                      //       variant="ghost"
+                      //       size="sm"
+                      //       onClick={() => handleEditLink(link)}
+                      //       className=" transition-opacity"
+                      //     >
+                      //       <Edit2 className="h-4 w-4" />
+                      //     </Button>
+                      //     <Button
+                      //       variant="ghost"
+                      //       size="sm"
+                      //       onClick={() => handleDeleteLink(link.id)}
+                      //       className=" transition-opacity text-destructive"
+                      //     >
+                      //       <Trash2 className="h-4 w-4" />
+                      //     </Button>
+                      //   </div>
+                      // </div>
                     ))}
                   </div>
                 </CardContent>
@@ -258,7 +270,7 @@ const Links = () => {
                           />
                         </div>
                       </div>
-                      <Button onClick={handleSaveLink} className="w-full">
+                      <Button onClick={handleSave} className="w-full">
                         Save Link
                       </Button>
                     </div>

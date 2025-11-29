@@ -27,7 +27,7 @@ const ProfilePage = async () => {
                 title="Profile Settings"
                 details="Manage your public profile information"
               />
-              <ProfileForm data={profileData} />
+              <ProfileForm data={profileData} user={session?.user}/>
             </div>
           </div>
         </div>

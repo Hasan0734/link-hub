@@ -19,7 +19,6 @@ const LabelAndTextarea = ({
   form,
   className,
   readOnly,
-  rows = 4,
 }: {
   title: string;
   name: string;
@@ -29,7 +28,6 @@ const LabelAndTextarea = ({
   showErrorMsg?: boolean;
   isPassword?: boolean;
   readOnly?: boolean;
-  rows?: number;
   [key: string]: any;
 }) => {
   return (
@@ -41,7 +39,6 @@ const LabelAndTextarea = ({
           {title && <FormLabel>{title}</FormLabel>}
           <FormControl>
             <Textarea
-              rows={rows}
               className={className}
               aria-invalid={fieldState.invalid}
               placeholder={placeholder}

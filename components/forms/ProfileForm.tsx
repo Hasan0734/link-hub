@@ -13,7 +13,7 @@ import {
 import { Save, Upload } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ProfileDataType } from "@/lib/types";
+import { ProfileDataType, UserTypes } from "@/lib/types";
 import { Form } from "../ui/form";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -23,27 +23,51 @@ import {
 } from "@/features/profiile/profile.schema";
 import LabelAndInput from "../LabelAndInput";
 import LabelAndTextarea from "../LabelAndTextarea";
+import ImageCropDialog from "../ImageCropDialog";
+import Image from "next/image";
+import { authClient } from "@/lib/auth-client";
+import { updateProfile } from "@/features/profiile/profile.actions";
+import { toast } from "sonner";
 
-const ProfileForm = ({ data }: { data: ProfileDataType | undefined }) => {
+interface PropsType {
+  data: ProfileDataType | undefined;
+  user: UserTypes | undefined;
+}
+
+const ProfileForm = ({ data, user }: PropsType) => {
   const { name, username, bio, avatarUrl } = data || {};
-  const [profile, setProfile] = useState<File | null>(null);
-  const [generatedUrl, setGeneratedUrl] = useState("");
+  const [profile, setProfile] = useState<File | undefined>(undefined);
+  const [openDialog, setOpenDialog] = useState(false);
+  const [croppedImage, setCroppedImage] = useState<string | undefined>(
+    undefined
+  );
+
+  console.log(data);
 
   const form = useForm({
     resolver: zodResolver(UserProfileSchema),
     defaultValues: {
-      name: name || undefined,
+      name: name ? name : user?.name || undefined,
       username: username || undefined,
       bio: bio || undefined,
       avatarUrl: avatarUrl || undefined,
     },
   });
 
+
   async function onSubmit(data: UserProfileSchemaType) {
-    console.log(data);
+    // await authClient.updateUser({ name: data.name });
+    const result = await updateProfile({ ...data, image: profile });
+
+    if (result.success) {
+      toast.success(result.message);
+      return;
+    } else {
+      toast.error(result.message);
+    }
   }
 
-  console.log(profile);
+  const handlReset = () => {};
 
   return (
     <Card className="border-primary/20 bg-card/50 backdrop-blur-sm">
@@ -60,11 +84,12 @@ const ProfileForm = ({ data }: { data: ProfileDataType | undefined }) => {
               <Avatar className="h-24 w-24 ring-4 ring-primary/20">
                 <AvatarImage
                   src={
-                    generatedUrl ? generatedUrl : data?.avatarUrl || undefined
+                    croppedImage ? croppedImage : data?.avatarUrl || undefined
                   }
                 />
                 <AvatarFallback>{data?.name?.[0] ?? "?"}</AvatarFallback>
               </Avatar>
+
               <div>
                 <div className="relative">
                   <Label
@@ -72,24 +97,33 @@ const ProfileForm = ({ data }: { data: ProfileDataType | undefined }) => {
                     className="border border-input px-2 py-2 rounded-md bg-input/50 hover:bg-input cursor-pointer transition-all duration-200"
                   >
                     <Upload className="h-4 w-4 mr-1" />
-                    {profile?.name
-                      ? `$${profile.name.slice(0, 16)}...`
-                      : "Upload Photo"}
+                    Upload Photo
                   </Label>
+                  {profile && (
+                    <ImageCropDialog
+                      handleReset={handlReset}
+                      setCroppedImage={setCroppedImage}
+                      open={openDialog}
+                      setOpen={setOpenDialog}
+                      selectedFile={profile}
+                    />
+                  )}
                   <Input
                     onChange={(e) => {
                       const file = e.target.files?.[0] || null;
-                      setProfile(file);
                       if (file) {
+                        setProfile(file);
+                        setCroppedImage(undefined);
                         const url = URL.createObjectURL(file);
-                        setGeneratedUrl(url);
+                        setOpenDialog(true);
                       }
                     }}
                     className="mt-3 sr-only"
                     type="file"
                     name="avatarUrl"
                     id="avatarUrl"
-                    accept="image/png, image/jpeg, image/gif"
+                    // accept="image/png, image/jpeg, image/gif"
+                    accept="image/*"
                   />
                 </div>
                 <p className="text-sm text-muted-foreground mt-2">
@@ -98,20 +132,21 @@ const ProfileForm = ({ data }: { data: ProfileDataType | undefined }) => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <LabelAndInput
-                title="Name"
-                form={form}
-                name="name"
-                placeholder="John Doe"
-              />
-              <LabelAndInput
-                title="Username"
-                form={form}
-                name="username"
-                placeholder="johndoe"
-              />
-            </div>
+            <LabelAndInput
+              title="Display name"
+              form={form}
+              name="name"
+              placeholder="John Doe"
+            />
+            <LabelAndInput
+              title="Username"
+              form={form}
+              name="username"
+              placeholder="johndoe"
+              description={`Your profile URL: linkhub.app/${
+                form.watch().username ? form.watch().username : ""
+              }`}
+            />
 
             <div>
               <LabelAndTextarea
@@ -124,7 +159,7 @@ const ProfileForm = ({ data }: { data: ProfileDataType | undefined }) => {
                   (form.watch().bio || "").length
                 }/200 characters`}
                 maxLength={200}
-                className="max-h-[400px]"
+                className="max-h-[400px] min-h-36"
               />
 
               {(form.watch().bio || "").length > 200 && (

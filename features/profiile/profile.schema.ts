@@ -17,9 +17,11 @@ export const UserProfileSchema = z.object({
     )
     .optional(),
 
+
   bio: z.string().optional(),
   avatarUrl: z.string().optional(),
   themeId: z.string().optional(),
+  image: z.file().optional()
 });
 
 export type UserProfileSchemaType = z.infer<typeof UserProfileSchema>;

@@ -55,7 +55,6 @@ const AccountInformation = ({ user }: { user: UserTypes }) => {
         toast.error("Failed to update.");
       } else {
         const result = await updateProfile({ name: data.name });
-        console.log(result);
         if (result.success) {
           toast.success(result.message);
           return;

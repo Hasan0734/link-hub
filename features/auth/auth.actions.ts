@@ -9,7 +9,6 @@ import {
 } from "@/features/auth/auth.schema";
 import { eq } from "drizzle-orm";
 import { auth } from "@/lib/auth";
-import { redirect } from "next/navigation";
 
 export async function createUser(data: UserSchemaType) {
   const validatedFields = registerUserSchema.safeParse(data);

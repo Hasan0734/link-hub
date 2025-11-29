@@ -7,3 +7,13 @@ export type UserTypes = {
   createdAt: Date;
   updatedAt: Date;
 };
+
+export type ProfileDataType = {
+  name: string | null;
+  bio: string | null;
+  username: string | null;
+  avatarUrl: string | null;
+  themeId: string | null;
+  id: string;
+  createdAt: Date | null;
+};

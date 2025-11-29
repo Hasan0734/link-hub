@@ -5,7 +5,7 @@ import LabelAndInput from "../LabelAndInput";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Form } from "../ui/form";
-import { createUser } from "@/features/auth/server/auth.actions";
+import { createUser } from "@/features/auth/auth.actions";
 import {
   registerUserWithConfirmSchema,
   UserWithConfirmSchemaType,

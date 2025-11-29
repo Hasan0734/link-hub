@@ -10,11 +10,11 @@ import {
   loginUserSchema,
   LoginUserSchemaType,
 } from "@/features/auth/auth.schema";
-import { signIn } from "@/features/auth/server/auth.actions";
+import { signIn } from "@/features/auth/auth.actions";
 
 import { Spinner } from "../ui/spinner";
 import { toast } from "sonner";
-import { redirect, useRouter } from "next/navigation";
+import {  useRouter } from "next/navigation";
 
 const defaultValues = {
   email: "",
@@ -48,7 +48,6 @@ const LoginForm = () => {
     });
   }
 
-  console.log({isPending})
 
   return (
     <Form {...form}>

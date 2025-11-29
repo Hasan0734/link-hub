@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -7,30 +6,20 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { AlertCircle, Save, Trash2 } from "lucide-react";
+
+import { Trash2 } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import DashboardTitle from "@/components/DashboardTitle";
-import { Switch } from "@/components/ui/switch";
-import { Separator } from "@/components/ui/separator";
-import { auth } from "@/lib/auth";
-import AccountInformation from "@/components/AccountInformation";
-import { headers } from "next/headers";
+import AccountInformation from "@/components/forms/AccountInformation";
 import { redirect } from "next/navigation";
+import { getAuth } from "@/lib/getAuth";
 
 const Settings = async () => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+  const session = await getAuth();
 
-
-  if(!session) {
-    redirect("/login")
+  if (!session) {
+    redirect("/login");
   }
-
-  console.log(session)
-
 
   return (
     <>
@@ -45,8 +34,8 @@ const Settings = async () => {
                 details="Manage your account preferences"
               />
 
-              <AccountInformation  user={session.user}/>
-{/* 
+              <AccountInformation user={session.user} />
+              {/* 
               <Card className="border-primary/20 bg-card/50 backdrop-blur-sm">
                 <CardHeader>
                   <CardTitle>Notifications</CardTitle>

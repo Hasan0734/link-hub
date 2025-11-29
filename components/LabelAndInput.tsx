@@ -14,7 +14,6 @@ import {
   InputGroupInput,
 } from "./ui/input-group";
 import { Eye, EyeOff } from "lucide-react";
-import { Input } from "./ui/input";
 
 const LabelAndInput = ({
   title,
@@ -25,6 +24,7 @@ const LabelAndInput = ({
   showErrorMsg,
   form,
   isPassword,
+  readOnly
 }: {
   title: string;
   name: string;
@@ -33,6 +33,7 @@ const LabelAndInput = ({
   description?: string;
   showErrorMsg?: boolean;
   isPassword?: boolean;
+  readOnly?: boolean;
   [key: string]: any;
 }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -50,6 +51,7 @@ const LabelAndInput = ({
                 aria-invalid={fieldState.invalid}
                 placeholder={placeholder}
                 type={passwordVisible ? "text" : type}
+                readOnly={readOnly}
                 {...field}
               />
 

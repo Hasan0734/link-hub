@@ -14,7 +14,9 @@ import { signIn } from "@/features/auth/auth.actions";
 
 import { Spinner } from "../ui/spinner";
 import { toast } from "sonner";
-import {  useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { Lock, Mail } from "lucide-react";
+import Link from "next/link";
 
 const defaultValues = {
   email: "",
@@ -48,7 +50,6 @@ const LoginForm = () => {
     });
   }
 
-
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -58,14 +59,28 @@ const LoginForm = () => {
           title="Email"
           placeholder="name@example.com"
           showErrorMsg
+          showAddon
+          Icon={<Mail />}
         />
         <LabelAndInput
           name="password"
           form={form}
-          title="Password"
+          title={
+            <div className="flex justify-between w-full items-center">
+              Password{" "}
+              <Link
+                href={"/forgot-password"}
+                className="text-primary hover:underline"
+              >
+                Forgot your password?
+              </Link>
+            </div>
+          }
           placeholder="••••••••"
           type="password"
           showErrorMsg
+          showAddon
+          Icon={<Lock />}
         />
 
         <Button disabled={isPending} className="w-full" size="lg">

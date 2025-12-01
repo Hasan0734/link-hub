@@ -41,9 +41,9 @@ export const registerUserWithConfirmSchema = registerUserSchema
   });
 
 export type UserSchemaType = z.infer<typeof registerUserSchema>;
-export type UserWithConfirmSchemaType = z.infer<typeof registerUserWithConfirmSchema>;
-
-
+export type UserWithConfirmSchemaType = z.infer<
+  typeof registerUserWithConfirmSchema
+>;
 
 export const loginUserSchema = z.object({
   email: z

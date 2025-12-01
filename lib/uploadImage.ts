@@ -13,6 +13,6 @@ export const uploadImage = async (image: FormData) => {
 
     return res;
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };

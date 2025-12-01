@@ -16,6 +16,8 @@ const ProfilePage = async () => {
     session.user.id
   );
 
+  console.log(session)
+
   return (
     <>
       <AppHeader />

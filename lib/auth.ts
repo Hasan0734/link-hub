@@ -11,7 +11,6 @@ export const auth = betterAuth({
       prompt: "select_account",
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
-      
     },
   },
   database: drizzleAdapter(db, {
@@ -20,13 +19,17 @@ export const auth = betterAuth({
   }),
   emailVerification: {
     sendVerificationEmail: async ({ user, url, token }, request) => {
-
-        // console.log(user, url, token)
-    //   await sendEmail({
-    //     to: user.email,
-    //     subject: "Verify your email address",
-    //     text: `Click the link to verify your email: ${url}`,
-    //   });
+      // console.log(user, url, token)
+      //   await sendEmail({
+      //     to: user.email,
+      //     subject: "Verify your email address",
+      //     text: `Click the link to verify your email: ${url}`,
+      //   });
+    },
+  },
+  account: {
+    accountLinking: {
+      enabled: true,
     },
   },
   plugins: [nextCookies()],

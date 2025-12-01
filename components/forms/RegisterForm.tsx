@@ -13,6 +13,7 @@ import {
 import { toast } from "sonner";
 import { redirect, useRouter } from "next/navigation";
 import { Spinner } from "../ui/spinner";
+import { Lock, Mail, User, UserCircle2 } from "lucide-react";
 
 const defaultValues = {
   name: "",
@@ -57,6 +58,8 @@ export const RegisterForm = () => {
           title="Name"
           placeholder="John Doe"
           showErrorMsg
+          showAddon
+          Icon={<User />}
         />
         <LabelAndInput
           name="username"
@@ -64,6 +67,8 @@ export const RegisterForm = () => {
           title="Username"
           placeholder="johndoe"
           showErrorMsg
+          showAddon
+          Icon={<UserCircle2 />}
         />
         <LabelAndInput
           name="email"
@@ -71,6 +76,8 @@ export const RegisterForm = () => {
           title="Email"
           placeholder="name@example.com"
           showErrorMsg
+          showAddon
+          Icon={<Mail />}
         />
         <LabelAndInput
           name="password"
@@ -80,6 +87,8 @@ export const RegisterForm = () => {
           type="password"
           showErrorMsg
           isPassword
+          showAddon
+          Icon={<Lock />}
         />
         <LabelAndInput
           name="confirmPassword"
@@ -89,6 +98,8 @@ export const RegisterForm = () => {
           type="password"
           showErrorMsg
           isPassword
+          showAddon
+          Icon={<Lock />}
         />
         <Button className="w-full" size="lg" disabled={isPending} type="submit">
           {isPending && <Spinner />} Create Account

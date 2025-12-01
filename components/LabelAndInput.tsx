@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   FormControl,
   FormDescription,
@@ -13,7 +13,21 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "./ui/input-group";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Mail } from "lucide-react";
+
+type PropsType = {
+  title?: React.ReactNode;
+  name: string;
+  placeholder?: string;
+  type?: string;
+  description?: string;
+  showErrorMsg?: boolean;
+  isPassword?: boolean;
+  readOnly?: boolean;
+  Icon?: React.ReactNode;
+  showAddon?: boolean;
+  [key: string]: any;
+};
 
 const LabelAndInput = ({
   title,
@@ -24,20 +38,11 @@ const LabelAndInput = ({
   showErrorMsg,
   form,
   isPassword,
-  readOnly
-}: {
-  title: string;
-  name: string;
-  placeholder?: string;
-  type?: string;
-  description?: string;
-  showErrorMsg?: boolean;
-  isPassword?: boolean;
-  readOnly?: boolean;
-  [key: string]: any;
-}) => {
+  readOnly,
+  Icon,
+  showAddon=false,
+}: PropsType) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
-
   return (
     <FormField
       control={form.control}
@@ -45,8 +50,10 @@ const LabelAndInput = ({
       render={({ field, fieldState }) => (
         <FormItem>
           {title && <FormLabel>{title}</FormLabel>}
+
+
           <FormControl>
-            <InputGroup >
+            <InputGroup>
               <InputGroupInput
                 aria-invalid={fieldState.invalid}
                 placeholder={placeholder}
@@ -54,6 +61,11 @@ const LabelAndInput = ({
                 readOnly={readOnly}
                 {...field}
               />
+              {showAddon && Icon && (
+                <InputGroupAddon>
+                  {Icon}
+                </InputGroupAddon>
+              )}
 
               {isPassword && (
                 <InputGroupAddon align="inline-end">
@@ -72,7 +84,7 @@ const LabelAndInput = ({
             </InputGroup>
           </FormControl>
           {description && <FormDescription>{description}</FormDescription>}
-          {showErrorMsg && <FormMessage className="text-xs"/>}
+          {showErrorMsg && <FormMessage className="text-xs" />}
         </FormItem>
       )}
     />

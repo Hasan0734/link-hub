@@ -13,6 +13,11 @@ import DashboardTitle from "@/components/DashboardTitle";
 import AccountInformation from "@/components/forms/AccountInformation";
 import { redirect } from "next/navigation";
 import { getAuth } from "@/lib/getAuth";
+import { Separator } from "@/components/ui/separator";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
+import { Input } from "@/components/ui/input";
+import PasswordForm from "@/components/forms/PasswordForm";
 
 const Settings = async () => {
   const session = await getAuth();
@@ -20,6 +25,8 @@ const Settings = async () => {
   if (!session) {
     redirect("/login");
   }
+
+  console.log(session)
 
   return (
     <>
@@ -35,7 +42,7 @@ const Settings = async () => {
               />
 
               <AccountInformation user={session.user} />
-              {/* 
+
               <Card className="border-primary/20 bg-card/50 backdrop-blur-sm">
                 <CardHeader>
                   <CardTitle>Notifications</CardTitle>
@@ -52,13 +59,13 @@ const Settings = async () => {
                       </p>
                     </div>
                     <Switch
-                      checked={settings.emailNotifications}
-                      onCheckedChange={(checked: boolean) =>
-                        setSettings({
-                          ...settings,
-                          emailNotifications: checked,
-                        })
-                      }
+                    // checked={settings.emailNotifications}
+                    // onCheckedChange={(checked: boolean) =>
+                    //   setSettings({
+                    //     ...settings,
+                    //     emailNotifications: checked,
+                    //   })
+                    // }
                     />
                   </div>
 
@@ -72,10 +79,10 @@ const Settings = async () => {
                       </p>
                     </div>
                     <Switch
-                      checked={settings.marketingEmails}
-                      onCheckedChange={(checked) =>
-                        setSettings({ ...settings, marketingEmails: checked })
-                      }
+                    // checked={settings.marketingEmails}
+                    // onCheckedChange={(checked) =>
+                    //   setSettings({ ...settings, marketingEmails: checked })
+                    // }
                     />
                   </div>
                 </CardContent>
@@ -97,29 +104,18 @@ const Settings = async () => {
                       </p>
                     </div>
                     <Switch
-                      checked={settings.twoFactorAuth}
-                      onCheckedChange={(checked) =>
-                        setSettings({ ...settings, twoFactorAuth: checked })
-                      }
+                    // checked={settings.twoFactorAuth}
+                    // onCheckedChange={(checked) =>
+                    //   setSettings({ ...settings, twoFactorAuth: checked })
+                    // }
                     />
                   </div>
 
                   <Separator />
 
-                  <div className="space-y-4">
-                    <Label>Change Password</Label>
-                    <div className="space-y-2">
-                      <Input type="password" placeholder="Current password" />
-                      <Input type="password" placeholder="New password" />
-                      <Input
-                        type="password"
-                        placeholder="Confirm new password"
-                      />
-                    </div>
-                    <Button variant="outline">Update Password</Button>
-                  </div>
+                  <PasswordForm />
                 </CardContent>
-              </Card> */}
+              </Card>
 
               <Card className="border-destructive/50 bg-card/50 backdrop-blur-sm">
                 <CardHeader>

@@ -45,6 +45,10 @@ const AccountInformation = ({ user }: { user: UserTypes }) => {
   });
 
   async function onSubmit(data: SchemaType) {
+   const accounts = await authClient.listAccounts()
+   console.log(accounts)
+
+    return;
     if (data.name === user.name) {
       return;
     }
@@ -65,6 +69,10 @@ const AccountInformation = ({ user }: { user: UserTypes }) => {
     });
   }
 
+
+
+
+
   return (
     <Card className="border-primary/20 bg-card/50 backdrop-blur-sm">
       <CardHeader>
@@ -73,7 +81,10 @@ const AccountInformation = ({ user }: { user: UserTypes }) => {
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-4 max-w-sm"
+          >
             <LabelAndInput
               name="name"
               form={form}

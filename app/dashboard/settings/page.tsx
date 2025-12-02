@@ -18,6 +18,7 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Input } from "@/components/ui/input";
 import PasswordForm from "@/components/forms/PasswordForm";
+import DeleteAccount from "@/components/DeleteAccount";
 
 const Settings = async () => {
   const session = await getAuth();
@@ -26,7 +27,7 @@ const Settings = async () => {
     redirect("/login");
   }
 
-  console.log(session.user)
+  console.log(session.user);
 
   return (
     <>
@@ -117,30 +118,7 @@ const Settings = async () => {
                 </CardContent>
               </Card>
 
-              <Card className="border-destructive/50 bg-card/50 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="text-destructive">
-                    Danger Zone
-                  </CardTitle>
-                  <CardDescription>
-                    Irreversible actions for your account
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-center justify-between p-4 border border-destructive/20 rounded-lg">
-                    <div>
-                      <p className="font-medium">Delete Account</p>
-                      <p className="text-sm text-muted-foreground">
-                        Permanently delete your account and all data
-                      </p>
-                    </div>
-                    <Button variant="destructive">
-                      <Trash2 className="h-4 w-4 mr-2" />
-                      Delete
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+              <DeleteAccount />
             </div>
           </div>
         </div>

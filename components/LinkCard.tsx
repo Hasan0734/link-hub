@@ -29,7 +29,7 @@ const LinkCard = ({
           <GripVertical className="w-4 h-4 text-muted-foreground" />
         </Button>
 
-        <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+        <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
           {icon}
         </div>
 

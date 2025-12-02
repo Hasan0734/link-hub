@@ -62,3 +62,14 @@ export const sendResetPassLink = async (data: emailSchemaType) => {
   });
   return res;
 };
+
+export const confirmDeleteAccount = async () => {
+  const res = await auth.api.deleteUser({
+    body: {
+      callbackURL: "/",
+    },
+    headers: await headers()
+  });
+
+  return res;
+};

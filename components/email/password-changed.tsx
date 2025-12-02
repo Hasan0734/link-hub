@@ -39,7 +39,7 @@ const PasswordChanged = ({ email, username }: PasswordChangedProps) => {
                 December 2, 2024 at 10:53 AM (Asia/Dhaka).
               </Text>
 
-              <Section className="bg-green-50 border-solid border-[1px] border-green-200 rounded-[6px] p-4 mb-6">
+              <Section className="bg-green-50 border-solid border border-green-200 rounded-[6px] p-4 mb-6">
                 <Text className="text-[14px] text-green-800 mb-2 mt-0 font-medium">
                   Your account is now secure with your new password.
                 </Text>

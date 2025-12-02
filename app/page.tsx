@@ -3,19 +3,17 @@ import getUsers from "@/lib/helper/getUser";
 import { ArrowRight, Check, LinkIcon } from "lucide-react";
 
 import Link from "next/link";
-   const features = [
-    "Unlimited links",
-    "Custom themes & colors",
-    "Analytics dashboard",
-    "Mobile responsive",
-    "Social media integration",
-    "Easy to use interface"
-  ];
-export default  async function Home() {
-
-
+const features = [
+  "Unlimited links",
+  "Custom themes & colors",
+  "Analytics dashboard",
+  "Mobile responsive",
+  "Social media integration",
+  "Easy to use interface",
+];
+export default async function Home() {
   return (
-   <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
+    <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
       {/* Navbar */}
       <nav className="border-b bg-background/80 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,11 +41,14 @@ export default  async function Home() {
         <div className="text-center space-y-8 max-w-3xl mx-auto">
           <h1 className="text-5xl sm:text-6xl font-bold tracking-tight">
             One link for
-            <span className="block text-primary mt-2">everything you share</span>
+            <span className="block text-primary mt-2">
+              everything you share
+            </span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Share all your social media profiles, websites, and content in one beautiful place. 
-            Perfect for creators, businesses, and anyone who wants to connect with their audience.
+            Share all your social media profiles, websites, and content in one
+            beautiful place. Perfect for creators, businesses, and anyone who
+            wants to connect with their audience.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/register">
@@ -67,11 +68,11 @@ export default  async function Home() {
         {/* Features Grid */}
         <div className="mt-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature) => (
-            <div 
+            <div
               key={feature}
               className="flex items-center gap-3 p-4 rounded-xl bg-card border shadow-sm hover:shadow-md transition-shadow"
             >
-              <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+              <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
                 <Check className="w-5 h-5 text-primary" />
               </div>
               <span className="font-medium">{feature}</span>
@@ -81,7 +82,9 @@ export default  async function Home() {
 
         {/* Preview Section */}
         <div className="mt-24">
-          <h2 className="text-3xl font-bold text-center mb-12">Beautiful on every device</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Beautiful on every device
+          </h2>
           <div className="relative max-w-4xl mx-auto">
             <div className="aspect-video bg-gradient-to-br from-cyan-100 via-blue-100 to-purple-100 dark:from-slate-800 dark:via-slate-700 dark:to-slate-800 rounded-3xl shadow-2xl p-8 flex items-center justify-center">
               <div className="text-center">

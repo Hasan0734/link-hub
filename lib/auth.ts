@@ -7,6 +7,7 @@ import VerifyEmail from "@/components/email/verify-email";
 import sendEmail from "./helper/sendEmail";
 import PasswordResetEmail from "@/components/email/password-reset-email";
 import PasswordChanged from "@/components/email/password-changed";
+import AccountDeletionConfirmation from "@/components/email/AccountDeletation";
 
 export const auth = betterAuth({
   socialProviders: {
@@ -64,5 +65,18 @@ export const auth = betterAuth({
       enabled: true,
     },
   },
+  user: {
+    deleteUser: {
+      enabled: true,
+      sendDeleteAccountVerification: async ({ user, url }) => {
+        await sendEmail({
+          user,
+          subject: "Confirm your account deletion request",
+          template: AccountDeletionConfirmation({ email: user.email, url }),
+        });
+      },
+    },
+  },
+
   plugins: [nextCookies()],
 });

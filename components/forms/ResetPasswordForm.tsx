@@ -13,16 +13,15 @@ import {
   ResetPasswordType,
 } from "@/features/password/password.schema";
 import { redirect, usePathname, useSearchParams } from "next/navigation";
+import { resetPassword } from "@/features/password/password.actions";
+import { toast } from "sonner";
 
 const ResetPasswordForm = () => {
   const [isPending, startTransition] = useTransition();
-  const token = useSearchParams().get("token")
-
-
-  console.log(token)
+  const token = useSearchParams().get("token");
 
   if (!token) {
-    redirect("/")
+    redirect("/");
   }
 
   const form = useForm({
@@ -30,7 +29,20 @@ const ResetPasswordForm = () => {
   });
 
   const onSubmit = (data: ResetPasswordType) => {
-    console.log(data);
+    startTransition(async () => {
+      try {
+        const res = await resetPassword(data, token);
+
+        if (res.status) {
+          toast.success(res.message);
+          redirect("/login");
+          return;
+        }
+        toast.error(res.message);
+      } catch (error) {
+        toast.error("Invalid token");
+      }
+    });
   };
 
   return (

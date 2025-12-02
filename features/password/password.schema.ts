@@ -3,7 +3,7 @@ import * as z from "zod";
 export const passwordSchema = z
   .object({
     newPassword: z
-      .string()
+      .string("New password is required!")
       .min(8, "Password must be at least 8 characters long")
       .regex(/.*[A-Z].*/, "Password must contain at least one uppercase letter")
       .regex(/.*[a-z].*/, "Password must contain at least one lowercase letter")
@@ -12,7 +12,7 @@ export const passwordSchema = z
         /.*[!@#$%^&*(),.?":{}|<>]/,
         "Password must contain at least one special character"
       ),
-    confirmPassword: z.string(),
+    confirmPassword: z.string("Confirm password is required!"),
   })
   .refine((data) => data.newPassword === data.confirmPassword, {
     message: "Password do not match.",
@@ -20,7 +20,7 @@ export const passwordSchema = z
   });
 
 export const changePasswordSchema = passwordSchema.safeExtend({
-  currentPassword: z.string(),
+  currentPassword: z.string("Current password is required!"),
 });
 
 export type ChangePasswordType = z.infer<typeof changePasswordSchema>;

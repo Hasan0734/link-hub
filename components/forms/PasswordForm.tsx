@@ -29,7 +29,7 @@ const PasswordForm = () => {
     startTransition(async () => {
       const res = await changePassword(data);
       console.log(res);
-      if (res.success) {
+      if (res.status) {
         toast.success(res.message);
         return;
       }
@@ -57,6 +57,7 @@ const PasswordForm = () => {
             type="password"
             showErrorMsg
             showAddon
+            isPassword
             Icon={<Lock />}
           />
           <LabelAndInput
@@ -64,6 +65,7 @@ const PasswordForm = () => {
             placeholder="New Password"
             form={form}
             type="password"
+            isPassword
             showErrorMsg
             showAddon
             Icon={<Lock />}
@@ -75,6 +77,7 @@ const PasswordForm = () => {
             type="password"
             showErrorMsg
             showAddon
+            isPassword
             Icon={<Lock />}
           />
         </div>

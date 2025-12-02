@@ -14,7 +14,7 @@ export const changePassword = async (data: ChangePasswordType) => {
   if (!validation.success) {
     const errors = validation.error.flatten().fieldErrors;
     return {
-      success: false,
+      status: false,
       message: "Field validation failed",
       fieldErrors: errors,
     };
@@ -30,29 +30,44 @@ export const changePassword = async (data: ChangePasswordType) => {
     });
 
     return {
-      success: true,
+      status: true,
       message: "Password changed successfully.",
     };
   } catch (error) {
     return {
-      success: false,
+      status: false,
       message: "Password change failed.",
       error: error as Error,
     };
   }
 };
 
-export const resetPassword = async (data: ResetPasswordType) => {
+export const resetPassword = async (data: ResetPasswordType, token: string) => {
   const validation = passwordSchema.safeParse(data);
   if (!validation.success) {
     const errors = validation.error.flatten().fieldErrors;
     return {
-      success: false,
+      status: false,
       message: "Field validation failed",
       fieldErrors: errors,
     };
   }
 
+  const res = await auth.api.resetPassword({
+    body: { newPassword: data.newPassword, token },
+    headers: await headers(),
+  });
 
-  
+
+  if (res.status) {
+    return {
+      ...res,
+      message: "Password successfully.",
+    };
+  }
+
+  return {
+    ...res,
+    message: "Something to wrong to change password.",
+  };
 };

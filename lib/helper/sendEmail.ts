@@ -8,19 +8,15 @@ console.log(resend);
 
 interface ArugType {
   user: UserTypes;
-  url: string;
-  token: string;
   template: JSX.Element;
   subject: string;
 }
 
 export default async function sendEmail({ user, template, subject }: ArugType) {
-  const email = await resend.emails.send({
+  await resend.emails.send({
     from: `Link-hub <onboarding@resend.dev>`,
     to: user.email,
     subject,
     react: template,
   });
-
-  console.log({ email });
 }

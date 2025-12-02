@@ -5,7 +5,7 @@ import { headers } from "next/headers";
 import * as z from "zod";
 
 const emailSchema = z.object({
-  email: z.string().email("Please enter your register email"),
+  email: z.email("Please enter your register email"),
 });
 
 type emailSchemaType = z.infer<typeof emailSchema>;

@@ -6,6 +6,7 @@ import { schema } from "@/db/schema";
 import VerifyEmail from "@/components/email/verify-email";
 import sendEmail from "./helper/sendEmail";
 import PasswordResetEmail from "@/components/email/password-reset-email";
+import PasswordChanged from "@/components/email/password-changed";
 
 export const auth = betterAuth({
   socialProviders: {
@@ -23,11 +24,9 @@ export const auth = betterAuth({
     enabled: true,
     requireEmailVerification: false,
 
-    sendResetPassword: async ({ user, url, token }, request) => {
+    sendResetPassword: async ({ user, url }) => {
       await sendEmail({
         user,
-        url,
-        token,
         subject: "Reset your password",
         template: PasswordResetEmail({
           username: user.name,
@@ -36,18 +35,22 @@ export const auth = betterAuth({
         }),
       });
     },
-    onPasswordReset: async ({ user }, request) => {
-      // your logic here
-      console.log(`Password for user ${user.email} has been reset.`);
+    onPasswordReset: async ({ user }) => {
+      await sendEmail({
+        user,
+        subject: "Password successfully changed",
+        template: PasswordChanged({
+          username: user.name,
+          email: user.email,
+        }),
+      });
     },
   },
 
   emailVerification: {
-    sendVerificationEmail: async ({ user, url, token }, request) => {
+    sendVerificationEmail: async ({ user, url }) => {
       await sendEmail({
         user,
-        url,
-        token,
         subject: "Verify your email",
         template: VerifyEmail({ username: user.name, verifyUrl: url }),
       });

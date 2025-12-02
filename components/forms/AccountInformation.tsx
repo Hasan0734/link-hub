@@ -48,10 +48,7 @@ const AccountInformation = ({ user }: { user: UserTypes }) => {
   });
 
   async function onSubmit(data: SchemaType) {
-    const accounts = await authClient.listAccounts();
-    console.log(accounts);
 
-    return;
     if (data.name === user.name) {
       return;
     }

@@ -33,7 +33,7 @@ export const registerUserSchema = z.object({
 
 export const registerUserWithConfirmSchema = registerUserSchema
   .extend({
-    confirmPassword: z.string(),
+    confirmPassword: z.string("Confirm password is required!"),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords do not match",
@@ -51,7 +51,7 @@ export const loginUserSchema = z.object({
     .trim()
     .max(255)
     .toLowerCase(),
-  password: z.string().min(8, "Password must be at least 8 characters long"),
+  password: z.string("Password is required!").min(8, "Password must be at least 8 characters long"),
 });
 
 export type LoginUserSchemaType = z.infer<typeof loginUserSchema>;

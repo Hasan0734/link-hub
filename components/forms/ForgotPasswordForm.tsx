@@ -12,11 +12,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 
 const emailSchema = z.object({
-  email: z.string().email("Please enter your register email"),
+  email: z
+    .email("Please enter your register email"),
 });
 
 type emailSchemaType = z.infer<typeof emailSchema>;
-
 const ForgotPasswordForm = () => {
   const [isPending, startTransition] = useTransition();
 

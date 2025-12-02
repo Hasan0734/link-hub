@@ -7,15 +7,29 @@ import { Form } from "../ui/form";
 import { Lock } from "lucide-react";
 import { Button } from "../ui/button";
 import { Spinner } from "../ui/spinner";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  passwordSchema,
+  ResetPasswordType,
+} from "@/features/password/password.schema";
+import { redirect, usePathname, useSearchParams } from "next/navigation";
 
-const ChangePasswordForm = () => {
+const ResetPasswordForm = () => {
   const [isPending, startTransition] = useTransition();
+  const parms = useSearchParams();
+ 
+
+  console.log(parms.token)
+
+  if (!parms.token) {
+    // redirect("/")
+  }
 
   const form = useForm({
-    defaultValues: { email: "" },
+    resolver: zodResolver(passwordSchema),
   });
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: ResetPasswordType) => {
     console.log(data);
   };
 
@@ -32,6 +46,7 @@ const ChangePasswordForm = () => {
             showAddon
             Icon={<Lock />}
             isPassword
+            type="password"
           />
           <LabelAndInput
             name="confirmPassword"
@@ -42,6 +57,7 @@ const ChangePasswordForm = () => {
             showAddon
             Icon={<Lock />}
             isPassword
+            type="password"
           />
           <Button disabled={isPending} className="w-full" size="lg">
             {isPending && <Spinner />} Submit
@@ -52,4 +68,4 @@ const ChangePasswordForm = () => {
   );
 };
 
-export default ChangePasswordForm;
+export default ResetPasswordForm;

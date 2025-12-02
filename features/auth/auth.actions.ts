@@ -9,6 +9,7 @@ import {
 } from "@/features/auth/auth.schema";
 import { eq } from "drizzle-orm";
 import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 export async function createUser(data: UserSchemaType) {
   const validatedFields = registerUserSchema.safeParse(data);
@@ -72,11 +73,12 @@ export const signIn = async (data: LoginUserSchemaType) => {
       },
     });
     return { success: true, message: "Login successful" };
-  } catch (error) {
+  } catch (error: any) {
     return {
       success: false,
-      message: "Login failed",
+      message: error.message,
       error: error as Error,
     };
   }
 };
+

@@ -3,6 +3,12 @@ import { RegisterForm } from "@/components/forms/RegisterForm";
 import AuthHeader from "@/components/AuthHeader";
 import { CardContent } from "@/components/ui/card";
 import SocialLogin from "@/components/SocialLogin";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Create an new account.",
+  description: "Sign up with your email and password or google.",
+};
 
 const RegisterPage = () => {
   return (

@@ -26,6 +26,8 @@ type PropsType = {
   readOnly?: boolean;
   Icon?: React.ReactNode;
   showAddon?: boolean;
+  className?: string;
+  formItemClass?:string
   [key: string]: any;
 };
 
@@ -39,8 +41,10 @@ const LabelAndInput = ({
   form,
   isPassword,
   readOnly,
+  className,
+  formItemClass,
   Icon,
-  showAddon=false,
+  showAddon = false,
 }: PropsType) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   return (
@@ -48,28 +52,25 @@ const LabelAndInput = ({
       control={form.control}
       name={name}
       render={({ field, fieldState }) => (
-        <FormItem>
+        <FormItem className={formItemClass}>
           {title && <FormLabel>{title}</FormLabel>}
-
 
           <FormControl>
             <InputGroup>
               <InputGroupInput
+                className={className}
                 aria-invalid={fieldState.invalid}
                 placeholder={placeholder}
                 type={passwordVisible ? "text" : type}
                 readOnly={readOnly}
                 {...field}
               />
-              {showAddon && Icon && (
-                <InputGroupAddon>
-                  {Icon}
-                </InputGroupAddon>
-              )}
+              {showAddon && Icon && <InputGroupAddon>{Icon}</InputGroupAddon>}
 
               {isPassword && (
                 <InputGroupAddon align="inline-end">
                   <InputGroupButton
+                  tabIndex={-1}
                     onClick={() => setPasswordVisible(!passwordVisible)}
                     variant="ghost"
                   >

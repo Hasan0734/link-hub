@@ -6,21 +6,38 @@ import { useForm } from "react-hook-form";
 import { Mail } from "lucide-react";
 import { Button } from "../ui/button";
 import { Form } from "../ui/form";
+import { sendResetPassLink } from "@/features/email/email.actions";
+import * as z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
+
+const emailSchema = z.object({
+  email: z.string().email("Please enter your register email"),
+});
+
+type emailSchemaType = z.infer<typeof emailSchema>;
 
 const ForgotPasswordForm = () => {
   const [isPending, startTransition] = useTransition();
 
   const form = useForm({
-    defaultValues: { email: "" },
+    resolver: zodResolver(emailSchema),
   });
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit = (data: emailSchemaType) => {
+    startTransition(async () => {
+      const { status, message } = await sendResetPassLink(data.email);
+      if (status) {
+        toast.success(message);
+        return;
+      }
+      toast.error(message);
+    });
   };
 
   return (
     <Form {...form}>
-      <form className="space-y-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <LabelAndInput
           name="email"
           form={form}
@@ -31,7 +48,7 @@ const ForgotPasswordForm = () => {
           Icon={<Mail />}
         />
         <Button disabled={isPending} className="w-full" size="lg">
-          {isPending && <Spinner />} Submit
+          {isPending && <Spinner />} Send Reset Link
         </Button>
       </form>
     </Form>

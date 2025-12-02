@@ -34,20 +34,18 @@ const LoginForm = () => {
 
   function onSubmit(data: LoginUserSchemaType) {
     startTransition(async () => {
-      const result = await signIn(data);
+      const { success, message, error } = await signIn(data);
+      console.log({error})
 
-      if (result.success) {
-        toast.success(result.message);
+      if (success) {
+        toast.success(message);
         router.push("/dashboard");
         return;
       }
-
-      if (result.error) {
-        toast.error(result.error.message || "Registration failed");
-        return;
-      }
-      toast.error(result.message || "Registration failed");
+      toast.error(message || "Sign in failed");
     });
+
+    form.reset()
   }
 
   return (
@@ -69,6 +67,7 @@ const LoginForm = () => {
             <div className="flex justify-between w-full items-center">
               Password{" "}
               <Link
+                tabIndex={5}
                 href={"/forgot-password"}
                 className="text-primary hover:underline"
               >

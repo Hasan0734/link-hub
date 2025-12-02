@@ -20,9 +20,9 @@ export const passwordSchema = z
   });
 
 export const changePasswordSchema = passwordSchema.safeExtend({
-  currentPassword: z.string().min(8, "Please give me the your password."),
+  currentPassword: z.string(),
 });
 
 export type ChangePasswordType = z.infer<typeof changePasswordSchema>;
 
-export type ForgotPasswodType = z.infer<typeof passwordSchema>;
+export type ResetPasswordType = z.infer<typeof passwordSchema>;

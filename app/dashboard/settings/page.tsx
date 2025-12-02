@@ -26,7 +26,7 @@ const Settings = async () => {
     redirect("/login");
   }
 
-  console.log(session)
+  console.log(session.user)
 
   return (
     <>

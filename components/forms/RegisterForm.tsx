@@ -36,16 +36,13 @@ export const RegisterForm = () => {
     form.clearErrors();
 
     startTransition(async () => {
-      const result = await createUser(data);
-      if (result.success) {
-        toast.success(result.message);
+      const { success, message } = await createUser(data);
+      if (success) {
+        toast.success(`${message}, Please check your email for verification.`);
         router.push("/dashboard");
-      }
-      if (result.error) {
-        toast.error(result.error.message || "Registration failed");
         return;
       }
-      toast.error(result.message || "Registration failed");
+      toast.error(message || "Registration failed");
     });
   }
 

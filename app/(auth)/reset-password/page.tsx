@@ -1,16 +1,22 @@
 import AuthHeader from "@/components/AuthHeader";
-import ChangePasswordForm from "@/components/forms/ChangePasswordForm";
+import ChangePasswordForm from "@/components/forms/ResetPasswordForm";
 import { Button } from "@/components/ui/button";
 import { CardContent } from "@/components/ui/card";
+import { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Change your password",
+  description: "You can change your password here.",
+};
 
 const ChangePassword = () => {
   return (
     <>
       <AuthHeader
-        title="Set new password"
-        description="Enter your username or the email address that you used to create your account."
+        title="Reset your password"
+        description="Enter your new password and make strong it's strong password."
       />
       <CardContent className="space-y-6">
         <ChangePasswordForm />

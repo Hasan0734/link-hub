@@ -19,6 +19,8 @@ import LabelAndInput from "../LabelAndInput";
 import { toast } from "sonner";
 import { Spinner } from "../ui/spinner";
 import { updateProfile } from "@/features/profiile/profile.actions";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { sendVerificationEmail } from "@/features/email/email.actions";
 
 const accountSchema = z.object({
   name: z
@@ -38,6 +40,7 @@ type SchemaType = z.infer<typeof accountSchema>;
 
 const AccountInformation = ({ user }: { user: UserTypes }) => {
   const [isPending, startTransition] = useTransition();
+  const [isSending, emailTransition] = useTransition();
 
   const form = useForm({
     resolver: zodResolver(accountSchema),
@@ -45,8 +48,8 @@ const AccountInformation = ({ user }: { user: UserTypes }) => {
   });
 
   async function onSubmit(data: SchemaType) {
-   const accounts = await authClient.listAccounts()
-   console.log(accounts)
+    const accounts = await authClient.listAccounts();
+    console.log(accounts);
 
     return;
     if (data.name === user.name) {
@@ -69,9 +72,16 @@ const AccountInformation = ({ user }: { user: UserTypes }) => {
     });
   }
 
-
-
-
+  const handleVerification = () => {
+    emailTransition(async () => {
+      const res = await sendVerificationEmail(user.email);
+      if (res.status) {
+        toast.success(res.message);
+        return;
+      }
+      toast.error(res.message);
+    });
+  };
 
   return (
     <Card className="border-primary/20 bg-card/50 backdrop-blur-sm">
@@ -92,14 +102,44 @@ const AccountInformation = ({ user }: { user: UserTypes }) => {
               placeholder="Enter your name"
               showErrorMsg
             />
-            <LabelAndInput
-              name="email"
-              form={form}
-              title="Email"
-              placeholder="name@example.com"
-              showErrorMsg
-              readOnly
-            />
+            <div className="flex items-end w-full gap-3">
+              <LabelAndInput
+                name="email"
+                form={form}
+                title="Email"
+                placeholder="name@example.com"
+                showErrorMsg
+                readOnly
+                formItemClass="w-full flex-1"
+              />
+              {!user.emailVerified ? (
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      onClick={handleVerification}
+                      type="button"
+                      className="text-red-500"
+                      variant={"ghost"}
+                      disabled={isSending}
+                    >
+                      {isSending ? (
+                        <>
+                          <Spinner />
+                          Sending link
+                        </>
+                      ) : (
+                        "Not Verified"
+                      )}
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>Click to send verify link.</TooltipContent>
+                </Tooltip>
+              ) : (
+                <Button className="text-green-500" variant={"ghost"}>
+                  Verified
+                </Button>
+              )}
+            </div>
 
             <Button disabled={isPending} type="submit">
               {isPending ? <Spinner /> : <Save className="h-4 w-4" />}

@@ -3,6 +3,12 @@ import LoginForm from "@/components/forms/LoginForm";
 import SocialLogin from "@/components/SocialLogin";
 import { CardContent } from "@/components/ui/card";
 import AuthHeader from "@/components/AuthHeader";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Sign in your account.",
+  description: "Sign in with your email and password or google.",
+};
 
 const LoginPage = () => {
   return (
@@ -25,7 +31,6 @@ const LoginPage = () => {
         </div>
         <LoginForm />
         <div className="space-y-3">
-  
           <div className="text-center text-sm">
             Don't have an account?{" "}
             <Link

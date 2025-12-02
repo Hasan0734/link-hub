@@ -4,7 +4,8 @@ import { headers } from "next/headers";
 import {
   changePasswordSchema,
   ChangePasswordType,
-  ForgotPasswodType,
+  passwordSchema,
+  ResetPasswordType,
 } from "./password.schema";
 import { auth } from "@/lib/auth";
 
@@ -41,4 +42,17 @@ export const changePassword = async (data: ChangePasswordType) => {
   }
 };
 
-export const forgotPassword = async (data: ForgotPasswodType) => {};
+export const resetPassword = async (data: ResetPasswordType) => {
+  const validation = passwordSchema.safeParse(data);
+  if (!validation.success) {
+    const errors = validation.error.flatten().fieldErrors;
+    return {
+      success: false,
+      message: "Field validation failed",
+      fieldErrors: errors,
+    };
+  }
+
+
+  
+};

@@ -15,17 +15,13 @@ import { useTransition } from "react";
 import { changePassword } from "@/features/password/password.actions";
 import { toast } from "sonner";
 import { Lock } from "lucide-react";
+import { Spinner } from "../ui/spinner";
 
 const PasswordForm = () => {
   const [isPending, startTransition] = useTransition();
 
   const form = useForm({
     resolver: zodResolver(changePasswordSchema),
-    defaultValues: {
-      currentPassword: "",
-      newPassword: "",
-      confirmPassword: "",
-    },
   });
 
   function submitPassword(data: ChangePasswordType) {
@@ -82,7 +78,9 @@ const PasswordForm = () => {
             Icon={<Lock />}
           />
         </div>
-        <Button variant="outline">Update Password</Button>
+        <Button disabled={isPending} variant="outline">
+          {isPending && <Spinner />} Update Password
+        </Button>
       </form>
     </Form>
   );

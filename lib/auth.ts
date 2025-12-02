@@ -3,9 +3,11 @@ import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
 import { schema } from "@/db/schema";
+import VerifyEmail from "@/components/email/verify-email";
+import sendEmail from "./helper/sendEmail";
+import PasswordResetEmail from "@/components/email/password-reset-email";
 
 export const auth = betterAuth({
-  emailAndPassword: { enabled: true },
   socialProviders: {
     google: {
       prompt: "select_account",
@@ -17,15 +19,44 @@ export const auth = betterAuth({
     provider: "pg",
     schema,
   }),
+  emailAndPassword: {
+    enabled: true,
+    requireEmailVerification: false,
+
+    sendResetPassword: async ({ user, url, token }, request) => {
+      const res = await sendEmail({
+        user,
+        url,
+        token,
+        subject: "Reset your password",
+        template: PasswordResetEmail({
+          username: user.name,
+          email: user.email,
+          resetUrl: url,
+        }),
+      });
+
+      console.log(res);
+    },
+    onPasswordReset: async ({ user }, request) => {
+      // your logic here
+      console.log(`Password for user ${user.email} has been reset.`);
+    },
+  },
+
   emailVerification: {
     sendVerificationEmail: async ({ user, url, token }, request) => {
-      // console.log(user, url, token)
-      //   await sendEmail({
-      //     to: user.email,
-      //     subject: "Verify your email address",
-      //     text: `Click the link to verify your email: ${url}`,
-      //   });
+      await sendEmail({
+        user,
+        url,
+        token,
+        subject: "Verify your email",
+        template: VerifyEmail({ username: user.name, verifyUrl: url }),
+      });
     },
+    expiresIn: 3600,
+    sendOnSignUp: true,
+    autoSignInAfterVerification: true,
   },
   account: {
     accountLinking: {

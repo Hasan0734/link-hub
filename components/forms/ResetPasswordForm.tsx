@@ -16,13 +16,13 @@ import { redirect, usePathname, useSearchParams } from "next/navigation";
 
 const ResetPasswordForm = () => {
   const [isPending, startTransition] = useTransition();
-  const parms = useSearchParams();
- 
+  const token = useSearchParams().get("token")
 
-  console.log(parms.token)
 
-  if (!parms.token) {
-    // redirect("/")
+  console.log(token)
+
+  if (!token) {
+    redirect("/")
   }
 
   const form = useForm({

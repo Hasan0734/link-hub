@@ -26,7 +26,9 @@ const ForgotPasswordForm = () => {
 
   const onSubmit = (data: emailSchemaType) => {
     startTransition(async () => {
-      const { status, message } = await sendResetPassLink(data.email);
+      const { status, message } = await sendResetPassLink({
+        email: data.email,
+      });
       if (status) {
         toast.success(message);
         return;

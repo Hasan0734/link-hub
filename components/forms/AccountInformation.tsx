@@ -74,7 +74,7 @@ const AccountInformation = ({ user }: { user: UserTypes }) => {
 
   const handleVerification = () => {
     emailTransition(async () => {
-      const res = await sendVerificationEmail(user.email);
+      const res = await sendVerificationEmail({ email: user.email });
       if (res.status) {
         toast.success(res.message);
         return;

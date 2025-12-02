@@ -24,7 +24,7 @@ export const auth = betterAuth({
     requireEmailVerification: false,
 
     sendResetPassword: async ({ user, url, token }, request) => {
-      const res = await sendEmail({
+      await sendEmail({
         user,
         url,
         token,
@@ -35,8 +35,6 @@ export const auth = betterAuth({
           resetUrl: url,
         }),
       });
-
-      console.log(res);
     },
     onPasswordReset: async ({ user }, request) => {
       // your logic here

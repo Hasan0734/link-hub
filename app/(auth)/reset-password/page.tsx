@@ -4,10 +4,9 @@ import { Button } from "@/components/ui/button";
 import { CardContent } from "@/components/ui/card";
 import { Metadata } from "next";
 import Link from "next/link";
-import React from "react";
 
 export const metadata: Metadata = {
-  title: "Change your password",
+  title: "Reset your password",
   description: "You can change your password here.",
 };
 

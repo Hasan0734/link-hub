@@ -6,7 +6,7 @@ import { Button } from "../ui/button";
 import { ShortUrl } from "@/lib/types";
 
 const UrlsCard = ({ url }: { url: ShortUrl }) => {
-  const handleCopy = (code: string, alias: string) => {
+  const handleCopy = (code: string, alias: string | null) => {
     const url = alias ? `linkhub.app/${alias}` : `linkhub.app/${code}`;
     navigator.clipboard.writeText(url);
     alert("Link copied to clipboard!");
@@ -34,7 +34,7 @@ const UrlsCard = ({ url }: { url: ShortUrl }) => {
               {url.expiresAt && (
                 <Badge variant="outline">
                   <Calendar className="h-3 w-3 mr-1" />
-                  Expires {url.expiresAt}
+                  Expires {url.expiresAt.toLocaleString()}
                 </Badge>
               )}
             </div>
@@ -52,7 +52,7 @@ const UrlsCard = ({ url }: { url: ShortUrl }) => {
                 <Eye className="h-4 w-4" />
                 {url.clicks} clicks
               </Badge>
-              <span>Created {url.createdAt}</span>
+              <span>Created {url.createdAt.toLocaleString()}</span>
             </div>
           </div>
 
@@ -60,14 +60,14 @@ const UrlsCard = ({ url }: { url: ShortUrl }) => {
             <Button
               variant="ghost"
               size="icon-sm"
-                onClick={() => handleCopy(url.shortCode, url.customAlias)}
+              onClick={() => handleCopy(url.shortCode, url?.customAlias)}
             >
               <Copy className="h-4 w-4" />
             </Button>
             <Button
               variant="destructive"
               size="icon-sm"
-                onClick={() => handleDelete(url.id)}
+              onClick={() => handleDelete(url.id)}
             >
               <Trash2 className="h-4 w-4" />
             </Button>

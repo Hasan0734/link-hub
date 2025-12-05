@@ -23,9 +23,9 @@ export interface ShortUrl {
   id: string;
   originalUrl: string;
   shortCode: string;
-  customAlias: string;
-  clicks: number;
+  customAlias: string | null;
+  clicks: number | null;
   password: string | null;
-  expiresAt: string | null;
-  createdAt: string;
+  expiresAt: Date | null;
+  createdAt: Date;
 }

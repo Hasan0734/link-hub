@@ -39,11 +39,6 @@ const CreateNewUrl = () => {
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-          {/* <div className="space-y-2">
-            <Label htmlFor="originalUrl">Long URL *</Label>
-            <Input id="originalUrl" />
-          </div> */}
-
           <LabelAndInput
             title="Long URL *"
             name="originalUrl"
@@ -86,7 +81,7 @@ const CreateNewUrl = () => {
               <Label htmlFor="expiresAt">Expiry Date (Optional)</Label>
               <Input id="expiresAt" type="date" />
             </div> */}
-            <DatePicker title="Expiry Date (Optional)"/>
+            <DatePicker title="Expiry Date (Optional)" />
           </div>
 
           <Button className="w-full">Create Short URL</Button>

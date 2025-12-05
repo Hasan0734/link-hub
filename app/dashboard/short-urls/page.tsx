@@ -5,14 +5,11 @@ import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import DashboardTitle from "@/components/DashboardTitle";
 import UrlsCard from "@/components/short-urls/UrlsCard";
 import CreateNewUrl from "@/components/short-urls/CreateNewUrl";
-import { getShortLinks } from "@/lib/getShortLinks";
+import ShortLinkList from "@/components/short-urls/ShortLinkList";
+import { Suspense } from "react";
+import UrlsCardSkeleton from "@/components/short-urls/UrlsCardSkeleton";
 
-const ShortUrls = async () => {
-
-  const shortUrls = await getShortLinks();
-
-  console.log({shortUrls})
-
+const ShortUrls = () => {
   return (
     <>
       <AppHeader />
@@ -36,12 +33,9 @@ const ShortUrls = async () => {
                   <CreateNewUrl />
                 </Dialog>
               </div>
-
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                {/* {shortUrls.map((url) => (
-                  <UrlsCard key={url.id} url={url} />
-                ))} */}
-              </div>
+              <Suspense fallback={<UrlsCardSkeleton />}>
+                <ShortLinkList />
+              </Suspense>
             </div>
           </div>
         </div>

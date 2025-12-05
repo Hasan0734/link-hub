@@ -1,6 +1,7 @@
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import AppSidebar from "@/components/AppSidebar";
+import DashboardSkeleton from "@/components/DashboardSkeleton";
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -8,12 +9,12 @@ interface DashboardLayoutProps {
 
 const DashboardLayout = async ({ children }: DashboardLayoutProps) => {
   return (
-    <SidebarProvider>
-      <AppSidebar variant="inset" />
-      <SidebarInset>
-       
-        {children}</SidebarInset>
-    </SidebarProvider>
+    <Suspense fallback={<DashboardSkeleton />}>
+      <SidebarProvider>
+        <AppSidebar variant="inset" />
+        <SidebarInset>{children}</SidebarInset>
+      </SidebarProvider>
+    </Suspense>
   );
 };
 

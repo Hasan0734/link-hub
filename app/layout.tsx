@@ -37,14 +37,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Suspense fallback={<Loading/>}>{children}</Suspense>
+          {/* <Suspense fallback={<Loading/>}> */}
+          {children}
+          {/* </Suspense> */}
           <Toaster />
         </ThemeProvider>
       </body>
     </html>
   );
 }
-
 
 // const FallbackSkeleton = () => {
 //   return <div>Loading...</div>;

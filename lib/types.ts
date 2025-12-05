@@ -17,3 +17,15 @@ export type ProfileDataType = {
   id: string;
   createdAt: Date | null;
 };
+
+
+export interface ShortUrl {
+  id: string;
+  originalUrl: string;
+  shortCode: string;
+  customAlias: string;
+  clicks: number;
+  password: string | null;
+  expiresAt: string | null;
+  createdAt: string;
+}

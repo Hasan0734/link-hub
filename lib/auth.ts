@@ -60,11 +60,6 @@ export const auth = betterAuth({
     sendOnSignUp: true,
     autoSignInAfterVerification: true,
   },
-  account: {
-    accountLinking: {
-      enabled: true,
-    },
-  },
   user: {
     deleteUser: {
       enabled: true,

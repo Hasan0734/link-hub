@@ -61,7 +61,7 @@ const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <Separator />
+      <Separator className="bg-primary/20" />
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>

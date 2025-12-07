@@ -10,7 +10,7 @@ const DashboardTitle = ({
   return (
     <div>
       {title && (
-        <h1 className="text-4xl font-bold text-primary">
+        <h1 className="text-xl md:text-4xl font-bold text-primary">
           {title}
         </h1>
       )}

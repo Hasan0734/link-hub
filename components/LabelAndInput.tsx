@@ -13,21 +13,23 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "./ui/input-group";
-import { Eye, EyeOff, Mail } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
+import { Spinner } from "./ui/spinner";
 
 type PropsType = {
   title?: React.ReactNode;
   name: string;
   placeholder?: string;
   type?: string;
-  description?: string;
+  description?: React.ReactNode;
   showErrorMsg?: boolean;
   isPassword?: boolean;
   readOnly?: boolean;
   Icon?: React.ReactNode;
   showAddon?: boolean;
   className?: string;
-  formItemClass?:string
+  formItemClass?: string;
+  desClass?: string;
   [key: string]: any;
 };
 
@@ -45,6 +47,7 @@ const LabelAndInput = ({
   formItemClass,
   Icon,
   showAddon = false,
+  desClass,
 }: PropsType) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   return (
@@ -53,16 +56,18 @@ const LabelAndInput = ({
       name={name}
       render={({ field, fieldState }) => (
         <FormItem className={formItemClass}>
-          {title && <FormLabel>{title}</FormLabel>}
+          {title && <FormLabel htmlFor={name}>{title}</FormLabel>}
 
           <FormControl>
             <InputGroup>
               <InputGroupInput
+                id={name}
                 className={className}
                 aria-invalid={fieldState.invalid}
                 placeholder={placeholder}
                 type={passwordVisible ? "text" : type}
                 readOnly={readOnly}
+                
                 {...field}
               />
               {showAddon && Icon && <InputGroupAddon>{Icon}</InputGroupAddon>}
@@ -70,7 +75,7 @@ const LabelAndInput = ({
               {isPassword && (
                 <InputGroupAddon align="inline-end">
                   <InputGroupButton
-                  tabIndex={-1}
+                    tabIndex={-1}
                     onClick={() => setPasswordVisible(!passwordVisible)}
                     variant="ghost"
                   >
@@ -84,7 +89,11 @@ const LabelAndInput = ({
               )}
             </InputGroup>
           </FormControl>
-          {description && <FormDescription>{description}</FormDescription>}
+          {description && (
+            <FormDescription className={desClass}>
+              {description}
+            </FormDescription>
+          )}
           {showErrorMsg && <FormMessage className="text-xs" />}
         </FormItem>
       )}

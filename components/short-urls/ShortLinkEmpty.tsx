@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/empty";
 import { Link, Plus } from "lucide-react";
 import { Dialog, DialogTrigger } from "../ui/dialog";
-import CreateNewUrl from "./CreateNewUrl";
+import CreateNewUrl from "../forms/CreateNewUrl";
 
 const ShortLinkEmpty = () => {
   return (

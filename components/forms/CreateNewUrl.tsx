@@ -6,6 +6,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogDescription,
+  DialogTrigger,
+  Dialog,
 } from "../ui/dialog";
 import { Button } from "../ui/button";
 import { Form } from "../ui/form";
@@ -16,7 +18,7 @@ import {
   shortLinkSchemaType,
 } from "@/features/shortLink/shortLink.schema";
 import LabelAndInput from "../LabelAndInput";
-import { Calendar, Check, Edit, Edit2, Link, Link2, Lock } from "lucide-react";
+import { Calendar, Check, Edit, Link2, Lock, Plus } from "lucide-react";
 import { DatePicker } from "../ui/date-picker";
 import { IconWorld } from "@tabler/icons-react";
 import { useDebounceCallback } from "@/hooks/use-debounce-callback";
@@ -33,6 +35,7 @@ interface Availability {
 }
 
 const CreateNewUrl = () => {
+  const [open, setOpen] = useState(false);
   const [isPending, starTaransition] = useTransition();
   const [shortCode, setShortCode] = useState("");
   const [generating, setGenerating] = useState(false);
@@ -41,7 +44,6 @@ const CreateNewUrl = () => {
     status: false,
     message: "",
   });
-  const [customAlias, setCustomAlias] = useState("");
 
   const form = useForm({ resolver: zodResolver(ShortLinkSchema) });
 
@@ -136,6 +138,7 @@ const CreateNewUrl = () => {
         toast.success(res.message);
         form.reset();
         setShortCode("");
+        setOpen(false);
         return;
       }
       toast.error(res.message);
@@ -143,65 +146,74 @@ const CreateNewUrl = () => {
   };
 
   return (
-    <DialogContent className="max-w-2xl">
-      <DialogHeader>
-        <DialogTitle>Create Short URL</DialogTitle>
-        <DialogDescription>
-          Generate a short link with optional customization
-        </DialogDescription>
-      </DialogHeader>
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger onClick={() => setOpen(true)} asChild className="max-w-xl">
+        <Button size={"sm"}>
+          <Plus />
+          Create Short URL
+        </Button>
+      </DialogTrigger>
 
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-          <LabelAndInput
-            title="Long URL *"
-            name="originalUrl"
-            form={form}
-            showErrorMsg
-            placeholder="https://example.com/very-long-url"
-            showAddon
-            Icon={<IconWorld />}
-            desClass="text-primary"
-            // description={
-            //   <>
-            //     {generating ? (
-            //       <span className="flex items-center gap-2">
-            //         <Spinner /> Generating...
-            //       </span>
-            //     ) : shortCode ? (
-            //       `→ ${process.env.NEXT_PUBLIC_APP_URL}/${shortCode}`
-            //     ) : (
-            //       ""
-            //     )}
-            //   </>
-            // }
-          />
+      {open && (
+        <DialogContent className="max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>Create Short URL</DialogTitle>
+            <DialogDescription>
+              Generate a short link with optional customization
+            </DialogDescription>
+          </DialogHeader>
 
-          <LabelAndInput
-            title="Short Code"
-            name="shortCode"
-            form={form}
-            showErrorMsg
-            placeholder="sdfjlkads"
-            showAddon
-            addonText="http://localhost:3000/"
-            Icon={generating ? <Spinner /> : <Link2 />}
-            readOnly
-          />
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <LabelAndInput
+                title="Long URL *"
+                name="originalUrl"
+                form={form}
+                showErrorMsg
+                placeholder="https://example.com/very-long-url"
+                showAddon
+                Icon={<IconWorld />}
+                desClass="text-primary"
+                // description={
+                //   <>
+                //     {generating ? (
+                //       <span className="flex items-center gap-2">
+                //         <Spinner /> Generating...
+                //       </span>
+                //     ) : shortCode ? (
+                //       `→ ${process.env.NEXT_PUBLIC_APP_URL}/${shortCode}`
+                //     ) : (
+                //       ""
+                //     )}
+                //   </>
+                // }
+              />
 
-          <LabelAndInput
-            title="Custom Alias (Optional)"
-            name="customAlias"
-            form={form}
-            showErrorMsg
-            placeholder="my-link"
-            showAddon
-            addonText="http://localhost:3000/"
-            Icon={checkAlias ? <Spinner /> : <Edit />}
-            desClass="text-primary"
-            description={
-              <>
-                {/* {checkAlias ? (
+              <LabelAndInput
+                title="Short Code"
+                name="shortCode"
+                form={form}
+                showErrorMsg
+                placeholder="sdfjlkads"
+                showAddon
+                addonText="http://localhost:3000/"
+                Icon={generating ? <Spinner /> : <Link2 />}
+                readOnly
+              />
+
+              <LabelAndInput
+                title="Custom Alias (Optional)"
+                name="customAlias"
+                form={form}
+                showErrorMsg
+                placeholder="my-link"
+                showAddon
+                addonText="http://localhost:3000/"
+                Icon={checkAlias ? <Spinner /> : <Edit />}
+                desClass="text-primary"
+                description={
+                  <>
+                    {/* {checkAlias ? (
                     <span className="flex items-center gap-2">
                       <Spinner /> Checking...
                     </span>
@@ -215,49 +227,51 @@ const CreateNewUrl = () => {
                   ) : (
                     ""
                   )} */}
-                {availability.status && (
-                  <span className="text-green-500 flex items-center text-xs">
-                    <Check size={15} /> {availability.message}
-                  </span>
-                )}
-              </>
-            }
-          />
+                    {availability.status && (
+                      <span className="text-green-500 flex items-center text-xs">
+                        <Check size={15} /> {availability.message}
+                      </span>
+                    )}
+                  </>
+                }
+              />
 
-          <div className="grid grid-cols-2 gap-4 items-start">
-            <LabelAndInput
-              title="Password (Optional)"
-              name="password"
-              type="password"
-              form={form}
-              showErrorMsg
-              placeholder="••••••••"
-              showAddon
-              Icon={<Lock />}
-            />
+              <div className="grid grid-cols-2 gap-4 items-start">
+                <LabelAndInput
+                  title="Password (Optional)"
+                  name="password"
+                  type="password"
+                  form={form}
+                  showErrorMsg
+                  placeholder="••••••••"
+                  showAddon
+                  Icon={<Lock />}
+                />
 
-            {/* <div className="space-y-2">
+                {/* <div className="space-y-2">
               <Label htmlFor="expiresAt">Expiry Date (Optional)</Label>
               <Input id="expiresAt" type="date" />
             </div> */}
-            <DatePicker
-              form={form}
-              title="Expiry Date (Optional)"
-              name="expiresAt"
-              placeholder="June 01, 2025"
-              showErrorMsg
-              showAddon
-              Icon={<Calendar />}
-              readonly
-            />
-          </div>
+                <DatePicker
+                  form={form}
+                  title="Expiry Date (Optional)"
+                  name="expiresAt"
+                  placeholder="June 01, 2025"
+                  showErrorMsg
+                  showAddon
+                  Icon={<Calendar />}
+                  readonly
+                />
+              </div>
 
-          <Button disabled={isPending} className="w-full">
-            {isPending && <Spinner />} Create Short URL
-          </Button>
-        </form>
-      </Form>
-    </DialogContent>
+              <Button disabled={isPending} className="w-full">
+                {isPending && <Spinner />} Create Short URL
+              </Button>
+            </form>
+          </Form>
+        </DialogContent>
+      )}
+    </Dialog>
   );
 };
 

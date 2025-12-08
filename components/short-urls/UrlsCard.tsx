@@ -1,18 +1,24 @@
 "use client";
 import { Card, CardContent } from "../ui/card";
 import { Badge } from "../ui/badge";
-import { Calendar, Eye, Lock } from "lucide-react";
+import { Calendar, Eye, Lock, Trash } from "lucide-react";
 
 import { ShortUrl } from "@/lib/types";
-import { formatDate } from "@/lib/utils";
+import { cn, formatDate } from "@/lib/utils";
 
 import UrlCardAction from "./UrlCardAction";
 import ShortUrlLink from "./Short-url";
+import { useTransition } from "react";
+import { Spinner } from "../ui/spinner";
 
 const UrlsCard = ({ url }: { url: ShortUrl }) => {
+  const [isPending, startTransition] = useTransition();
+
   return (
-    <Card className="border-primary/20 bg-card/50 backdrop-blur-sm hover:shadow-lg transition-all duration-200">
-      <CardContent className="pt-1 px-2 sm:px-6">
+    <Card className="border-primary/20 bg-card/50 backdrop-blur-sm hover:shadow-lg transition-all duration-200 relative ">
+      <CardContent
+        className={cn("pt-1 px-2 sm:px-6 relative z-0", { blur: isPending })}
+      >
         <div className="grid gap-4">
           <div className="flex items-start justify-between">
             <div className="flex-1 flex flex-wrap flex-col sm:flex-row md:items-center gap-2">
@@ -20,7 +26,11 @@ const UrlsCard = ({ url }: { url: ShortUrl }) => {
 
               {url.customAlias && <ShortUrlLink url={url?.customAlias} />}
             </div>
-            <UrlCardAction id={url.id} />
+            {isPending ? (
+              <Spinner />
+            ) : (
+              <UrlCardAction startTransition={startTransition} id={url.id} />
+            )}
           </div>
 
           <div>
@@ -57,6 +67,11 @@ const UrlsCard = ({ url }: { url: ShortUrl }) => {
           </div>
         </div>
       </CardContent>
+      {isPending && (
+        <div className="absolute z-10 w-full h-full bg-accent/10 top-0 rounded-xl flex items-center justify-center gap-2 brightness-75">
+          <Spinner /> Deleting...
+        </div>
+      )}
     </Card>
   );
 };

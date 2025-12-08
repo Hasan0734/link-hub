@@ -1,7 +1,5 @@
 import AppHeader from "@/components/AppHeader";
-import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
-import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+
 import DashboardTitle from "@/components/DashboardTitle";
 import CreateNewUrl from "@/components/forms/CreateNewUrl";
 import ShortLinkList from "@/components/short-urls/ShortLinkList";
@@ -29,15 +27,7 @@ const ShortUrls = () => {
                   details="Create and manage short links with analytics"
                 />
 
-                <Dialog>
-                  <DialogTrigger asChild className="max-w-xl">
-                    <Button size={"sm"} >
-                      <Plus  />
-                      Create Short URL
-                    </Button>
-                  </DialogTrigger>
-                  <CreateNewUrl />
-                </Dialog>
+              <CreateNewUrl/>
               </div>
               <Suspense fallback={<UrlsCardSkeleton />}>
                 <ShortLinkList />

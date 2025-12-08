@@ -10,17 +10,25 @@ import { Button } from "../ui/button";
 import { Edit, Ellipsis, Trash } from "lucide-react";
 import { toast } from "sonner";
 import { deleteShortLink } from "@/features/shortLink/shortLink.actions";
+import { TransitionStartFunction } from "react";
 
-const UrlCardAction = ({ id }: { id: string }) => {
+interface ActionProps {
+  id: string;
+  startTransition: TransitionStartFunction;
+}
+
+const UrlCardAction = ({ id, startTransition }: ActionProps) => {
   const handleDelete = async () => {
-    const res = await deleteShortLink(id);
+    startTransition(async () => {
+      const res = await deleteShortLink(id);
 
-    if (res.status) {
-      toast.success(res.message);
+      if (res.status) {
+        toast.success(res.message);
 
-      return;
-    }
-    toast.error(res.message);
+        return;
+      }
+      toast.error(res.message);
+    });
   };
 
   const handleEdit = async () => {

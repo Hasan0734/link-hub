@@ -97,6 +97,7 @@ export const deleteShortLink = async (id: string) => {
       .where(and(eq(shortLinks.id, id), eq(shortLinks.userId, user.id)));
 
     revalidatePath("/short-urls");
+
     return {
       status: true,
       message: "Url deleted successfully.",

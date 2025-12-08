@@ -17,6 +17,7 @@ const UrlCardAction = ({ id }: { id: string }) => {
 
     if (res.status) {
       toast.success(res.message);
+
       return;
     }
     toast.error(res.message);

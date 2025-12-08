@@ -1,12 +1,18 @@
-"use server"
+"use server";
 import { shortLinks } from "./../db/schema";
 import { db } from "@/db";
-import { and, eq } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import { getAuth } from "./getAuth";
 
 export const checkCustomAlias = async (alias: string) => {
-  const session = await getAuth();
+  if (alias.length <= 8) {
+    return {
+      status: false,
+      message: "Minimum 8 char.",
+    };
+  }
 
+  const session = await getAuth();
   if (!session) {
     return { status: true, message: "Unauthenticated", data: [] };
   }
@@ -15,13 +21,12 @@ export const checkCustomAlias = async (alias: string) => {
     where: eq(shortLinks.customAlias, alias),
   });
 
-  
   if (data.length) {
     return {
       status: false,
-      message: "This alias is available.",
+      message: "Not available",
     };
   }
 
-  return { status: true, message: "Already taken!" };
+  return { status: true, message: "Alias is available" };
 };

@@ -12,6 +12,7 @@ import {
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
+  InputGroupText,
 } from "./ui/input-group";
 import { Eye, EyeOff } from "lucide-react";
 import { Spinner } from "./ui/spinner";
@@ -30,6 +31,7 @@ type PropsType = {
   className?: string;
   formItemClass?: string;
   desClass?: string;
+  addonText?: string;
   [key: string]: any;
 };
 
@@ -48,6 +50,7 @@ const LabelAndInput = ({
   Icon,
   showAddon = false,
   desClass,
+  addonText,
 }: PropsType) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   return (
@@ -67,10 +70,14 @@ const LabelAndInput = ({
                 placeholder={placeholder}
                 type={passwordVisible ? "text" : type}
                 readOnly={readOnly}
-                
                 {...field}
               />
-              {showAddon && Icon && <InputGroupAddon>{Icon}</InputGroupAddon>}
+              {showAddon && Icon &&  <InputGroupAddon>{Icon}</InputGroupAddon>}
+              {showAddon && addonText && (
+                <InputGroupAddon>
+                  <InputGroupText>{addonText}</InputGroupText>
+                </InputGroupAddon>
+              )}
 
               {isPassword && (
                 <InputGroupAddon align="inline-end">

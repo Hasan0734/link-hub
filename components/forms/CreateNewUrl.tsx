@@ -16,7 +16,7 @@ import {
   shortLinkSchemaType,
 } from "@/features/shortLink/shortLink.schema";
 import LabelAndInput from "../LabelAndInput";
-import { Calendar, Edit2, Lock } from "lucide-react";
+import { Calendar, Check, Edit, Edit2, Link, Link2, Lock } from "lucide-react";
 import { DatePicker } from "../ui/date-picker";
 import { IconWorld } from "@tabler/icons-react";
 import { useDebounceCallback } from "@/hooks/use-debounce-callback";
@@ -27,11 +27,21 @@ import { toast } from "sonner";
 import { Spinner } from "../ui/spinner";
 import { checkCustomAlias } from "@/lib/checkCustomAlias";
 
+interface Availability {
+  status: boolean;
+  message: string;
+}
+
 const CreateNewUrl = () => {
   const [isPending, starTaransition] = useTransition();
   const [shortCode, setShortCode] = useState("");
   const [generating, setGenerating] = useState(false);
   const [checkAlias, setCheckAlias] = useState(false);
+  const [availability, setAvailability] = useState<Availability>({
+    status: false,
+    message: "",
+  });
+  const [customAlias, setCustomAlias] = useState("");
 
   const form = useForm({ resolver: zodResolver(ShortLinkSchema) });
 
@@ -79,9 +89,6 @@ const CreateNewUrl = () => {
 
   const resetCustomAlias = useCallback(async () => {
     const value = form.watch().customAlias;
-    if (value) {
-      setCheckAlias(true);
-    }
 
     if (value?.length === 0) {
       form.setValue("customAlias", undefined);
@@ -90,16 +97,35 @@ const CreateNewUrl = () => {
     }
 
     if (value) {
-      setCheckAlias(false);
       const check = await checkCustomAlias(value);
-      console.log(check);
+      // setCustomAlias(
+      //   `→ ${process.env.NEXT_PUBLIC_APP_URL}/${form.getValues("customAlias")}`
+      // );
+      setAvailability(check);
+
+      if (!check.status) {
+        form.setError("customAlias", {
+          type: "custom",
+          message: check.message,
+        });
+        setCheckAlias(false);
+
+        return;
+      }
+
+      form.clearErrors("customAlias");
+      setCheckAlias(false);
     }
   }, []);
 
   const debouncedCustom = useDebounceCallback(resetCustomAlias, 500);
 
   useEffect(() => {
-    debouncedCustom();
+    const value = form.watch()?.customAlias;
+    if (value) {
+      setCheckAlias(true);
+      debouncedCustom();
+    }
   }, [form.watch().customAlias?.length]);
 
   const onSubmit = async (data: shortLinkSchemaType) => {
@@ -136,51 +162,73 @@ const CreateNewUrl = () => {
             showAddon
             Icon={<IconWorld />}
             desClass="text-primary"
+            // description={
+            //   <>
+            //     {generating ? (
+            //       <span className="flex items-center gap-2">
+            //         <Spinner /> Generating...
+            //       </span>
+            //     ) : shortCode ? (
+            //       `→ ${process.env.NEXT_PUBLIC_APP_URL}/${shortCode}`
+            //     ) : (
+            //       ""
+            //     )}
+            //   </>
+            // }
+          />
+
+          <LabelAndInput
+            title="Short Code"
+            name="shortCode"
+            form={form}
+            showErrorMsg
+            placeholder="sdfjlkads"
+            showAddon
+            addonText="http://localhost:3000/"
+            Icon={generating ? <Spinner /> : <Link2 />}
+            readOnly
+          />
+
+          <LabelAndInput
+            title="Custom Alias (Optional)"
+            name="customAlias"
+            form={form}
+            showErrorMsg
+            placeholder="my-link"
+            showAddon
+            addonText="http://localhost:3000/"
+            Icon={checkAlias ? <Spinner /> : <Edit />}
+            desClass="text-primary"
             description={
               <>
-                {generating ? (
-                  <span className="flex items-center gap-2">
-                    <Spinner /> Generating...
+                {/* {checkAlias ? (
+                    <span className="flex items-center gap-2">
+                      <Spinner /> Checking...
+                    </span>
+                  ) : form.getValues("customAlias") ? (
+                    <span className="grid">
+                      {customAlias}
+                      {availability.status && (
+                        <span className="text-green-500 text-xs"> {availability.message}</span>
+                      )}
+                    </span>
+                  ) : (
+                    ""
+                  )} */}
+                {availability.status && (
+                  <span className="text-green-500 flex items-center text-xs">
+                    <Check size={15} /> {availability.message}
                   </span>
-                ) : shortCode ? (
-                  `→ ${process.env.NEXT_PUBLIC_APP_URL}/${shortCode}`
-                ) : (
-                  ""
                 )}
               </>
             }
           />
 
-          <div className="space-y-2">
-            <LabelAndInput
-              title="Custom Alias (Optional)"
-              name="customAlias"
-              form={form}
-              showErrorMsg
-              placeholder="my-link"
-              showAddon
-              Icon={<Edit2 />}
-              desClass="text-primary"
-              description={
-                <>
-                  {checkAlias ? (
-                    <span className="flex items-center gap-2">
-                      <Spinner /> Checking...
-                    </span>
-                  ) : form.getValues("customAlias") ? (
-                    `→ ${process.env.NEXT_PUBLIC_APP_URL}/${form.getValues("customAlias")}`
-                  ) : (
-                    ""
-                  )}
-                </>
-              }
-            />
-          </div>
-
           <div className="grid grid-cols-2 gap-4 items-start">
             <LabelAndInput
               title="Password (Optional)"
               name="password"
+              type="password"
               form={form}
               showErrorMsg
               placeholder="••••••••"

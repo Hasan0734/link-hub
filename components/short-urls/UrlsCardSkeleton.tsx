@@ -18,14 +18,14 @@ const UrlsCardSkeleton = () => {
             <div className="grid  gap-4">
               <div className="flex items-start justify-between">
                 <div className="flex-1 flex flex-wrap flex-col sm:flex-row md:items-center gap-2">
-                  <Skeleton className="w-52 md:w-62 h-6 md:h-8 rounded-full bg-secondary/30" />
+                  <Skeleton className="w-52 md:w-74 h-6 md:h-8 rounded-full bg-secondary/30" />
                   <Skeleton className="w-52 md:w-74 h-6 md:h-8 rounded-full bg-secondary/30" />
                 </div>
                 <div className="flex gap-2 justify-between items-center">
                   <Skeleton className="size-6 sm:size-8 rounded-md bg-secondary/40" />
                 </div>
               </div>
-              <Skeleton className="w-62 h-5 rounded-full bg-blue-500/40" />
+              <Skeleton className="w-62 md:w-82 h-5 rounded-full bg-blue-500/40" />
               <div className="flex items-center flex-wrap gap-4 text-sm text-muted-foreground">
                 <Skeleton className="w-20 h-5 rounded-full bg-primary" />
                 <Skeleton className="w-20 h-5 rounded-full bg-secondary/50" />

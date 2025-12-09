@@ -1,6 +1,6 @@
 import { shortLinks } from "./../db/schema";
 import { db } from "@/db";
-import { eq } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
 import { getAuth } from "./getAuth";
 
 export const getShortLinks = async () => {
@@ -12,6 +12,7 @@ export const getShortLinks = async () => {
 
   const data = await db.query.shortLinks.findMany({
     where: eq(shortLinks.userId, session?.user.id),
+    orderBy: desc(shortLinks.createdAt)
   });
 
   await new Promise((resolve) => setTimeout(resolve, 3000));

@@ -10,17 +10,29 @@ import { Button } from "../ui/button";
 import { Edit, Ellipsis, Trash } from "lucide-react";
 import { toast } from "sonner";
 import { deleteShortLink } from "@/features/shortLink/shortLink.actions";
-import { TransitionStartFunction } from "react";
+import { TransitionStartFunction, useState } from "react";
+import EditShortLink from "../forms/EditShortLink";
+import { ShortUrl } from "@/lib/types";
 
 interface ActionProps {
-  id: string;
   startTransition: TransitionStartFunction;
+  startEditing: TransitionStartFunction;
+  isEditing: boolean
+
+  data: ShortUrl;
 }
 
-const UrlCardAction = ({ id, startTransition }: ActionProps) => {
+const UrlCardAction = ({
+  startTransition,
+  data,
+  startEditing,
+  isEditing
+}: ActionProps) => {
+
+  const [openEditForm, setOpenEditForm] = useState(false);
   const handleDelete = async () => {
     startTransition(async () => {
-      const res = await deleteShortLink(id);
+      const res = await deleteShortLink(data.id);
 
       if (res.status) {
         toast.success(res.message);
@@ -32,7 +44,7 @@ const UrlCardAction = ({ id, startTransition }: ActionProps) => {
   };
 
   const handleEdit = async () => {
-    toast.success("Url edited ");
+    setOpenEditForm(true);
   };
 
   return (
@@ -43,7 +55,6 @@ const UrlCardAction = ({ id, startTransition }: ActionProps) => {
             className="[&_svg:not([class*='size-'])]:size-3 size-6 sm:size-8 sm:[&_svg:not([class*='size-'])]:size-4"
             variant="ghost"
             size="icon-sm"
-            //   onClick={() => handleDelete(url.id)}
           >
             <Ellipsis />
           </Button>
@@ -64,6 +75,16 @@ const UrlCardAction = ({ id, startTransition }: ActionProps) => {
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
+
+      {openEditForm && (
+        <EditShortLink
+          data={data}
+          open={openEditForm}
+          setOpen={setOpenEditForm}
+          startEditing={startEditing}
+          isEditing={isEditing}
+        />
+      )}
     </div>
   );
 };

@@ -13,11 +13,14 @@ import { Spinner } from "../ui/spinner";
 
 const UrlsCard = ({ url }: { url: ShortUrl }) => {
   const [isPending, startTransition] = useTransition();
+  const [isEditing, startEditing] = useTransition();
 
   return (
     <Card className="border-primary/20 bg-card/50 backdrop-blur-sm hover:shadow-lg transition-all duration-200 relative ">
       <CardContent
-        className={cn("pt-1 px-2 sm:px-6 relative z-0", { blur: isPending })}
+        className={cn("pt-1 px-2 sm:px-6 relative z-0", {
+          blur: isPending || isEditing,
+        })}
       >
         <div className="grid gap-4">
           <div className="flex items-start justify-between">
@@ -29,7 +32,12 @@ const UrlsCard = ({ url }: { url: ShortUrl }) => {
             {isPending ? (
               <Spinner />
             ) : (
-              <UrlCardAction startTransition={startTransition} id={url.id} />
+              <UrlCardAction
+                isEditing={isEditing}
+                data={url}
+                startTransition={startTransition}
+                startEditing={startEditing}
+              />
             )}
           </div>
 
@@ -37,7 +45,7 @@ const UrlsCard = ({ url }: { url: ShortUrl }) => {
             <a
               href={url.originalUrl}
               target="_blank"
-              className="text-sm text-muted-foreground truncate max-w-64 sm:max-w-['content-width'] transition-all duration-150 hover:text-blue-300  hover:underline underline-offset-2 whitespace-nowrap line-clamp-1"
+              className="text-sm text-muted-foreground truncate max-w-64 sm:max-w-max transition-all duration-150 hover:text-blue-300  hover:underline underline-offset-2 whitespace-nowrap line-clamp-1"
             >
               → {url.originalUrl}
             </a>
@@ -57,7 +65,7 @@ const UrlsCard = ({ url }: { url: ShortUrl }) => {
             {url.expiresAt && (
               <Badge variant="outline">
                 <Calendar className="h-3 w-3 mr-1" />
-                Expires {formatDate(url.expiresAt)}
+                Expires: {formatDate(url.expiresAt)}
               </Badge>
             )}
 
@@ -67,11 +75,14 @@ const UrlsCard = ({ url }: { url: ShortUrl }) => {
           </div>
         </div>
       </CardContent>
-      {isPending && (
-        <div className="absolute z-10 w-full h-full bg-accent/10 top-0 rounded-xl flex items-center justify-center gap-2 brightness-75">
-          <Spinner /> Deleting...
-        </div>
-      )}
+      {isPending ||
+        (isEditing && (
+          <div className="absolute z-10 w-full h-full bg-accent/10 top-0 rounded-xl flex items-center justify-center gap-2 brightness-75">
+            <Spinner />
+            {isPending && "Deleting..."}
+            {isEditing && "Editing..."}
+          </div>
+        ))}
     </Card>
   );
 };

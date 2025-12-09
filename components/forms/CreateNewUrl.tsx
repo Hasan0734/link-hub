@@ -28,6 +28,7 @@ import { createShortLink } from "@/features/shortLink/shortLink.actions";
 import { toast } from "sonner";
 import { Spinner } from "../ui/spinner";
 import { checkCustomAlias } from "@/lib/checkCustomAlias";
+import { formatDate } from "@/lib/utils";
 
 interface Availability {
   status: boolean;
@@ -95,6 +96,8 @@ const CreateNewUrl = () => {
     if (value?.length === 0) {
       form.setValue("customAlias", undefined);
       form.clearErrors("customAlias");
+      setCheckAlias(false)
+
       return;
     }
 
@@ -256,15 +259,16 @@ const CreateNewUrl = () => {
                   form={form}
                   title="Expiry Date (Optional)"
                   name="expiresAt"
-                  placeholder="June 01, 2025"
+                  placeholder={`${formatDate(new Date())}`}
                   showErrorMsg
                   showAddon
                   Icon={<Calendar />}
                   readonly
+                  clear
                 />
               </div>
 
-              <Button disabled={isPending} className="w-full">
+              <Button  disabled={isPending} className="w-full">
                 {isPending && <Spinner />} Create Short URL
               </Button>
             </form>

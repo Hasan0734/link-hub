@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { CalendarIcon } from "lucide-react";
+import { CalendarIcon, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -28,7 +28,6 @@ import {
 } from "./input-group";
 import { formatDate } from "@/lib/utils";
 
-
 function isValidDate(date: Date | undefined) {
   if (!date) {
     return false;
@@ -47,6 +46,7 @@ interface DateProps {
   formItemClass?: string;
   Icon?: React.ReactNode;
   showAddon?: boolean;
+  clear?: boolean;
   [key: string]: any;
 }
 
@@ -62,6 +62,7 @@ export function DatePicker({
   readOnly,
   className,
   formItemClass,
+  clear,
   Icon,
   showAddon = false,
 }: DateProps) {
@@ -97,6 +98,18 @@ export function DatePicker({
                     <InputGroupAddon>
                       <InputGroupButton variant="ghost" tabIndex={-1}>
                         {Icon}
+                      </InputGroupButton>
+                    </InputGroupAddon>
+                  )}
+                  {showAddon && clear && (
+                    <InputGroupAddon align={"inline-end"}>
+                      <InputGroupButton
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          form.setValue(name, undefined);
+                        }}
+                      >
+                        <X />
                       </InputGroupButton>
                     </InputGroupAddon>
                   )}

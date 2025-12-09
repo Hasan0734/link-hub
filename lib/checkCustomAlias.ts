@@ -11,6 +11,13 @@ export const checkCustomAlias = async (alias: string) => {
       message: "Minimum 8 char.",
     };
   }
+  const reg = /^[a-zA-Z0-9]+$/;
+  if (!reg.test(alias)) {
+    return {
+      status: false,
+      message: "Only text accepted.",
+    };
+  }
 
   const session = await getAuth();
   if (!session) {

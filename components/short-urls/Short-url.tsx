@@ -8,7 +8,8 @@ const ShortUrlLink = ({url}: {url:string} ) => {
     if (!value) {
       return;
     }
-    navigator.clipboard.writeText(value).then(() => {
+    const url = `${process.env.NEXT_PUBLIC_APP_URL}/${value}`
+    navigator.clipboard.writeText(url).then(() => {
       toast.success("Link copied!");
     });
   };
@@ -23,7 +24,7 @@ const ShortUrlLink = ({url}: {url:string} ) => {
         {/* linkhub.app */}
       </code>
       <div className="transform translate-y-7 group-hover:translate-y-0 transition-all duration-300 opacity-0 group-hover:opacity-100 flex items-center justify-center w-full h-8  bg-accent/80 absolute top-0 z-10 backdrop-blur-sm">
-        <CopyButton variant={"ghost"} content={url} size={"sm"} />
+        <CopyButton variant={"ghost"} content={`${process.env.NEXT_PUBLIC_APP_URL}/${url}`} size={"sm"} />
       </div>
     </div>
   );

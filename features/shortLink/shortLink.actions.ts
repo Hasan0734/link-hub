@@ -6,11 +6,8 @@ import { getAuth } from "@/lib/getAuth";
 import { ShortLinkSchema, shortLinkSchemaType } from "./shortLink.schema";
 import { revalidatePath } from "next/cache";
 import bycript from "bcryptjs";
-import { nanoid } from "nanoid";
 
 export const createShortLink = async (data: shortLinkSchemaType) => {
-  console.log(data);
-
   const validatedFields = ShortLinkSchema.safeParse(data);
 
   if (!validatedFields.success) {
@@ -34,16 +31,13 @@ export const createShortLink = async (data: shortLinkSchemaType) => {
   }
 
   try {
-    // 1. Determine the final short code: Use customAlias if provided, otherwise generate one.
-    const finalShortCode = data.customAlias || nanoid(8);
-
     // 2. Check if the short code is already in use
     const existingLink = await db
       .select({ shortCode: shortLinks.shortCode })
       .from(shortLinks)
       .where(
         or(
-          eq(shortLinks.shortCode, finalShortCode),
+          eq(shortLinks.shortCode, data.shortCode),
           eq(shortLinks.customAlias, data.customAlias ? data.customAlias : "")
         )
       )
@@ -52,13 +46,13 @@ export const createShortLink = async (data: shortLinkSchemaType) => {
     if (existingLink.length > 0) {
       return {
         status: false,
-        message: `The short code or alias '${finalShortCode}' is already in use. Please choose a different one.`,
+        message: `The short code or alias '${data.shortCode}' is already in use. Please choose a different one.`,
       };
     }
 
     const values = {
       originalUrl: data.originalUrl,
-      shortCode: finalShortCode,
+      shortCode: data.shortCode,
       customAlias: data.customAlias,
       password: data?.password ? bycript.hashSync(data.password, 10) : null,
       expiresAt: data.expiresAt,
@@ -70,6 +64,90 @@ export const createShortLink = async (data: shortLinkSchemaType) => {
 
     // 4. Return a cleaner success object.
     return { status: true, message: "Short link created successfully 🎉" };
+  } catch (error: any) {
+    console.error("Error creating short link:", error);
+    return {
+      status: false,
+      message: "Failed to create new short link. A server error occurred.",
+      error: error.message,
+    };
+  }
+};
+
+export const updateShortLink = async (
+  data: shortLinkSchemaType,
+  id: string
+) => {
+  const validatedFields = ShortLinkSchema.safeParse(data);
+
+  if (!validatedFields.success) {
+    const errors = validatedFields.error.flatten().fieldErrors;
+
+    return {
+      success: false,
+      message: "Field validation failed",
+      fieldErrors: errors,
+    };
+  }
+
+  const session = await getAuth();
+  const user = session?.user;
+
+  if (!user?.id) {
+    return {
+      status: false,
+      message: "User not authenticated",
+    };
+  }
+
+  try {
+    // 2. Check if the short code is already in use
+    // const existingLink = await db
+    //   .select({ shortCode: shortLinks.shortCode })
+    //   .from(shortLinks)
+    //   .where(
+    //     or(
+    //       eq(shortLinks.customAlias, data.customAlias ? data.customAlias : "")
+    //     )
+    //   )
+    //   .limit(1);
+
+    // if (existingLink.length > 0) {
+    //   return {
+    //     status: false,
+    //     message: `The short code or alias '${data.shortCode}' is already in use. Please choose a different one.`,
+    //   };
+    // }
+
+    const findItem = await db.query.shortLinks.findFirst({
+      where: eq(shortLinks.id, id),
+    });
+
+    if (!findItem) {
+      return {
+        status: true,
+        message: "Short url doesn't not exist.",
+      };
+    }
+
+    const values = {
+      originalUrl: data.originalUrl,
+      customAlias: data.customAlias,
+      password: data?.password
+        ? bycript.hashSync(data.password, 10)
+        : findItem?.password,
+      expiresAt: data.expiresAt ? data.expiresAt : data.expiresAt,
+    };
+
+    await db
+      .update(shortLinks)
+      .set({ ...values })
+      .where(and(eq(shortLinks.userId, user.id), eq(shortLinks.id, id)));
+
+    revalidatePath("/short-urls");
+
+    // 4. Return a cleaner success object.
+    return { status: true, message: "Short link updated successfully 🎉" };
   } catch (error: any) {
     console.error("Error creating short link:", error);
     return {

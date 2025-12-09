@@ -18,7 +18,6 @@ export type ProfileDataType = {
   createdAt: Date | null;
 };
 
-
 export interface ShortUrl {
   id: string;
   originalUrl: string;

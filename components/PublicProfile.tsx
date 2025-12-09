@@ -1,15 +1,40 @@
-import React from 'react'
+import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Instagram, Twitter, Globe, Youtube, Link as LinkIcon } from "lucide-react";
+import {
+  Instagram,
+  Twitter,
+  Globe,
+  Youtube,
+  Link as LinkIcon,
+} from "lucide-react";
 
-
-const UserPage = () => {
-      const links = [
-    { id: 1, title: "Instagram", url: "https://instagram.com/johndoe", icon: Instagram },
-    { id: 2, title: "Twitter", url: "https://twitter.com/johndoe", icon: Twitter },
-    { id: 3, title: "Personal Website", url: "https://johndoe.com", icon: Globe },
-    { id: 4, title: "YouTube Channel", url: "https://youtube.com/@johndoe", icon: Youtube },
+const PublicProfile = () => {
+  const links = [
+    {
+      id: 1,
+      title: "Instagram",
+      url: "https://instagram.com/johndoe",
+      icon: Instagram,
+    },
+    {
+      id: 2,
+      title: "Twitter",
+      url: "https://twitter.com/johndoe",
+      icon: Twitter,
+    },
+    {
+      id: 3,
+      title: "Personal Website",
+      url: "https://johndoe.com",
+      icon: Globe,
+    },
+    {
+      id: 4,
+      title: "YouTube Channel",
+      url: "https://youtube.com/@johndoe",
+      icon: Youtube,
+    },
   ];
 
   const socialLinks = [
@@ -18,7 +43,7 @@ const UserPage = () => {
     { icon: Youtube, url: "#", label: "YouTube" },
   ];
   return (
-  <div className="min-h-screen bg-gradient-to-br from-cyan-50 via-blue-50 to-purple-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-cyan-50 via-blue-50 to-purple-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
       <div className="max-w-2xl mx-auto px-4 py-12 sm:py-20">
         {/* Profile Header */}
         <div className="text-center mb-12 animate-fade-in">
@@ -59,7 +84,12 @@ const UserPage = () => {
               asChild
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <a href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3">
+              <a
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3"
+              >
                 <link.icon className="w-6 h-6" />
                 {link.title}
               </a>
@@ -69,8 +99,8 @@ const UserPage = () => {
 
         {/* Footer */}
         <div className="text-center mt-12 pt-8 border-t">
-          <a 
-            href="/" 
+          <a
+            href="/"
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm"
           >
             <div className="w-6 h-6 bg-primary rounded-lg flex items-center justify-center">
@@ -81,7 +111,7 @@ const UserPage = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default UserPage
+export default PublicProfile;

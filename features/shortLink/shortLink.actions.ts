@@ -6,6 +6,8 @@ import { getAuth } from "@/lib/getAuth";
 import { ShortLinkSchema, shortLinkSchemaType } from "./shortLink.schema";
 import { revalidatePath } from "next/cache";
 import bycript from "bcryptjs";
+import * as z from "zod";
+import { redirect } from "next/navigation";
 
 export const createShortLink = async (data: shortLinkSchemaType) => {
   const validatedFields = ShortLinkSchema.safeParse(data);
@@ -184,6 +186,75 @@ export const deleteShortLink = async (id: string) => {
     return {
       status: false,
       message: "Url delete failed.",
+    };
+  }
+};
+
+const LinkPasswordSchema = z.object({
+  password: z.string("Password is requred."),
+});
+
+export const checkPassword = async (id: string, formData: FormData) => {
+  const validatedFields = LinkPasswordSchema.safeParse({
+    password: formData.get("password"),
+  });
+
+  if (!validatedFields.success) {
+    return {
+      status: false,
+      errors: validatedFields.error.flatten().fieldErrors,
+      url: "",
+    };
+  }
+
+  const submittedPassword = validatedFields.data.password;
+
+  try {
+    const res = await db.query.shortLinks.findFirst({
+      where: eq(shortLinks.id, id),
+    });
+
+    if (!res) {
+      return {
+        status: false,
+        message: "URL not found",
+        url: "",
+      };
+    }
+
+    if (!res.password) {
+      return {
+        status: false,
+        message: "This link is not password protected.",
+        url: "",
+      };
+    }
+
+    const compairePassword = bycript.compareSync(
+      submittedPassword,
+      res.password
+    );
+
+    if (compairePassword) {
+      return {
+        status: true,
+        message: "Redirecting...",
+        url: res.originalUrl,
+      };
+    }
+
+    return {
+      status: false,
+      message: "Password not matched",
+      url: "",
+    };
+  } catch (error) {
+    console.error("Error in checkPassword:", error);
+
+    return {
+      status: false,
+      message: "Internal server error",
+      url: "",
     };
   }
 };

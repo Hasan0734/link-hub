@@ -128,7 +128,7 @@ export function DatePicker({
                   selected={date}
                   month={month}
                   onMonthChange={setMonth}
-                  disabled={{ before: new Date() }}
+                //   disabled={{ before: new Date() }}
                   onSelect={(date) => {
                     setDate(date);
                     form.setValue("expiresAt", date);

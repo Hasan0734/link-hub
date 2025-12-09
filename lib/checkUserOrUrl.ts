@@ -14,7 +14,7 @@ export const checkUserOrUrl = async (text: string) => {
       status: true,
       message: "Found the user profile.",
       type: "PROFILE",
-      ...userProfile,
+      data: userProfile,
     };
   }
 
@@ -27,7 +27,7 @@ export const checkUserOrUrl = async (text: string) => {
       status: true,
       message: "Found the link",
       type: "LINK",
-      ...shortLink
+      data:shortLink,
     };
   }
   notFound();

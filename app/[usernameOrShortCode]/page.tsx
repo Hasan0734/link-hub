@@ -1,7 +1,10 @@
+import { PasswordRequiredForm } from "@/components/forms/PasswordRequiredForm";
 import PublicProfile from "@/components/PublicProfile";
 import { checkUserOrUrl } from "@/lib/checkUserOrUrl";
 import { ProfileDataType, ShortUrl } from "@/lib/types";
-import { notFound } from "next/navigation";
+import { Metadata } from "next";
+import Head from "next/head";
+import { notFound, redirect } from "next/navigation";
 
 interface PageProps {
   params: {
@@ -16,17 +19,66 @@ interface ResultTypes {
   data: ProfileDataType | ShortUrl;
 }
 
+// 🔑 Dynamic Metadata Function
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const { usernameOrShortCode } = await params;
+
+
+  if (!usernameOrShortCode) {
+    return {
+      title: "Page Not Found",
+      description: "The requested page was not found.",
+    };
+  }
+
+  // Fetch the data just like in your component
+  const res: ResultTypes = await checkUserOrUrl(usernameOrShortCode);
+
+  
+
+  if (res.type === "LINK") {
+    const linkData = res.data as ShortUrl;
+
+    if (linkData.password) {
+      return {
+        title: `Password Protected this link`,
+        description: `Short link is need to enter password then redirect the actual link.`,
+      };
+    }
+
+    // Set metadata for a short link
+    return {
+      title: `Redirecting to ${linkData.originalUrl}`,
+      description: `Short link for ${linkData.originalUrl}. Click to redirect.`,
+    };
+  } else {
+    const profileData = res.data as ProfileDataType;
+
+    // Set metadata for a public profile
+    return {
+      title: profileData.name || `${usernameOrShortCode}'s Profile`,
+      description:
+        profileData.bio || `Public profile page for @${usernameOrShortCode}.`,
+    };
+  }
+
+
+}
+
 const UserOrRedirectPage = async ({ params }: PageProps) => {
   const { usernameOrShortCode } = await params;
 
-  console.log(usernameOrShortCode);
-  
   if (usernameOrShortCode) {
     const res: ResultTypes = await checkUserOrUrl(usernameOrShortCode);
 
     console.log(res);
     if (res.type === "LINK") {
-      if (res?.data?.password) return <>This is the link</>;
+      const linkData = res.data as ShortUrl;
+
+      if (linkData.password) return <PasswordRequiredForm id={res.data.id} />;
+      redirect(linkData.originalUrl);
     } else {
       return (
         <>

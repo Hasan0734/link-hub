@@ -14,7 +14,7 @@ export const ShortLinkSchema = z.object({
     .max(50, "Custom alias is too long.")
     .regex(/^[a-zA-Z0-9]+$/, "Only text accepted")
     .optional(),
-  password: z.string().max(255).optional(),
+  password: z.string().min(4, "Minimum 4 chart requried!").max(255).optional(),
   expiresAt: z.date("Please enter valied date.").optional(),
 });
 

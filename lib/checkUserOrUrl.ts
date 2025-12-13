@@ -2,7 +2,7 @@
 import { profiles, shortLinks } from "./../db/schema";
 import { db } from "@/db";
 import { eq, or } from "drizzle-orm";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 
 export const checkUserOrUrl = async (text: string) => {
   try {
@@ -34,7 +34,7 @@ export const checkUserOrUrl = async (text: string) => {
     notFound();
   } catch (error) {
     console.log(error)
-    return{
+    return {
       status: false,
       type: '',
       data: null,

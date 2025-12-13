@@ -1,6 +1,7 @@
 import { PasswordRequiredForm } from "@/components/forms/PasswordRequiredForm";
 import PublicProfile from "@/components/PublicProfile";
 import LinkExpiredDialog from "@/components/short-urls/LinkExpiredDialog";
+import { UpdateLinkClickCount } from "@/features/shortLink/shortLinkClickCount";
 import { checkUserOrUrl } from "@/lib/checkUserOrUrl";
 import { ProfileDataType, ShortUrl } from "@/lib/types";
 import { Metadata } from "next";
@@ -88,6 +89,8 @@ const UserOrRedirectPage = async ({ params }: PageProps) => {
       }
 
       if (linkData.password) return <PasswordRequiredForm id={res.data.id} />;
+      await UpdateLinkClickCount(linkData.id)
+
       redirect(linkData.originalUrl);
     } else {
       return (

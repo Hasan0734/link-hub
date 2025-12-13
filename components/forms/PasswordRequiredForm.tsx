@@ -17,9 +17,9 @@ import * as z from "zod";
 import { db } from "@/db";
 import { eq } from "drizzle-orm";
 import { shortLinks } from "@/db/schema";
-import { useFormState } from "react-dom";
 import { checkPassword } from "@/features/shortLink/check-password.actions";
 import { ClientSubmitButton } from "../ClientSubmitButton";
+import { useActionState } from "react";
 
 type PasswordFormState = {
   error: string | null;
@@ -28,7 +28,7 @@ type PasswordFormState = {
 const initialState: PasswordFormState = { error: null };
 
 export const PasswordRequiredForm = ({ id }: { id: string }) => {
-  const [state, formAction] = useFormState(checkPassword, initialState);
+  const [state, formAction] = useActionState(checkPassword, initialState);
 
   return (
     <Dialog open={true}>

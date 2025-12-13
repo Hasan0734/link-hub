@@ -7,6 +7,8 @@ import { shortLinks } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import * as z from "zod"
 import { redirect } from 'next/navigation';
+import { UpdateLinkClickCount } from './shortLinkClickCount';
+
 
 const LinkPasswordSchema = z.object({
     password: z.string("Password is requred."),
@@ -48,6 +50,7 @@ export async function checkPassword(
     if (link.expiresAt && link.expiresAt < new Date()) {
         return { error: "Link is expired." }
     }
+    await UpdateLinkClickCount(link.id)
 
     redirect(link.originalUrl)
 

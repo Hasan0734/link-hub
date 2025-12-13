@@ -1,5 +1,6 @@
 import { PasswordRequiredForm } from "@/components/forms/PasswordRequiredForm";
 import PublicProfile from "@/components/PublicProfile";
+import LinkExpiredDialog from "@/components/short-urls/LinkExpiredDialog";
 import { checkUserOrUrl } from "@/lib/checkUserOrUrl";
 import { ProfileDataType, ShortUrl } from "@/lib/types";
 import { Metadata } from "next";
@@ -16,7 +17,7 @@ interface ResultTypes {
   status: boolean;
   message: string;
   type: string;
-  data: ProfileDataType | ShortUrl;
+  data: ProfileDataType | ShortUrl | null;
 }
 
 // 🔑 Dynamic Metadata Function
@@ -24,7 +25,6 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { usernameOrShortCode } = await params;
-
 
   if (!usernameOrShortCode) {
     return {
@@ -36,14 +36,19 @@ export async function generateMetadata({
   // Fetch the data just like in your component
   const res: ResultTypes = await checkUserOrUrl(usernameOrShortCode);
 
-  
-
   if (res.type === "LINK") {
     const linkData = res.data as ShortUrl;
 
+    if (linkData.expiresAt && linkData?.expiresAt < new Date()) {
+      return {
+        title: `⚠ Expired your link`,
+        description: `We are sorry to your link is expired.`,
+      };
+    }
+
     if (linkData.password) {
       return {
-        title: `Password Protected this link`,
+        title: `🔒 Password Protected this link`,
         description: `Short link is need to enter password then redirect the actual link.`,
       };
     }
@@ -63,8 +68,6 @@ export async function generateMetadata({
         profileData.bio || `Public profile page for @${usernameOrShortCode}.`,
     };
   }
-
-
 }
 
 const UserOrRedirectPage = async ({ params }: PageProps) => {
@@ -73,9 +76,16 @@ const UserOrRedirectPage = async ({ params }: PageProps) => {
   if (usernameOrShortCode) {
     const res: ResultTypes = await checkUserOrUrl(usernameOrShortCode);
 
-    console.log(res);
-    if (res.type === "LINK") {
+    if (!res.status) {
+      notFound();
+    }
+
+    if (res.type === "LINK" && res.data) {
       const linkData = res.data as ShortUrl;
+
+      if (linkData?.expiresAt && linkData?.expiresAt < new Date()) {
+        return <LinkExpiredDialog date={linkData.expiresAt} />;
+      }
 
       if (linkData.password) return <PasswordRequiredForm id={res.data.id} />;
       redirect(linkData.originalUrl);

@@ -1,3 +1,4 @@
+"use client";
 import {
   Dialog,
   DialogClose,
@@ -10,19 +11,24 @@ import {
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
-import { checkPassword } from "@/features/shortLink/shortLink.actions";
 import { redirect } from "next/navigation";
+import bycript from "bcryptjs";
+import * as z from "zod";
+import { db } from "@/db";
+import { eq } from "drizzle-orm";
+import { shortLinks } from "@/db/schema";
+import { useFormState } from "react-dom";
+import { checkPassword } from "@/features/shortLink/check-password.actions";
+import { ClientSubmitButton } from "../ClientSubmitButton";
 
-export const PasswordRequiredForm = async ({ id }: { id: string }) => {
-  async function handlePassword(formData: FormData) {
-    "use server"
-    const res = await checkPassword(id, formData);
+type PasswordFormState = {
+  error: string | null;
+};
 
-    if(res.status) {
-        return;
-    }
-    redirect(res?.url)
-  }
+const initialState: PasswordFormState = { error: null };
+
+export const PasswordRequiredForm = ({ id }: { id: string }) => {
+  const [state, formAction] = useFormState(checkPassword, initialState);
 
   return (
     <Dialog open={true}>
@@ -34,20 +40,25 @@ export const PasswordRequiredForm = async ({ id }: { id: string }) => {
           </DialogDescription>
         </DialogHeader>
 
-        <form action={handlePassword} className="grid gap-4">
-          <div>
-            <div className="grid gap-3">
-              <Label htmlFor="name-1">Password</Label>
-              <Input
-                id="password"
-                name="password"
-                placeholder="••••••••"
-                type="password"
-              />
-            </div>
+        <form action={formAction} className="grid gap-4">
+          <input type="hidden" name="id" value={id} />
+          <div className="grid gap-3">
+            <Label htmlFor="name-1">Password</Label>
+            <Input
+              id="password"
+              name="password"
+              placeholder="••••••••"
+              type="password"
+              required
+            />
+            {state?.error && (
+              <p className="text-sm text-red-500">{state.error}</p>
+            )}
           </div>
+
           <DialogFooter>
-            <Button type="submit">Submit</Button>
+            {/* <Button type="submit">Submit</Button> */}
+            <ClientSubmitButton title="Submit" />
           </DialogFooter>
         </form>
       </DialogContent>

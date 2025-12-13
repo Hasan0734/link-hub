@@ -6,7 +6,7 @@ import { eq } from "drizzle-orm";
 
 export const getProfileData = async (userId: string) => {
   "use cache";
-  console.log(userId);
+
   const data = await db.query.profiles.findFirst({
     where: eq(profiles.userId, userId),
   });

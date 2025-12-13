@@ -195,6 +195,8 @@ const LinkPasswordSchema = z.object({
 });
 
 export const checkPassword = async (id: string, formData: FormData) => {
+
+
   const validatedFields = LinkPasswordSchema.safeParse({
     password: formData.get("password"),
   });
@@ -213,6 +215,8 @@ export const checkPassword = async (id: string, formData: FormData) => {
     const res = await db.query.shortLinks.findFirst({
       where: eq(shortLinks.id, id),
     });
+
+    console.log(res)
 
     if (!res) {
       return {
@@ -235,6 +239,8 @@ export const checkPassword = async (id: string, formData: FormData) => {
       res.password
     );
 
+    console.log({compairePassword})
+
     if (compairePassword) {
       return {
         status: true,
@@ -248,6 +254,7 @@ export const checkPassword = async (id: string, formData: FormData) => {
       message: "Password not matched",
       url: "",
     };
+    
   } catch (error) {
     console.error("Error in checkPassword:", error);
 

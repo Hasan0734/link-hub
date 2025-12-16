@@ -1,7 +1,7 @@
 "use client";
 import { Card, CardContent } from "../ui/card";
 import { Badge } from "../ui/badge";
-import { Calendar, Eye, Lock, Trash } from "lucide-react";
+import { Calendar, ChartColumn, Eye, Lock } from "lucide-react";
 
 import { ShortUrl } from "@/lib/types";
 import { cn, formatDate } from "@/lib/utils";
@@ -10,6 +10,7 @@ import UrlCardAction from "./UrlCardAction";
 import ShortUrlLink from "./Short-url";
 import { useTransition } from "react";
 import { Spinner } from "../ui/spinner";
+import LinkAnalyticsDialog from "./LinkAnalyticsDialog";
 
 const UrlsCard = ({ url }: { url: ShortUrl }) => {
   const [isPending, startTransition] = useTransition();
@@ -59,6 +60,9 @@ const UrlsCard = ({ url }: { url: ShortUrl }) => {
               <Eye className="h-4 w-4" />
               {url.clicks} clicks
             </Badge>
+
+            <LinkAnalyticsDialog />
+            
             {url.password && (
               <Badge variant="secondary">
                 <Lock className="h-3 w-3 mr-1" />

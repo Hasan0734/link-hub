@@ -5,8 +5,8 @@ import { UpdateLinkClickCount } from "@/features/shortLink/shortLinkClickCount";
 import { checkUserOrUrl } from "@/lib/checkUserOrUrl";
 import { ProfileDataType, ShortUrl } from "@/lib/types";
 import { Metadata } from "next";
-import Head from "next/head";
 import { notFound, redirect } from "next/navigation";
+import {headers} from 'next/headers'
 
 interface PageProps {
   params: {
@@ -73,6 +73,7 @@ export async function generateMetadata({
 
 const UserOrRedirectPage = async ({ params }: PageProps) => {
   const { usernameOrShortCode } = await params;
+
 
   if (usernameOrShortCode) {
     const res: ResultTypes = await checkUserOrUrl(usernameOrShortCode);

@@ -14,7 +14,7 @@ import {
   InputGroupInput,
   InputGroupText,
 } from "./ui/input-group";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, X } from "lucide-react";
 import { Spinner } from "./ui/spinner";
 
 type PropsType = {
@@ -32,6 +32,7 @@ type PropsType = {
   formItemClass?: string;
   desClass?: string;
   addonText?: string;
+  clear?: boolean;
   [key: string]: any;
 };
 
@@ -51,6 +52,7 @@ const LabelAndInput = ({
   showAddon = false,
   desClass,
   addonText,
+  clear,
 }: PropsType) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   return (
@@ -72,7 +74,7 @@ const LabelAndInput = ({
                 readOnly={readOnly}
                 {...field}
               />
-              {showAddon && Icon &&  <InputGroupAddon>{Icon}</InputGroupAddon>}
+              {showAddon && Icon && <InputGroupAddon>{Icon}</InputGroupAddon>}
               {showAddon && addonText && (
                 <InputGroupAddon>
                   <InputGroupText>{addonText}</InputGroupText>
@@ -91,6 +93,18 @@ const LabelAndInput = ({
                     ) : (
                       <Eye className="h-4 w-4" />
                     )}
+                  </InputGroupButton>
+                </InputGroupAddon>
+              )}
+              {showAddon && clear && (
+                <InputGroupAddon align={"inline-end"}>
+                  <InputGroupButton
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      form.setValue(name, "");
+                    }}
+                  >
+                    <X />
                   </InputGroupButton>
                 </InputGroupAddon>
               )}

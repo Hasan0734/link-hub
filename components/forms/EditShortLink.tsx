@@ -39,15 +39,20 @@ interface EditProps {
   setOpen: Dispatch<SetStateAction<boolean>>;
   data: ShortUrl;
   startEditing: TransitionStartFunction;
-  isEditing: boolean
+  isEditing: boolean;
 }
 interface Availability {
   status: boolean;
   message: string;
 }
 
-const EditShortLink = ({ open, setOpen, data, isEditing, startEditing }: EditProps) => {
-  
+const EditShortLink = ({
+  open,
+  setOpen,
+  data,
+  isEditing,
+  startEditing,
+}: EditProps) => {
   const [checkAlias, setCheckAlias] = useState(false);
 
   const [availability, setAvailability] = useState<Availability>({
@@ -60,12 +65,14 @@ const EditShortLink = ({ open, setOpen, data, isEditing, startEditing }: EditPro
     defaultValues: {
       shortCode: data.shortCode,
       customAlias: data.customAlias || undefined,
-      expiresAt: data.expiresAt || undefined,
+      expiresAt: data.expiresAt,
       originalUrl: data.originalUrl,
+      password: data.password,
     },
   });
 
   const onSubmit = (formData: shortLinkSchemaType) => {
+    console.log(formData);
     startEditing(async () => {
       const res = await updateShortLink(formData, data.id);
 
@@ -89,7 +96,7 @@ const EditShortLink = ({ open, setOpen, data, isEditing, startEditing }: EditPro
       return;
     }
 
-    if (value) {
+    if (value && value !== data.customAlias) {
       const check = await checkCustomAlias(value);
       // setCustomAlias(
       //   `→ ${process.env.NEXT_PUBLIC_APP_URL}/${form.getValues("customAlias")}`
@@ -105,21 +112,28 @@ const EditShortLink = ({ open, setOpen, data, isEditing, startEditing }: EditPro
         setCheckAlias(false);
         return;
       }
-
+      console.log("hello");
       form.clearErrors("customAlias");
       setCheckAlias(false);
+
+      return;
     }
+    setAvailability({ status: false, message: "" });
+    setCheckAlias(false);
   }, []);
 
   const debouncedCustom = useDebounceCallback(resetCustomAlias, 500);
 
   useEffect(() => {
     const value = form.watch()?.customAlias;
-    if (value) {
+
+    if (value && value !== data.customAlias) {
       setCheckAlias(true);
       debouncedCustom();
     }
   }, [form.watch().customAlias?.length]);
+
+  console.log(form.watch().password);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -182,12 +196,15 @@ const EditShortLink = ({ open, setOpen, data, isEditing, startEditing }: EditPro
               <LabelAndInput
                 title="Password (Optional)"
                 name="password"
-                type="password"
+                // type="password"
                 form={form}
                 showErrorMsg
-                placeholder="••••••••"
+                // placeholder="••••••••"
+                placeholder="Set password"
+
                 showAddon
                 Icon={<Lock />}
+                clear={form.getValues("password") ? true : false}
               />
 
               {/* <div className="space-y-2">
@@ -198,12 +215,16 @@ const EditShortLink = ({ open, setOpen, data, isEditing, startEditing }: EditPro
                 form={form}
                 title="Expiry Date (Optional)"
                 name="expiresAt"
-                placeholder={`${formatDate(new Date())}`}
+                placeholder={
+                  form.getValues("expiresAt")
+                    ? `${formatDate(new Date())}`
+                    : "Ongoing"
+                }
                 showErrorMsg
                 showAddon
                 Icon={<Calendar />}
                 readonly
-                clear
+                clear={form.getValues("expiresAt") ? true : false}
               />
             </div>
 

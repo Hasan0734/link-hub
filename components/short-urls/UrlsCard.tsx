@@ -41,11 +41,14 @@ const UrlsCard = ({ url }: { url: ShortUrl }) => {
             )}
           </div>
 
-          <div>
+          <div className="">
             <a
               href={url.originalUrl}
               target="_blank"
-              className="text-sm text-muted-foreground truncate max-w-64 sm:max-w-max 2xl:max-w-2xl transition-all duration-150 hover:text-blue-300  hover:underline underline-offset-2 whitespace-nowrap line-clamp-1"
+              className="text-sm text-muted-foreground truncate 
+                transition-all duration-150 max-w-64 sm:max-w-max 2xl:max-w-2xl
+                hover:text-blue-300  hover:underline underline-offset-2
+                 whitespace-nowrap line-clamp-1  inline-block"
             >
               → {url.originalUrl}
             </a>

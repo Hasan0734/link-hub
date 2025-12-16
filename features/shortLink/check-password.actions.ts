@@ -38,12 +38,12 @@ export async function checkPassword(
     if (!link.password) {
         return { error: "Incorrent password" }
     }
-    const compairePassword = bycript.compareSync(
-        submittedPassword,
-        link.password
-    );
+    // const compairePassword = bycript.compareSync(
+    //     submittedPassword,
+    //     link.password
+    // );
 
-    if (!compairePassword) {
+    if (link.password !== submittedPassword) {
         return { error: "Incorrect password" };
     }
 

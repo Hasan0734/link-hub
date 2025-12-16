@@ -56,7 +56,7 @@ export const createShortLink = async (data: shortLinkSchemaType) => {
       originalUrl: data.originalUrl,
       shortCode: data.shortCode,
       customAlias: data.customAlias,
-      password: data?.password ? bycript.hashSync(data.password, 10) : null,
+      password: data?.password ? data.password : null,
       expiresAt: data.expiresAt,
     };
 
@@ -121,6 +121,7 @@ export const updateShortLink = async (
     //   };
     // }
 
+
     const findItem = await db.query.shortLinks.findFirst({
       where: eq(shortLinks.id, id),
     });
@@ -132,13 +133,13 @@ export const updateShortLink = async (
       };
     }
 
+    console.log(data.expiresAt)
+
     const values = {
       originalUrl: data.originalUrl,
       customAlias: data.customAlias,
-      password: data?.password
-        ? bycript.hashSync(data.password, 10)
-        : findItem?.password,
-      expiresAt: data.expiresAt ? data.expiresAt : data.expiresAt,
+      password: data?.password,
+      expiresAt: data?.expiresAt,
     };
 
     await db
@@ -194,74 +195,75 @@ const LinkPasswordSchema = z.object({
   password: z.string("Password is requred."),
 });
 
-export const checkPassword = async (id: string, formData: FormData) => {
+// export const checkPassword = async (id: string, formData: FormData) => {
 
 
-  const validatedFields = LinkPasswordSchema.safeParse({
-    password: formData.get("password"),
-  });
+//   const validatedFields = LinkPasswordSchema.safeParse({
+//     password: formData.get("password"),
+//   });
 
-  if (!validatedFields.success) {
-    return {
-      status: false,
-      errors: validatedFields.error.flatten().fieldErrors,
-      url: "",
-    };
-  }
+//   if (!validatedFields.success) {
+//     return {
+//       status: false,
+//       errors: validatedFields.error.flatten().fieldErrors,
+//       url: "",
+//     };
+//   }
 
-  const submittedPassword = validatedFields.data.password;
+//   const submittedPassword = validatedFields.data.password;
+//   console.log({submittedPassword})
 
-  try {
-    const res = await db.query.shortLinks.findFirst({
-      where: eq(shortLinks.id, id),
-    });
+//   try {
+//     const res = await db.query.shortLinks.findFirst({
+//       where: eq(shortLinks.id, id),
+//     });
 
-    console.log(res)
+//     console.log(res)
 
-    if (!res) {
-      return {
-        status: false,
-        message: "URL not found",
-        url: "",
-      };
-    }
+//     if (!res) {
+//       return {
+//         status: false,
+//         message: "URL not found",
+//         url: "",
+//       };
+//     }
 
-    if (!res.password) {
-      return {
-        status: false,
-        message: "This link is not password protected.",
-        url: "",
-      };
-    }
+//     if (!res.password) {
+//       return {
+//         status: false,
+//         message: "This link is not password protected.",
+//         url: "",
+//       };
+//     }
 
-    const compairePassword = bycript.compareSync(
-      submittedPassword,
-      res.password
-    );
+//     // const compairePassword = bycript.compareSync(
+//     //   submittedPassword,
+//     //   res.password
+//     // );
 
-    console.log({compairePassword})
+//     console.log(submittedPassword, res.password)
 
-    if (compairePassword) {
-      return {
-        status: true,
-        message: "Redirecting...",
-        url: res.originalUrl,
-      };
-    }
+//     if (submittedPassword === res.password) {
+//       return {
+//         status: true,
+//         message: "Redirecting...",
+//         url: res.originalUrl,
+//       };
+//     }
 
-    return {
-      status: false,
-      message: "Password not matched",
-      url: "",
-    };
-    
-  } catch (error) {
-    console.error("Error in checkPassword:", error);
+//     return {
+//       status: false,
+//       message: "Password not matched",
+//       url: "",
+//     };
 
-    return {
-      status: false,
-      message: "Internal server error",
-      url: "",
-    };
-  }
-};
+//   } catch (error) {
+//     console.error("Error in checkPassword:", error);
+
+//     return {
+//       status: false,
+//       message: "Internal server error",
+//       url: "",
+//     };
+//   }
+// };

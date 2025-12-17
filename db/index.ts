@@ -1,4 +1,4 @@
-import { profiles, shortLinks, shortLinkVisits } from "./schema";
+import { pages, pageTabs, profiles, shortLinks, shortLinkVisits } from "./schema";
 import { Pool } from "pg";
 import { drizzle } from "drizzle-orm/node-postgres";
 
@@ -10,6 +10,7 @@ export const db = drizzle(pool, {
   schema: {
     profiles,
     shortLinks,
-    shortLinkVisits
+    shortLinkVisits,
+    pages,pageTabs
   },
 });

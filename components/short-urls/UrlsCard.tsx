@@ -62,7 +62,7 @@ const UrlsCard = ({ url }: { url: ShortUrl }) => {
             </Badge>
 
             <LinkAnalyticsDialog />
-            
+
             {url.password && (
               <Badge variant="secondary">
                 <Lock className="h-3 w-3 mr-1" />
@@ -70,7 +70,7 @@ const UrlsCard = ({ url }: { url: ShortUrl }) => {
               </Badge>
             )}
             {url.expiresAt && (
-              <Badge variant="outline">
+              <Badge className="bg-secondary/30">
                 <Calendar className="h-3 w-3 mr-1" />
                 Expires: {formatDate(url.expiresAt)}
               </Badge>

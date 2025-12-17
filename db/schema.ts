@@ -154,7 +154,7 @@ export const pages = pgTable("pages", {
     .notNull(),
 
   title: varchar("title", { length: 100 }).notNull(),
-  slug: varchar("slug", { length: 50 }).notNull().unique(),
+  slug: varchar("slug", { length: 50 }).notNull(),
 
   customDomain: varchar("custom_domain", { length: 120 }),
 

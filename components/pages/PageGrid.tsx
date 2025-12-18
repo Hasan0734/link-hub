@@ -1,6 +1,6 @@
-import React, { useState } from "react";
 import PageCard from "./PageCard";
 import { getPages } from "@/lib/getPages";
+import PageCardSkeleton from "./PageCardSkeleton";
 
 const PageGrid = async () => {
   const { status, data } = await getPages();

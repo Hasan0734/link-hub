@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import DashboardTitle from "@/components/DashboardTitle";
 import PageGrid from "@/components/pages/PageGrid";
 import PageFormDialog from "@/components/pages/PageFormDialog";
+import PageCardSkeleton from "@/components/pages/PageCardSkeleton";
 
 const Pages = () => {
   const handleAddPage = () => {
@@ -29,10 +30,10 @@ const Pages = () => {
                   details="Create and manage multiple profile pages"
                 />
 
-                <PageFormDialog/>
+                <PageFormDialog />
               </div>
 
-              <Suspense>
+              <Suspense fallback={<PageCardSkeleton />}>
                 <PageGrid />
               </Suspense>
             </div>

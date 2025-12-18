@@ -1,8 +1,9 @@
-import React from "react";
+"use client";
 import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -59,36 +60,35 @@ const PageCard = ({ page }: { page: PageData }) => {
           />
           <span className="text-sm text-muted-foreground">Public</span>
         </div>
-
-        <div className="flex gap-2">
-          <Button
-            variant="outline"
-            size="sm"
-            className="flex-1"
-            onClick={() => handleEditPage(page)}
-          >
-            <Edit2 className="h-4 w-4 mr-2" />
-            Edit
-          </Button>
-          <Button variant="outline" size="sm" asChild>
-            <a
-              href={`/page/${page.slug}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <ExternalLink className="h-4 w-4" />
-            </a>
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => handleDeletePage(page.id)}
-            className="text-destructive"
-          >
-            <Trash2 className="h-4 w-4" />
-          </Button>
-        </div>
       </CardContent>
+      <CardFooter className="gap-2">
+        <Button
+          variant="outline"
+          size="sm"
+          className="flex-1"
+          onClick={() => handleEditPage(page)}
+        >
+          <Edit2 className="h-4 w-4 mr-2" />
+          Edit
+        </Button>
+        <Button variant="outline" size="sm" asChild>
+          <a
+            href={`/page/${page.slug}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <ExternalLink className="h-4 w-4" />
+          </a>
+        </Button>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => handleDeletePage(page.id)}
+          className="text-destructive"
+        >
+          <Trash2 className="h-4 w-4" />
+        </Button>
+      </CardFooter>
     </Card>
   );
 };

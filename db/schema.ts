@@ -162,8 +162,8 @@ export const pages = pgTable("pages", {
     onDelete: "set null",
   }),
 
-  isPublic: boolean("is_public").default(true),
-  displayOrder: integer("display_order").default(0),
+  isPublic: boolean("is_public").notNull().default(true),
+  displayOrder: integer("display_order").notNull().default(0),
 
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at")
@@ -188,7 +188,6 @@ export const pageTabs = pgTable("page_tabs", {
   title: varchar("title", { length: 50 }).notNull(),
   url: text("url").notNull(),
   displayOrder: integer("display_order").default(0),
-
   createdAt: timestamp("created_at").defaultNow(),
 });
 

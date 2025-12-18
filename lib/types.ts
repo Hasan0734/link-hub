@@ -28,3 +28,17 @@ export interface ShortUrl {
   expiresAt: Date | null;
   createdAt: Date;
 }
+
+export interface PageData {
+  id: string;
+  userId:string;
+  title: string;
+  slug: string;
+  isPublic: boolean;
+  customDomain: string | null;
+  displayOrder: number | null;
+  themeId: string | null;
+  createdAt: Date;
+  updatedAt:Date;
+
+}

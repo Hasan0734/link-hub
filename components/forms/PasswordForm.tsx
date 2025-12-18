@@ -25,7 +25,7 @@ const PasswordForm = () => {
   });
 
   function submitPassword(data: ChangePasswordType) {
-    console.log(data);
+    
     startTransition(async () => {
       const res = await changePassword(data);
       console.log(res);

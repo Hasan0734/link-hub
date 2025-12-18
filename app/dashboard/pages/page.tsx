@@ -1,13 +1,8 @@
-"use client";
 import AppHeader from "@/components/AppHeader";
-import { useState } from "react";
-
-import { Button } from "@/components/ui/button";
-
-import { Plus } from "lucide-react";
-
+import { Suspense } from "react";
 import DashboardTitle from "@/components/DashboardTitle";
 import PageGrid from "@/components/pages/PageGrid";
+import PageFormDialog from "@/components/pages/PageFormDialog";
 
 const Pages = () => {
   const handleAddPage = () => {
@@ -34,13 +29,12 @@ const Pages = () => {
                   details="Create and manage multiple profile pages"
                 />
 
-                <Button onClick={handleAddPage}>
-                  <Plus className="h-4 w-4 mr-2" />
-                  Add Page
-                </Button>
+                <PageFormDialog/>
               </div>
 
-              <PageGrid />
+              <Suspense>
+                <PageGrid />
+              </Suspense>
             </div>
           </div>
         </div>

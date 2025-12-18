@@ -17,6 +17,7 @@ import {
 import AppHeader from "@/components/AppHeader";
 import DashboardTitle from "@/components/DashboardTitle";
 import LinkList from "@/components/links/LinkList";
+import CreateNewLink from "@/components/forms/CreateNewLink";
 
 const Links = () => {
   const [editingLink, setEditingLink] = useState<any>(null);
@@ -63,93 +64,14 @@ const Links = () => {
                   title="Links Management"
                   details="Add, edit, and organize your profile links"
                 />
-                <Button onClick={handleAddLink}>
-                  <Plus className="h-4 w-4" />
-                  Add Link
-                </Button>
+               <CreateNewLink/>
               </div>
 
               <Suspense fallback={<>Loading</>}>
                 <LinkList />
               </Suspense>
 
-              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-                <DialogContent>
-                  <DialogHeader>
-                    <DialogTitle>
-                      {editingLink?.id ? "Edit Link" : "Add New Link"}
-                    </DialogTitle>
-                    <DialogDescription>
-                      Fill in the details for your link
-                    </DialogDescription>
-                  </DialogHeader>
-                  {editingLink && (
-                    <div className="space-y-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="title">Title</Label>
-                        <Input
-                          id="title"
-                          value={editingLink.title}
-                          onChange={(e) =>
-                            setEditingLink({
-                              ...editingLink,
-                              title: e.target.value,
-                            })
-                          }
-                          placeholder="My Website"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="url">URL</Label>
-                        <Input
-                          id="url"
-                          value={editingLink.url}
-                          onChange={(e) =>
-                            setEditingLink({
-                              ...editingLink,
-                              url: e.target.value,
-                            })
-                          }
-                          placeholder="https://example.com"
-                        />
-                      </div>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                          <Label htmlFor="icon">Icon (Emoji)</Label>
-                          <Input
-                            id="icon"
-                            value={editingLink.icon}
-                            onChange={(e) =>
-                              setEditingLink({
-                                ...editingLink,
-                                icon: e.target.value,
-                              })
-                            }
-                            placeholder="🔗"
-                          />
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="color">Color</Label>
-                          <Input
-                            id="color"
-                            type="color"
-                            value={editingLink.color}
-                            onChange={(e) =>
-                              setEditingLink({
-                                ...editingLink,
-                                color: e.target.value,
-                              })
-                            }
-                          />
-                        </div>
-                      </div>
-                      <Button onClick={handleSave} className="w-full">
-                        Save Link
-                      </Button>
-                    </div>
-                  )}
-                </DialogContent>
-              </Dialog>
+             
             </div>
           </div>
         </div>

@@ -6,34 +6,28 @@ const DOMAIN_REGEX =
 
 
 
-export const PageSchema = z.object({
+export const LinkSchema = z.object({
     title: z.string("Title is requried!.")
         .min(4, "At least 4 characters.")
         .max(100),
-    slug: z.string("URL slug is requried!.")
-        .min(2, "At least 2 characters.")
-        .max(50)
-        .trim()
-        .transform(value => {
 
-            return slugify(value);
-        }),
-    customDomain: z.string().trim()
+    url: z.string().trim()
         .toLowerCase()
         .refine((val) => !val.includes("/"), {
-            message: "Domain must not contain paths",
+            message: "URL must not contain paths",
         })
         .refine((val) => !val.includes(":"), {
-            message: "Domain must not include ports or protocols",
+            message: "URL must not include ports or protocols",
         })
         .refine((val) => DOMAIN_REGEX.test(val), {
-            message: "Invalid domain format",
+            message: "Invalid URL format",
         }).nullable().optional(),
-    themeId: z.string().optional().nullable(),
-    isPublic: z.boolean().optional().nullable().transform(v => !!v),
+    icon: z.string().optional().nullable(),
+    color: z.string().optional().nullable(),
+    isActive: z.boolean().optional().nullable().transform(v => !!v),
     displayOrder: z.number().optional().nullable(),
 
 
 })
 
-export type PageSchemaType = z.infer<typeof PageSchema>
+export type LinkSchemaType = z.infer<typeof LinkSchema>

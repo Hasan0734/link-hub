@@ -152,10 +152,10 @@ export const updateShortLink = async (
     // 4. Return a cleaner success object.
     return { status: true, message: "Short link updated successfully 🎉" };
   } catch (error: any) {
-    console.error("Error creating short link:", error);
+    console.error("Error updating short link:", error);
     return {
       status: false,
-      message: "Failed to create new short link. A server error occurred.",
+      message: "Failed to update short link. A server error occurred.",
       error: error.message,
     };
   }
@@ -194,76 +194,3 @@ export const deleteShortLink = async (id: string) => {
 const LinkPasswordSchema = z.object({
   password: z.string("Password is requred."),
 });
-
-// export const checkPassword = async (id: string, formData: FormData) => {
-
-
-//   const validatedFields = LinkPasswordSchema.safeParse({
-//     password: formData.get("password"),
-//   });
-
-//   if (!validatedFields.success) {
-//     return {
-//       status: false,
-//       errors: validatedFields.error.flatten().fieldErrors,
-//       url: "",
-//     };
-//   }
-
-//   const submittedPassword = validatedFields.data.password;
-//   console.log({submittedPassword})
-
-//   try {
-//     const res = await db.query.shortLinks.findFirst({
-//       where: eq(shortLinks.id, id),
-//     });
-
-//     console.log(res)
-
-//     if (!res) {
-//       return {
-//         status: false,
-//         message: "URL not found",
-//         url: "",
-//       };
-//     }
-
-//     if (!res.password) {
-//       return {
-//         status: false,
-//         message: "This link is not password protected.",
-//         url: "",
-//       };
-//     }
-
-//     // const compairePassword = bycript.compareSync(
-//     //   submittedPassword,
-//     //   res.password
-//     // );
-
-//     console.log(submittedPassword, res.password)
-
-//     if (submittedPassword === res.password) {
-//       return {
-//         status: true,
-//         message: "Redirecting...",
-//         url: res.originalUrl,
-//       };
-//     }
-
-//     return {
-//       status: false,
-//       message: "Password not matched",
-//       url: "",
-//     };
-
-//   } catch (error) {
-//     console.error("Error in checkPassword:", error);
-
-//     return {
-//       status: false,
-//       message: "Internal server error",
-//       url: "",
-//     };
-//   }
-// };

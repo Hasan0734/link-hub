@@ -19,15 +19,15 @@ const PageCardSkeleton = () => {
           <CardHeader>
             <div className="flex items-start justify-between">
               <div className="space-y-2">
+                <Skeleton className="w-52 h-6 bg-secondary/40" />
                 <Skeleton className="w-40 h-6 bg-secondary/40" />
-                <Skeleton className="w-28 h-6 bg-secondary/40" />
               </div>
               <Skeleton className="w-14 rounded-full h-5 bg-secondary/40" />
             </div>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="block space-y-2">
-              <Skeleton className="w-32 h-5 bg-secondary/40" />
+              <Skeleton className="w-40 h-5 bg-secondary/40" />
               <Skeleton className="w-16 rounded-full h-5 bg-secondary/40" />
             </div>
           </CardContent>

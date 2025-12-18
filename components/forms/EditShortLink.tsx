@@ -5,7 +5,6 @@ import React, {
   useCallback,
   useEffect,
   useState,
-  useTransition,
 } from "react";
 import {
   Dialog,
@@ -133,7 +132,6 @@ const EditShortLink = ({
     }
   }, [form.watch().customAlias?.length]);
 
-  console.log(form.watch().password);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>

@@ -6,25 +6,37 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PageSchema, PageSchemaType } from "@/features/page/page.schema";
 import slugify from "slugify";
-import { useTransition } from "react";
-import { createPage } from "@/features/page/page.actions";
+import { TransitionStartFunction } from "react";
 import { toast } from "sonner";
 import { Spinner } from "../ui/spinner";
-
+import { PageData } from "@/lib/types";
+import { updatePage } from "@/features/page/page.actions";
 
 interface PageFromProps {
   setIsDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  page: PageData;
+  isEditing: boolean;
+  startEditing: TransitionStartFunction;
 }
 
-const PageForm = ({ setIsDialogOpen }: PageFromProps) => {
-  const [isPending, startTransition] = useTransition();
+const PageEditForm = ({
+  setIsDialogOpen,
+  page,
+  isEditing,
+  startEditing,
+}: PageFromProps) => {
   const form = useForm({
-    resolver: zodResolver(PageSchema)
+    resolver: zodResolver(PageSchema),
+    defaultValues: {
+      title: page.title,
+      slug: page.slug,
+      customDomain: page.customDomain,
+    },
   });
 
   const onSubmit = (data: PageSchemaType) => {
-    startTransition(async () => {
-      const res = await createPage(data);
+    startEditing(async () => {
+      const res = await updatePage(data, page.id);
       if (res.status) {
         toast.success(res.message);
         form.reset();
@@ -32,6 +44,7 @@ const PageForm = ({ setIsDialogOpen }: PageFromProps) => {
         return;
       }
       toast.error(res.message);
+      setIsDialogOpen(false);
     });
   };
 
@@ -67,12 +80,12 @@ const PageForm = ({ setIsDialogOpen }: PageFromProps) => {
           showErrorMsg
         />
 
-        <Button disabled={isPending} className="w-full">
-          {isPending && <Spinner />} Submit Page
+        <Button disabled={isEditing} className="w-full">
+          {isEditing && <Spinner />} Save Page
         </Button>
       </form>
     </Form>
   );
 };
 
-export default PageForm;
+export default PageEditForm;

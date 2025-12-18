@@ -16,7 +16,6 @@ const UrlsCard = ({ url }: { url: ShortUrl }) => {
   const [isPending, startTransition] = useTransition();
   const [isEditing, startEditing] = useTransition();
 
-  console.log(isPending)
 
   return (
     <Card className="border-primary/20 bg-card/50 backdrop-blur-sm hover:shadow-lg transition-all duration-200 relative ">

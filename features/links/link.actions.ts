@@ -4,7 +4,7 @@ import { pages } from "@/db/schema";
 import { and, eq } from "drizzle-orm";
 import { getAuth } from "@/lib/getAuth";
 import { revalidatePath } from "next/cache";
-import { PageSchema, PageSchemaType } from "./page.schema";
+import { PageSchema, PageSchemaType } from "./link.schema";
 
 export const createPage = async (data: PageSchemaType) => {
   const validatedFields = PageSchema.safeParse(data);

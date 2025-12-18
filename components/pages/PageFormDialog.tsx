@@ -17,23 +17,9 @@ import PageForm from "../forms/PageForm";
 const PageFormDialog = () => {
   const [editingPage, setEditingPage] = useState<any>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+ 
+ 
 
-  const handleSavePage = () => {
-    // if (editingPage.id) {
-    //   setPages(pages.map((p) => (p.id === editingPage.id ? editingPage : p)));
-    // } else {
-    //   setPages([
-    //     ...pages,
-    //     {
-    //       ...editingPage,
-    //       id: Date.now().toString(),
-    //       displayOrder: pages.length,
-    //     },
-    //   ]);
-    // }
-    // setIsDialogOpen(false);
-    // setEditingPage(null);
-  };
 
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -43,6 +29,7 @@ const PageFormDialog = () => {
           Add Page
         </Button>
       </DialogTrigger>
+
       <DialogContent>
         <DialogHeader>
           <DialogTitle>
@@ -51,8 +38,8 @@ const PageFormDialog = () => {
           <DialogDescription>Configure your page settings</DialogDescription>
         </DialogHeader>
 
-        <PageForm />
-        
+        <PageForm setIsDialogOpen={setIsDialogOpen}/>
+
       </DialogContent>
     </Dialog>
   );

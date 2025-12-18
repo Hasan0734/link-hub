@@ -1,7 +1,7 @@
 "use client";
 import { Card, CardContent } from "../ui/card";
 import { Badge } from "../ui/badge";
-import { Calendar, ChartColumn, Eye, Lock } from "lucide-react";
+import { Calendar, Eye, Lock } from "lucide-react";
 
 import { ShortUrl } from "@/lib/types";
 import { cn, formatDate } from "@/lib/utils";
@@ -15,6 +15,8 @@ import LinkAnalyticsDialog from "./LinkAnalyticsDialog";
 const UrlsCard = ({ url }: { url: ShortUrl }) => {
   const [isPending, startTransition] = useTransition();
   const [isEditing, startEditing] = useTransition();
+
+  console.log(isPending)
 
   return (
     <Card className="border-primary/20 bg-card/50 backdrop-blur-sm hover:shadow-lg transition-all duration-200 relative ">
@@ -82,14 +84,14 @@ const UrlsCard = ({ url }: { url: ShortUrl }) => {
           </div>
         </div>
       </CardContent>
-      {isPending ||
-        (isEditing && (
+      {(isPending ||  isEditing) &&   (
+    
           <div className="absolute z-10 w-full h-full bg-accent/10 top-0 rounded-xl flex items-center justify-center gap-2 brightness-75">
             <Spinner />
             {isPending && "Deleting..."}
             {isEditing && "Editing..."}
           </div>
-        ))}
+       )} 
     </Card>
   );
 };

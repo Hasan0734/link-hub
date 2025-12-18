@@ -11,7 +11,11 @@ import { createPage } from "@/features/page/page.actions";
 import { toast } from "sonner";
 import { Spinner } from "../ui/spinner";
 
-const PageForm = () => {
+interface PageFromProps {
+  setIsDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const PageForm = ({ setIsDialogOpen }: PageFromProps) => {
   const [isPending, startTransition] = useTransition();
   const form = useForm({ resolver: zodResolver(PageSchema) });
 
@@ -21,7 +25,7 @@ const PageForm = () => {
       if (res.status) {
         toast.success(res.message);
         form.reset();
-        // setOpen(false);
+        setIsDialogOpen(false);
         return;
       }
       toast.error(res.message);

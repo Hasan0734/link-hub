@@ -154,32 +154,32 @@ export const createPage = async (data: PageSchemaType) => {
 //   }
 // };
 
-// export const deleteShortLink = async (id: string) => {
-//   const session = await getAuth();
-//   const user = session?.user;
+export const deletePage = async (id: string) => {
+  const session = await getAuth();
+  const user = session?.user;
 
-//   if (!user?.id) {
-//     return {
-//       status: false,
-//       message: "User not authenticated",
-//     };
-//   }
+  if (!user?.id) {
+    return {
+      status: false,
+      message: "User not authenticated",
+    };
+  }
 
-//   try {
-//     await db
-//       .delete(shortLinks)
-//       .where(and(eq(shortLinks.id, id), eq(shortLinks.userId, user.id)));
+  try {
+    await db
+      .delete(pages)
+      .where(and(eq(pages.id, id), eq(pages.userId, user.id)));
 
-//     revalidatePath("/short-urls");
+    revalidatePath("/pages");
 
-//     return {
-//       status: true,
-//       message: "Url deleted successfully.",
-//     };
-//   } catch (error) {
-//     return {
-//       status: false,
-//       message: "Url delete failed.",
-//     };
-//   }
-// };
+    return {
+      status: true,
+      message: "Page deleted successfully.",
+    };
+  } catch (error) {
+    return {
+      status: false,
+      message: "Page delete failed.",
+    };
+  }
+};

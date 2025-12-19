@@ -15,6 +15,10 @@ import { LinkSchema, LinkSchemaType } from "@/features/links/link.schema";
 import { Spinner } from "../ui/spinner";
 import { Plus } from "lucide-react";
 import LabelAndInput from "../LabelAndInput";
+import { IconPicker } from "../ui/icon-picker";
+import { Label } from "../ui/label";
+import { createLink } from "@/features/links/link.actions";
+import { toast } from "sonner";
 
 const CreateNewLink = () => {
   const [isPending, startTransition] = useTransition();
@@ -24,12 +28,19 @@ const CreateNewLink = () => {
 
   const onSubmit = (data: LinkSchemaType) => {
     startTransition(async () => {
-      console.log(data);
+      const res = await createLink(data);
+      if (res.status) {
+        toast.success(res.message);
+        form.reset();
+        setIsOpen(false);
+        return;
+      }
+      toast.message(res.message);
     });
   };
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger>
+      <DialogTrigger asChild>
         <Button>
           <Plus className="h-4 w-4" />
           Add Link
@@ -74,6 +85,16 @@ const CreateNewLink = () => {
                   placeholder="🔗"
                 />
               </div> */}
+              <div className="space-y-2">
+                <Label htmlFor="icon">Select icon</Label>
+                <IconPicker
+                  onValueChange={(value) => {
+                    form.setValue("icon", value);
+                  }}
+                  className="w-full"
+                />
+              </div>
+
               <LabelAndInput
                 name="color"
                 type="color"

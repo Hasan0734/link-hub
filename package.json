@@ -26,6 +26,7 @@
     "@radix-ui/react-tooltip": "^1.2.8",
     "@react-email/components": "1.0.1",
     "@tabler/icons-react": "^3.35.0",
+    "@tanstack/react-virtual": "^3.13.13",
     "bcryptjs": "^3.0.3",
     "better-auth": "^1.4.1",
     "class-variance-authority": "^0.7.1",
@@ -35,6 +36,7 @@
     "dotenv": "^17.2.3",
     "drizzle-kit": "^0.31.8",
     "drizzle-orm": "^0.44.7",
+    "fuse.js": "^7.1.0",
     "lodash.debounce": "^4.0.8",
     "lucide-react": "^0.554.0",
     "motion": "^12.23.25",
@@ -56,6 +58,7 @@
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.4.0",
     "ua-parser-js": "^2.0.7",
+    "usehooks-ts": "^3.1.1",
     "uuid": "^13.0.0",
     "zod": "^4.1.12"
   },

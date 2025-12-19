@@ -7,9 +7,11 @@ import {
   CardTitle,
   CardDescription,
 } from "../ui/card";
+import { getLinks } from "@/lib/getLinks";
 
-const LinkList = () => {
-    
+const LinkList = async () => {
+  const newlinks = await getLinks();
+
   const [links, setLinks] = useState([
     {
       id: "1",
@@ -63,8 +65,6 @@ const LinkList = () => {
       links.map((l) => (l.id === id ? { ...l, isActive: !l.isActive } : l))
     );
   };
-
-
 
   return (
     <Card className="border-primary/20 bg-card/50 backdrop-blur-sm shadow-2xl">

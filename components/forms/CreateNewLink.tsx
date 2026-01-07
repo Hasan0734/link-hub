@@ -30,7 +30,9 @@ const CreateNewLink = () => {
   const form = useForm({ resolver: zodResolver(LinkSchema) });
 
   const onSubmit = (data: LinkSchemaType) => {
+    console.log(data)
     startTransition(async () => {
+      return;
       const res = await createLink(data);
       if (res.status) {
         toast.success(res.message);
@@ -74,16 +76,18 @@ const CreateNewLink = () => {
               placeholder="https://example.com"
             />
 
-            <SelectIcon form={form} />
+            <div className="flex  gap-4">
+              <SelectIcon form={form} />
 
-            <div className="space-y-2">
-              <Label htmlFor="color">Color</Label>
-              <ColorPicker
-                color={form.getValues("color") ?? `hsl(0, 0%, 100%)`}
-                onChange={(newColor) => {
-                  form.setValue("color", newColor);
-                }}
-              />
+              <div className="space-y-2">
+                {/* <Label htmlFor="color">Color</Label> */}
+                <ColorPicker
+                  color={form.getValues("color") ?? `hsl(0, 0%, 100%)`}
+                  onChange={(newColor) => {
+                    form.setValue("color", newColor);
+                  }}
+                />
+              </div>
             </div>
             <Button disabled={isPending} className="w-full">
               {isPending && <Spinner />} Submit Link

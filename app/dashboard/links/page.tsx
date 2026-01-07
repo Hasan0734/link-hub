@@ -40,7 +40,6 @@ const Links = () => {
                 />
                 <CreateNewLink />
               </div>
-
               <Suspense fallback={<LinkSkeleton />}>
                 <LinkList />
               </Suspense>

@@ -1,0 +1,1 @@
+ALTER TABLE "links" ALTER COLUMN "color" SET DATA TYPE varchar(30);

@@ -12,16 +12,9 @@ export const LinkSchema = z.object({
         .max(100),
 
     url: z.string().trim()
+        .url("Invalid URL format.")
         .toLowerCase()
-        .refine((val) => !val.includes("/"), {
-            message: "URL must not contain paths",
-        })
-        .refine((val) => !val.includes(":"), {
-            message: "URL must not include ports or protocols",
-        })
-        .refine((val) => DOMAIN_REGEX.test(val), {
-            message: "Invalid URL format",
-        }).nullable().optional(),
+        .nullable().optional(),
     icon: z.string().optional().nullable(),
     color: z.string().optional().nullable(),
     isActive: z.boolean().optional().nullable().transform(v => !!v),
@@ -31,3 +24,14 @@ export const LinkSchema = z.object({
 })
 
 export type LinkSchemaType = z.infer<typeof LinkSchema>
+
+
+// .refine((val) => !val.includes("/"), {
+//             message: "URL must not contain paths",
+//         })
+//         .refine((val) => !val.includes(":"), {
+//             message: "URL must not include ports or protocols",
+//         })
+//         .refine((val) => DOMAIN_REGEX.test(val), {
+//             message: "Invalid URL format",
+//         })

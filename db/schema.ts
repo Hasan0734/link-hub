@@ -135,7 +135,7 @@ export const links = pgTable("links", {
   url: text("url").notNull(),
   icon: varchar("icon", { length: 50 }),
   displayOrder: integer("display_order").default(0).notNull(),
-  color: varchar("color", { length: 20 }),
+  color: varchar("color", { length: 30 }),
   isActive: boolean("is_active").default(true),
   createdAt: timestamp("created_At").defaultNow().notNull(),
   updatedAt: timestamp("updated_At")

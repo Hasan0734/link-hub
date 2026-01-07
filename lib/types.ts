@@ -40,5 +40,17 @@ export interface PageData {
   themeId: string | null;
   createdAt: Date;
   updatedAt:Date;
+}
 
+export interface LinkData {
+  id: string;
+  userId: string;
+  title: string;
+  url: string;
+  icon: string | null;
+  displayOrder: number;
+  color: string | null;
+  isActive: boolean | null;
+  createdAt: Date;
+  updatedAt: Date;  
 }

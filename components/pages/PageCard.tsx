@@ -57,7 +57,7 @@ const PageCard = ({ page }: { page: PageData }) => {
     <Card className="relative border-primary/20 bg-card/50 backdrop-blur-sm hover:shadow-lg transition-all duration-300">
       <CardContent
         className={cn("pt-1 px-2 sm:px-6 relative z-0 space-y-4", {
-          blur: isDeleting || isEditing,
+          "blur": isDeleting || isEditing,
         })}
       >
         <div className="flex items-start justify-between">

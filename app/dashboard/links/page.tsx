@@ -1,39 +1,13 @@
-"use client";
-
-import { useState, Suspense } from "react";
-
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Plus } from "lucide-react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { Suspense } from "react";
 
 import AppHeader from "@/components/AppHeader";
 import DashboardTitle from "@/components/DashboardTitle";
 import LinkList from "@/components/links/LinkList";
 import CreateNewLink from "@/components/forms/CreateNewLink";
+import LinkSkeleton from "@/components/links/LinkSkeleton";
 
 const Links = () => {
-  const [editingLink, setEditingLink] = useState<any>(null);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-
-  const handleAddLink = () => {
-    setEditingLink({
-      id: "",
-      title: "",
-      url: "",
-      icon: "🔗",
-      color: "#3B82F6",
-      isActive: true,
-    });
-    setIsDialogOpen(true);
-  };
+  const handleAddLink = () => {};
 
   const handleSave = () => {
     // if (editingLink.id) {
@@ -64,14 +38,12 @@ const Links = () => {
                   title="Links Management"
                   details="Add, edit, and organize your profile links"
                 />
-               <CreateNewLink/>
+                <CreateNewLink />
               </div>
 
-              <Suspense fallback={<>Loading</>}>
+              <Suspense fallback={<LinkSkeleton />}>
                 <LinkList />
               </Suspense>
-
-             
             </div>
           </div>
         </div>

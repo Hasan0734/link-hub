@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useTransition } from "react";
 import {
   Dialog,
@@ -17,8 +18,10 @@ import { Plus } from "lucide-react";
 import LabelAndInput from "../LabelAndInput";
 import { IconPicker } from "../ui/icon-picker";
 import { Label } from "../ui/label";
-import { createLink } from "@/features/links/link.actions";
 import { toast } from "sonner";
+import { createLink } from "@/features/links/link.actions";
+import SelectIcon from "../SelectIcon";
+import ColorPicker from "../ui/color-picker";
 
 const CreateNewLink = () => {
   const [isPending, startTransition] = useTransition();
@@ -38,6 +41,7 @@ const CreateNewLink = () => {
       toast.message(res.message);
     });
   };
+
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
@@ -70,36 +74,15 @@ const CreateNewLink = () => {
               placeholder="https://example.com"
             />
 
-            <div className="grid grid-cols-2 gap-4">
-              {/* <div className="space-y-2">
-                <Label htmlFor="icon">Icon (Emoji)</Label>
-                <Input
-                  id="icon"
-                  value={editingLink.icon}
-                  onChange={(e) =>
-                    setEditingLink({
-                      ...editingLink,
-                      icon: e.target.value,
-                    })
-                  }
-                  placeholder="🔗"
-                />
-              </div> */}
-              <div className="space-y-2">
-                <Label htmlFor="icon">Select icon</Label>
-                <IconPicker
-                  onValueChange={(value) => {
-                    form.setValue("icon", value);
-                  }}
-                  className="w-full"
-                />
-              </div>
+            <SelectIcon form={form} />
 
-              <LabelAndInput
-                name="color"
-                type="color"
-                title={"Color"}
-                form={form}
+            <div className="space-y-2">
+              <Label htmlFor="color">Color</Label>
+              <ColorPicker
+                color={form.getValues("color") ?? `hsl(0, 0%, 100%)`}
+                onChange={(newColor) => {
+                  form.setValue("color", newColor);
+                }}
               />
             </div>
             <Button disabled={isPending} className="w-full">

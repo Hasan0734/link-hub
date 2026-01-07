@@ -120,32 +120,32 @@ export const createLink = async (data: LinkSchemaType) => {
 //   }
 // };
 
-// export const deletePage = async (id: string) => {
-//   const session = await getAuth();
-//   const user = session?.user;
+export const deleteLink = async (id: string) => {
+  const session = await getAuth();
+  const user = session?.user;
 
-//   if (!user?.id) {
-//     return {
-//       status: false,
-//       message: "User not authenticated",
-//     };
-//   }
+  if (!user?.id) {
+    return {
+      status: false,
+      message: "User not authenticated",
+    };
+  }
 
-//   try {
-//     await db
-//       .delete(pages)
-//       .where(and(eq(pages.id, id), eq(pages.userId, user.id)));
+  try {
+    await db
+      .delete(links)
+      .where(and(eq(links.id, id), eq(links.userId, user.id)));
 
-//     revalidatePath("/pages");
+    revalidatePath("/links");
 
-//     return {
-//       status: true,
-//       message: "Page deleted successfully.",
-//     };
-//   } catch (error) {
-//     return {
-//       status: false,
-//       message: "Page delete failed.",
-//     };
-//   }
-// };
+    return {
+      status: true,
+      message: "Link deleted successfully.",
+    };
+  } catch (error) {
+    return {
+      status: false,
+      message: "Link delete failed.",
+    };
+  }
+};

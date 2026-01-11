@@ -1,4 +1,3 @@
-import React from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import { Skeleton } from "../ui/skeleton";
 import LinkSkeletonCard from "./LinkSkeletonCard";
@@ -8,10 +7,10 @@ const LinkSkeleton = () => {
     <Card className="border-primary/20 bg-card/50 backdrop-blur-sm shadow-2xl">
       <CardHeader>
         <CardTitle>
-          <Skeleton className="h-4 w-44 bg-muted-foreground"/>
+          <Skeleton className="h-4 w-44  bg-secondary/20"/>
           </CardTitle>
         <CardDescription>
-         <Skeleton className="h-5 w-52 bg-muted-foreground"/>
+         <Skeleton className="h-5 w-52  bg-secondary/20"/>
         </CardDescription>
       </CardHeader>
       <CardContent>

@@ -27,12 +27,11 @@ const CreateNewLink = () => {
   const [isPending, startTransition] = useTransition();
   const [isOpen, setIsOpen] = useState(false);
   // open={isDialogOpen} onOpenChange={setIsDialogOpen}
-  const form = useForm({ resolver: zodResolver(LinkSchema) });
+  const form = useForm({ resolver: zodResolver(LinkSchema), defaultValues:{icon: "website"} });
 
   const onSubmit = (data: LinkSchemaType) => {
-    console.log(data)
     startTransition(async () => {
-      return;
+      // return;
       const res = await createLink(data);
       if (res.status) {
         toast.success(res.message);

@@ -27,7 +27,7 @@ const ShortUrls = () => {
                   details="Create and manage short links with analytics"
                 />
 
-              <CreateNewUrl/>
+                <CreateNewUrl />
               </div>
               <Suspense fallback={<UrlsCardSkeleton />}>
                 <ShortLinkList />

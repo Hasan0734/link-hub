@@ -1,60 +1,8 @@
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-
-import {
-  Globe,
-  Plus,
-  Instagram,
-  Twitter,
-  Facebook,
-  Youtube,
-  Linkedin,
-  Github,
-  Mail,
-  Send,
-} from "lucide-react";
-
-import { Label } from "./ui/label";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Button } from "./ui/button";
-import {
-  IconBrandFacebook,
-  IconBrandGithub,
-  IconBrandInstagram,
-  IconBrandLinkedin,
-  IconBrandTelegram,
-  IconBrandTiktok,
-  IconBrandX,
-  IconBrandYoutube,
-  IconBrandPinterest,
-  IconBrandThreads,
-  IconBrandSoundcloud,
-  IconLayout,
-  IconMusic,
-} from "@tabler/icons-react";
+
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
-const icons = [
-  { name: "globe", icon: Globe },
-  { name: "instagram", icon: IconBrandInstagram },
-  { name: "facebook", icon: IconBrandFacebook },
-  { name: "youtube", icon: IconBrandYoutube },
-  { name: "linkedin", icon: IconBrandLinkedin },
-  { name: "github", icon: IconBrandGithub },
-  { name: "telegram", icon: IconBrandTelegram },
-  { name: "tiktok", icon: IconBrandTiktok },
-  { name: "x", icon: IconBrandX },
-  { name: "pinterest", icon: IconBrandPinterest },
-  { name: "threads", icon: IconBrandThreads },
-  { name: "soundCloud", icon: IconMusic },
-  { name: "website", icon: IconLayout },
-];
+import CustomDynamicIcon, { icons } from "./icons";
 
 interface SelectIconProps {
   [key: string]: any;
@@ -64,17 +12,24 @@ const SelectIcon = ({ form }: SelectIconProps) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="outline">Select a  icon</Button>
+        <Button variant="outline">
+          {(form.getValues("icon") && (
+            <>
+              <CustomDynamicIcon name={form.getValues("icon")} />{" "}
+              {form.getValues("icon")}
+            </>
+          )) ||
+            "Select a icon"}
+        </Button>
       </PopoverTrigger>
       <PopoverContent align="start" side="top" className="w-62">
         <div className="grid grid-cols-4 gap-3">
           {icons.map((iconOption) => {
             const IconComponent = iconOption.icon;
             return (
-              <Tooltip>
+              <Tooltip key={iconOption.name}>
                 <TooltipTrigger asChild>
                   <button
-                    key={iconOption.name}
                     type="button"
                     className={`p-2 rounded-md border transition-all hover:border-primary ${
                       form.watch("icon") === iconOption.name
@@ -127,3 +82,7 @@ const SelectIcon = ({ form }: SelectIconProps) => {
 };
 
 export default SelectIcon;
+
+
+
+// Jasminelopezpcs@gmail.com	Vision2026!

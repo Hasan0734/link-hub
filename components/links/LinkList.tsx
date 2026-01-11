@@ -12,7 +12,7 @@ const LinkList = async () => {
   const links = await getLinks();
 
   return (
-    <Card className="border-primary/20 bg-card/50 backdrop-blur-sm shadow-2xl">
+    <Card className=" border-primary/20 bg-card/50 backdrop-blur-sm shadow-2xl">
       <CardHeader>
         <CardTitle>Your Links ({links.data.length})</CardTitle>
         <CardDescription>

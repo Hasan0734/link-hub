@@ -5,11 +5,19 @@ import { Switch } from "@/components/ui/switch";
 import { deleteLink } from "@/features/links/link.actions";
 import { LinkData } from "@/lib/types";
 import { cn } from "@/lib/utils";
-import { Calendar, ChartBar, GripVertical, Icon, Lock, Pencil, Trash2 } from "lucide-react";
-import { DynamicIcon } from "lucide-react/dynamic";
+import {
+  Calendar,
+  ChartBar,
+  ExternalLink,
+  GripVertical,
+  Lock,
+  Pencil,
+  Trash2,
+} from "lucide-react";
 import { useTransition } from "react";
 import { toast } from "sonner";
 import { Spinner } from "../ui/spinner";
+import CustomDynamicIcon from "../icons";
 
 interface LinkCardProps {
   link: LinkData;
@@ -37,10 +45,12 @@ const LinkCard = ({ link }: LinkCardProps) => {
           blur: isDeleting,
         })}
       >
-        <div className="flex gap-4">
-          <Button variant="ghost" size="icon" className="cursor-grab">
-            <GripVertical className="w-4 h-4 text-muted-foreground" />
-          </Button>
+        <div className="flex flex-col sm:flex-row gap-4">
+          <div className="hidden sm:block">
+            <Button variant="ghost" size="icon" className="cursor-grab">
+              <GripVertical className="w-4 h-4 text-muted-foreground" />
+            </Button>
+          </div>
 
           <div className="grow">
             <div className="flex items-center gap-4">
@@ -49,24 +59,34 @@ const LinkCard = ({ link }: LinkCardProps) => {
                   "w-10 h-10 rounded-full flex items-center justify-center shrink-0 bg-primary/10"
                 )}
               >
-                <DynamicIcon
-                  style={{ color: link.color ?? "white" }}
-                  name={(link.icon || "link") as any}
-                />
+                {
+                  <CustomDynamicIcon
+                    name={link.icon}
+                    style={{ color: link.color ?? "white" }}
+                  />
+                }
               </div>
 
-              <div className="flex-1 min-w-0">
+              <div className="flex-1 min-w-0 space-y-1">
                 <h3 className="font-semibold truncate">{link.title}</h3>
+                <a className="block sm:hidden" href={link.url} target="_blank">
+                  <ExternalLink size={20} />
+                </a>
                 <a
                   href={link.url}
                   target="_blank"
-                  className="text-sm text-muted-foreground truncate hover:underline"
+                  className=" text-sm max-w-xs md:max-w-sm overflow-hidden text-muted-foreground truncate hover:underline hidden sm:inline-block"
                 >
                   {link.url}
                 </a>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="block sm:hidden">
+                <Button variant="ghost" size="icon" className="cursor-grab">
+                  <GripVertical className="w-4 h-4 text-muted-foreground" />
+                </Button>
+              </div>
+              <div className="hidden sm:flex items-center gap-2">
                 <Switch checked={!!link.isActive} />
                 <Button className="cursor-pointer" variant="ghost" size="icon">
                   <Pencil className="w-4 h-4" />
@@ -82,7 +102,7 @@ const LinkCard = ({ link }: LinkCardProps) => {
                 </Button>
               </div>
             </div>
-            <div className="pl-11 **:cursor-pointer">
+            <div className="flex items-center gap-2 flex-wrap  md:pl-11 **:cursor-pointer">
               <Button variant={"ghost"} size="icon" className="">
                 <Lock />
               </Button>
@@ -90,9 +110,23 @@ const LinkCard = ({ link }: LinkCardProps) => {
                 <Calendar />
               </Button>
               <Button variant={"ghost"} size="sm" className="">
-                <ChartBar />
-                0 Clicks
+                <ChartBar />0 Clicks
               </Button>
+              <div className="flex flex-wrap sm:hidden items-center gap-2">
+                <Switch checked={!!link.isActive} />
+                <Button className="cursor-pointer" variant="ghost" size="icon">
+                  <Pencil className="w-4 h-4" />
+                </Button>
+
+                <Button
+                  className="cursor-pointer"
+                  onClick={handleDeletePage}
+                  variant="ghost"
+                  size="icon"
+                >
+                  <Trash2 className="w-4 h-4 text-destructive" />
+                </Button>
+              </div>
             </div>
           </div>
         </div>

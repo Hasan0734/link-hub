@@ -1,20 +1,13 @@
 import * as z from 'zod';
-import slugify from 'slugify';
-
-const DOMAIN_REGEX =
-    /^(?!:\/\/)(?=.{1,253}$)(?!\-)(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,}$/;
-
-
 
 export const LinkSchema = z.object({
     title: z.string("Title is requried!.")
         .min(4, "At least 4 characters.")
         .max(100),
-
     url: z.string().trim()
         .url("Invalid URL format.")
         .toLowerCase()
-        .nullable().optional(),
+        .nullable(),
     icon: z.string().optional().nullable(),
     color: z.string().optional().nullable(),
     isActive: z.boolean().optional().nullable().transform(v => !!v),

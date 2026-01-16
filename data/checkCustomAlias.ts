@@ -1,8 +1,8 @@
 "use server";
-import { shortLinks } from "./../db/schema";
+import { shortLinks } from "../db/schema";
 import { db } from "@/db";
 import { eq } from "drizzle-orm";
-import { getAuth } from "./getAuth";
+import { getAuth } from "../lib/getAuth";
 
 export const checkCustomAlias = async (alias: string) => {
   if (alias.length <= 8) {

@@ -22,12 +22,15 @@ import { toast } from "sonner";
 import { createLink } from "@/features/links/link.actions";
 import SelectIcon from "../SelectIcon";
 import ColorPicker from "../ui/color-picker";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 
 const CreateNewLink = () => {
   const [isPending, startTransition] = useTransition();
   const [isOpen, setIsOpen] = useState(false);
-  // open={isDialogOpen} onOpenChange={setIsDialogOpen}
-  const form = useForm({ resolver: zodResolver(LinkSchema), defaultValues:{icon: "website"} });
+  const form = useForm({
+    resolver: zodResolver(LinkSchema),
+    defaultValues: { icon: "website" },
+  });
 
   const onSubmit = (data: LinkSchemaType) => {
     startTransition(async () => {
@@ -88,6 +91,7 @@ const CreateNewLink = () => {
                 />
               </div>
             </div>
+
             <Button disabled={isPending} className="w-full">
               {isPending && <Spinner />} Submit Link
             </Button>

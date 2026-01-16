@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/shadcn-io/color-picker";
 
 const Appearance = () => {
+  
   const themes = [
     { name: "Light", bg: "bg-white", accent: "bg-slate-900" },
     { name: "Dark", bg: "bg-slate-900", accent: "bg-white" },

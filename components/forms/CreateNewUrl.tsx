@@ -27,7 +27,7 @@ import * as z from "zod";
 import { createShortLink } from "@/features/shortLink/shortLink.actions";
 import { toast } from "sonner";
 import { Spinner } from "../ui/spinner";
-import { checkCustomAlias } from "@/lib/checkCustomAlias";
+import { checkCustomAlias } from "@/data/checkCustomAlias";
 import { formatDate } from "@/lib/utils";
 
 interface Availability {

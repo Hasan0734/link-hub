@@ -1,6 +1,6 @@
 "use server";
 import { db } from "@/db";
-import { links, pages } from "@/db/schema";
+import { links } from "@/db/schema";
 import { and, eq } from "drizzle-orm";
 import { getAuth } from "@/lib/getAuth";
 import { revalidatePath } from "next/cache";
@@ -55,70 +55,70 @@ export const createLink = async (data: LinkSchemaType) => {
   }
 };
 
-// export const updatePage = async (
-//   data: PageSchemaType,
-//   id: string
-// ) => {
-//   const validatedFields = PageSchema.safeParse(data);
+export const updateLink = async (
+  data: LinkSchemaType,
+  id: string
+) => {
+  const validatedFields = LinkSchema.safeParse(data);
 
-//   if (!validatedFields.success) {
-//     const errors = validatedFields.error.flatten().fieldErrors;
+  if (!validatedFields.success) {
+    const errors = validatedFields.error.flatten().fieldErrors;
 
-//     return {
-//       success: false,
-//       message: "Field validation failed",
-//       fieldErrors: errors,
-//     };
-//   }
+    return {
+      success: false,
+      message: "Field validation failed",
+      fieldErrors: errors,
+    };
+  }
 
-//   const session = await getAuth();
-//   const user = session?.user;
+  const session = await getAuth();
+  const user = session?.user;
 
-//   if (!user?.id) {
-//     return {
-//       status: false,
-//       message: "User not authenticated",
-//     };
-//   }
+  if (!user?.id) {
+    return {
+      status: false,
+      message: "User not authenticated",
+    };
+  }
 
-//   try {
+  try {
 
-//     const findItem = await db.query.pages.findFirst({
-//       where: eq(pages.id, id),
-//     });
+    const findItem = await db.query.links.findFirst({
+      where: eq(links.id, id),
+    });
 
-//     if (!findItem) {
-//       return {
-//         status: true,
-//         message: "Page doesn't not exist.",
-//       };
-//     }
+    if (!findItem) {
+      return {
+        status: true,
+        message: "Link doesn't not exist.",
+      };
+    }
 
-//     const values = {
-//       title: data.title,
-//       slug: data.slug,
-//       customDomain: data?.customDomain,
-//       isPublic: data?.isPublic
-//     };
+    const values = {
+      title: data.title,
+      url: data.url as string,
+      icon: data.icon,
+      color: data.color
+    };
 
-//     await db
-//       .update(pages)
-//       .set({ ...values })
-//       .where(and(eq(pages.userId, user.id), eq(pages.id, id)));
+    await db
+      .update(links)
+      .set({ ...values })
+      .where(and(eq(links.userId, user.id), eq(links.id, id)));
 
-//     revalidatePath("/pages");
+    revalidatePath("/links");
 
-//     // 4. Return a cleaner success object.
-//     return { status: true, message: "Page updated successfully 🎉" };
-//   } catch (error: any) {
-//     console.error("Error updating page:", error);
-//     return {
-//       status: false,
-//       message: "Failed to update page. A server error occurred.",
-//       error: error.message,
-//     };
-//   }
-// };
+    // 4. Return a cleaner success object.
+    return { status: true, message: "Link updated successfully 🎉" };
+  } catch (error: any) {
+    console.error("Error updating link:", error);
+    return {
+      status: false,
+      message: "Failed to update link. A server error occurred.",
+      error: error.message,
+    };
+  }
+};
 
 export const deleteLink = async (id: string) => {
   const session = await getAuth();

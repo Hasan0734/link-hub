@@ -1,7 +1,7 @@
-import { shortLinks } from "./../db/schema";
+import { shortLinks } from "../db/schema";
 import { db } from "@/db";
 import { desc, eq } from "drizzle-orm";
-import { getAuth } from "./getAuth";
+import { getAuth } from "../lib/getAuth";
 
 export const getShortLinks = async () => {
   const session = await getAuth();

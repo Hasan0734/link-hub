@@ -1,29 +1,20 @@
 import AppHeader from "@/components/AppHeader";
 import { Suspense } from "react";
 import DashboardTitle from "@/components/DashboardTitle";
-import PageGrid from "@/components/pages/PageGrid";
-import PageFormDialog from "@/components/pages/PageFormDialog";
 import PageCardSkeleton from "@/components/pages/PageCardSkeleton";
-import { getAuth } from "@/lib/getAuth";
+import PageLinkList from "@/components/pages/PageLlinkList";
+import BackNavigation from "@/components/BackNavigation";
 
-const Pages = async () => {
-
-    const session = await getAuth();
-  
-    if (!session?.user.id) {
-      return null;
-    }
-
-  const handleAddPage = () => {
-    // setEditingPage({
-    //   id: "",
-    //   title: "",
-    //   slug: "",
-    //   customDomain: "",
-    //   isPublic: true,
-    // });
-    // setIsDialogOpen(true);
+interface PageProps {
+  params: {
+    pageSlug: string;
   };
+}
+
+const DetailPage = async ({ params }: PageProps) => {
+  const { pageSlug } = await params;
+
+  console.log(pageSlug);
 
   return (
     <>
@@ -33,16 +24,18 @@ const Pages = async () => {
           <div className="flex flex-col gap-5 py-4 md:gap-6 md:py-6 px-4 lg:px-6">
             <div className="space-y-6">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center justify-between">
-                <DashboardTitle
-                  title="Pages Management"
-                  details="Create and manage multiple profile pages"
-                />
-
-                <PageFormDialog />
+                <div className="flex  gap-3">
+                  <BackNavigation />
+                  <DashboardTitle
+                    title="Page Details Management"
+                    details="Manage your page details add, remove, edit links."
+                  />
+                </div>
+                {/* <PageFormDialog /> */}
               </div>
 
               <Suspense fallback={<PageCardSkeleton />}>
-                <PageGrid />
+                <PageLinkList />
               </Suspense>
             </div>
           </div>
@@ -52,4 +45,4 @@ const Pages = async () => {
   );
 };
 
-export default Pages;
+export default DetailPage;

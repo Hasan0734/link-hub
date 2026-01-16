@@ -28,7 +28,7 @@ import { Form } from "../ui/form";
 import { DatePicker } from "../ui/date-picker";
 import { Button } from "../ui/button";
 import { useDebounceCallback } from "@/hooks/use-debounce-callback";
-import { checkCustomAlias } from "@/lib/checkCustomAlias";
+import { checkCustomAlias } from "@/data/checkCustomAlias";
 import { updateShortLink } from "@/features/shortLink/shortLink.actions";
 import { toast } from "sonner";
 import { formatDate } from "@/lib/utils";

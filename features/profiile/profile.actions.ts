@@ -7,7 +7,7 @@ import { UserProfileSchema, UserProfileSchemaType } from "./profile.schema";
 import { getAuth } from "@/lib/getAuth";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
-import { getProfileData } from "@/lib/getProfile";
+import { getProfileData } from "@/data/getProfile";
 import { uploadImage } from "@/lib/uploadImage";
 
 export const updateProfile = async (data: UserProfileSchemaType) => {

@@ -1,4 +1,4 @@
-import LinkCard from "./LinkCard";
+import LinkCard from "../links/LinkCard";
 import {
   Card,
   CardHeader,
@@ -8,7 +8,7 @@ import {
 } from "../ui/card";
 import { getLinks } from "@/data/getLinks";
 
-const LinkList = async () => {
+const PageLinkList = async () => {
   const links = await getLinks();
 
   return (
@@ -30,4 +30,4 @@ const LinkList = async () => {
   );
 };
 
-export default LinkList;
+export default PageLinkList;

@@ -11,13 +11,14 @@ import {
   ExternalLink,
   GripVertical,
   Lock,
-  Pencil,
-  Trash2,
 } from "lucide-react";
-import { useTransition } from "react";
+
+import { useState, useTransition } from "react";
 import { toast } from "sonner";
 import { Spinner } from "../ui/spinner";
 import CustomDynamicIcon from "../icons";
+import EditLinkDialog from "./EditLinkDialog";
+import LinkCardAction from "./LinkCardAction";
 
 interface LinkCardProps {
   link: LinkData;
@@ -25,13 +26,14 @@ interface LinkCardProps {
 
 const LinkCard = ({ link }: LinkCardProps) => {
   const [isDeleting, startDelete] = useTransition();
+  const [isEditing, startEditing] = useTransition();
+  const [editDialog, setEditDialog] = useState(false);
+
   const handleDeletePage = () => {
     startDelete(async () => {
       const res = await deleteLink(link.id);
-
       if (res.status) {
         toast.success(res.message);
-
         return;
       }
       toast.error(res.message);
@@ -42,7 +44,7 @@ const LinkCard = ({ link }: LinkCardProps) => {
     <Card className="relative  backdrop-blur-sm p-4 shadow-sm hover:shadow-md  bg-accent/20 hover:bg-accent/30 transition-all duration-200">
       <CardContent
         className={cn("px-0 relative z-0 space-y-4", {
-          blur: isDeleting,
+          "blur": isDeleting || isEditing,
         })}
       >
         <div className="flex flex-col sm:flex-row gap-4">
@@ -52,7 +54,7 @@ const LinkCard = ({ link }: LinkCardProps) => {
             </Button>
           </div>
 
-          <div className="grow">
+          <div className="grow space-y-3">
             <div className="flex items-center gap-4">
               <div
                 className={cn(
@@ -86,59 +88,49 @@ const LinkCard = ({ link }: LinkCardProps) => {
                   <GripVertical className="w-4 h-4 text-muted-foreground" />
                 </Button>
               </div>
-              <div className="hidden sm:flex items-center gap-2">
-                <Switch checked={!!link.isActive} />
-                <Button className="cursor-pointer" variant="ghost" size="icon">
-                  <Pencil className="w-4 h-4" />
-                </Button>
-
-                <Button
-                  className="cursor-pointer"
-                  onClick={handleDeletePage}
-                  variant="ghost"
-                  size="icon"
-                >
-                  <Trash2 className="w-4 h-4 text-destructive" />
-                </Button>
-              </div>
+              <LinkCardAction
+                className={"hidden sm:flex"}
+                link={link}
+                handleDeletePage={handleDeletePage}
+                setEditDialog={setEditDialog}
+              />
             </div>
             <div className="flex items-center gap-2 flex-wrap  md:pl-11 **:cursor-pointer">
-              <Button variant={"ghost"} size="icon" className="">
+              <Button variant={"outline"} size="icon-sm" className="">
                 <Lock />
               </Button>
-              <Button variant={"ghost"} size="icon" className="">
+              <Button variant={"outline"} size="icon-sm" className="">
                 <Calendar />
               </Button>
-              <Button variant={"ghost"} size="sm" className="">
+              <Button variant={"outline"} size="sm" className="">
                 <ChartBar />0 Clicks
               </Button>
-              <div className="flex flex-wrap sm:hidden items-center gap-2">
-                <Switch checked={!!link.isActive} />
-                <Button className="cursor-pointer" variant="ghost" size="icon">
-                  <Pencil className="w-4 h-4" />
-                </Button>
-
-                <Button
-                  className="cursor-pointer"
-                  onClick={handleDeletePage}
-                  variant="ghost"
-                  size="icon"
-                >
-                  <Trash2 className="w-4 h-4 text-destructive" />
-                </Button>
-              </div>
+              <LinkCardAction
+                link={link}
+                handleDeletePage={handleDeletePage}
+                setEditDialog={setEditDialog}
+                className="flex flex-wrap sm:hidden"
+              />
             </div>
           </div>
         </div>
       </CardContent>
 
-      {isDeleting && (
+      {(isDeleting || isEditing) && (
         <div className="absolute z-10 w-full h-full bg-accent/10 top-0 rounded-xl flex items-center justify-center gap-2 brightness-75">
           <Spinner />
           {isDeleting && "Deleting..."}
-          {/* {isEditing && "Editing..."} */}
+          {isEditing && "Editing..."}
         </div>
       )}
+
+      <EditLinkDialog
+        link={link}
+        isOpen={editDialog}
+        setIsOpen={setEditDialog}
+        isEditing={isEditing}
+        startEditing={startEditing}
+      />
     </Card>
   );
 };

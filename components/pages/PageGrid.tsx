@@ -1,7 +1,7 @@
 import PageCard from "./PageCard";
-import { getPages } from "@/lib/getPages";
 
 import EmptyPage from "./EmptyPage";
+import { getPages } from "@/data/getPages";
 
 const PageGrid = async () => {
   const { status, data } = await getPages();
@@ -12,7 +12,7 @@ const PageGrid = async () => {
 
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         {data.map((page) => (
           <PageCard key={page.id} page={page} />
         ))}

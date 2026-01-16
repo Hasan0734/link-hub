@@ -16,6 +16,7 @@ import { deletePage, updatePage } from "@/features/page/page.actions";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import EditPageDialog from "./EditPageDialog";
+import Link from "next/link";
 
 const PageCard = ({ page }: { page: PageData }) => {
   const [isDeleting, startDelete] = useTransition();
@@ -63,7 +64,14 @@ const PageCard = ({ page }: { page: PageData }) => {
         <div className="flex items-start justify-between">
           <div>
             <CardTitle className="text-xl capitalize">{page.title}</CardTitle>
-            <CardDescription className="mt-2">/{page.slug}</CardDescription>
+            <CardDescription className="mt-2">
+              <Link
+                className="hover:underline"
+                href={"/dashboard/pages/" + page.slug}
+              >
+                /{page.slug}
+              </Link>
+            </CardDescription>
           </div>
           <Badge variant={page.isPublic ? "default" : "secondary"}>
             {page.isPublic ? "Public" : "Private"}
@@ -76,13 +84,6 @@ const PageCard = ({ page }: { page: PageData }) => {
           </div>
         )}
 
-        <div className="flex items-center gap-2">
-          <Switch
-            checked={page.isPublic}
-            onCheckedChange={() => handleTogglePublic(page.id)}
-          />
-          <span className="text-sm text-muted-foreground">Public</span>
-        </div>
         <div className="flex gap-2">
           <Button
             variant="outline"
@@ -94,13 +95,21 @@ const PageCard = ({ page }: { page: PageData }) => {
             Edit
           </Button>
 
+          <div className="flex items-center gap-2">
+            <Switch
+              checked={page.isPublic}
+              onCheckedChange={() => handleTogglePublic(page.id)}
+            />
+            <span className="text-sm text-muted-foreground">Public</span>
+          </div>
+
           <Button variant="link" size="sm" asChild>
             <a
               href={`/username/${page.slug}`}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <ExternalLink  />
+              <ExternalLink />
             </a>
           </Button>
           <Button
@@ -109,7 +118,7 @@ const PageCard = ({ page }: { page: PageData }) => {
             onClick={() => handleDeletePage()}
             className="text-destructive"
           >
-            <Trash2  />
+            <Trash2 />
           </Button>
         </div>
       </CardContent>

@@ -2,7 +2,7 @@ import AppHeader from "@/components/AppHeader";
 import DashboardTitle from "@/components/DashboardTitle";
 import ProfileForm from "@/components/forms/ProfileForm";
 import { getAuth } from "@/lib/getAuth";
-import { getProfileData } from "@/lib/getProfile";
+import { getProfileData } from "@/data/getProfile";
 import { ProfileDataType } from "@/lib/types";
 
 const ProfilePage = async () => {

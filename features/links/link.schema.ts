@@ -10,7 +10,7 @@ export const LinkSchema = z.object({
         .nullable(),
     icon: z.string().optional().nullable(),
     color: z.string().optional().nullable(),
-    isActive: z.boolean().optional().nullable().transform(v => !!v),
+    isActive: z.boolean().transform(v => !!v),
     displayOrder: z.number().optional().nullable(),
 
 

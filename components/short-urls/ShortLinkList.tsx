@@ -1,4 +1,4 @@
-import { getShortLinks } from "@/lib/getShortLinks";
+import { getShortLinks } from "@/data/getShortLinks";
 import UrlsCard from "./UrlsCard";
 import ShortLinkEmpty from "./ShortLinkEmpty";
 

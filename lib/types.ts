@@ -31,7 +31,7 @@ export interface ShortUrl {
 
 export interface PageData {
   id: string;
-  userId:string;
+  userId: string;
   title: string;
   slug: string;
   isPublic: boolean;
@@ -39,7 +39,7 @@ export interface PageData {
   displayOrder: number | null;
   themeId: string | null;
   createdAt: Date;
-  updatedAt:Date;
+  updatedAt: Date;
 }
 
 export interface LinkData {
@@ -52,5 +52,21 @@ export interface LinkData {
   color: string | null;
   isActive: boolean | null;
   createdAt: Date;
-  updatedAt: Date;  
+  updatedAt: Date;
+}
+
+export interface ThemeTypes {
+  id: string;
+  title: string;
+  featureFlag: string | null;
+  visibility: string;
+  defaultFont: string;
+  editable: boolean;
+  category: string;
+  assetUrlWebp: string;
+  assetUrl: string;
+  baseThemeVisibility: string;
+  thumbnailUrl: string;
+  isBaseThemePro: string;
+  __typename: string
 }

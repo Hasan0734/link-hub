@@ -3,12 +3,14 @@
 const DashboardTitle = ({
   title,
   details,
+  className
 }: {
   title: string;
   details: string;
+  className?:string;
 }) => {
   return (
-    <div>
+    <div className={className}>
       {title && (
         <h1 className="text-xl md:text-4xl font-bold text-primary">
           {title}

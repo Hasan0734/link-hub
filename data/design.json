@@ -1,0 +1,2272 @@
+{
+    "data": {
+        "appearanceOptions": {
+            "themes": [
+                {
+                    "id": "agate",
+                    "title": "Agate",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "defaultFont": "link sans product",
+                    "editable": true,
+                    "category": "customizable",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/static/linktree_theme/agate/02661a08-a018-44fb-bc07-4ed1a50b2e4f_background-image-20250827-180705.png",
+                    "assetUrl": "https://assets.production.linktr.ee/static/linktree_theme/agate/02661a08-a018-44fb-bc07-4ed1a50b2e4f_background-image-20250827-180705.png",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/static/linktree_theme/agate/f9fdcbe4-54ec-4073-8d64-9e08c4fcac9a_thumbnail-url-20250827-180706.webp",
+                    "isBaseThemePro": true,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "air",
+                    "title": "Air",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "defaultFont": "link sans product",
+                    "editable": true,
+                    "category": "customizable",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/themes/air.webp",
+                    "assetUrl": "https://assets.production.linktr.ee/themes/air.webp",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/themes/air.webp",
+                    "isBaseThemePro": false,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "astrid",
+                    "title": "Astrid",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "defaultFont": "link sans product",
+                    "editable": true,
+                    "category": "customizable",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/static/linktree_theme/astrid/076ad6d0-d737-46ce-9814-a14759d02fb0_background-image-20250827-180650.png",
+                    "assetUrl": "https://assets.production.linktr.ee/static/linktree_theme/astrid/076ad6d0-d737-46ce-9814-a14759d02fb0_background-image-20250827-180650.png",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/static/linktree_theme/astrid/fbc1b1cf-3389-447f-b1ca-6e8d63a78600_thumbnail-url-20250827-180650.webp",
+                    "isBaseThemePro": true,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "aura",
+                    "title": "Aura",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "defaultFont": "epilogue",
+                    "editable": true,
+                    "category": "customizable",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/static/linktree_theme/aura/10cc7f0e-4c68-4a6f-add6-c250d9716cce_thumbnail-url-20250816-003036.webp",
+                    "assetUrl": "https://assets.production.linktr.ee/static/linktree_theme/aura/10cc7f0e-4c68-4a6f-add6-c250d9716cce_thumbnail-url-20250816-003036.webp",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/static/linktree_theme/aura/10cc7f0e-4c68-4a6f-add6-c250d9716cce_thumbnail-url-20250816-003036.webp",
+                    "isBaseThemePro": true,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "bliss",
+                    "title": "Bliss",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "defaultFont": "manrope",
+                    "editable": true,
+                    "category": "customizable",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/static/linktree_theme/bliss/028524ac-8fa7-41fb-9649-84cc827fa54e_thumbnail-url-20250816-003048.webp",
+                    "assetUrl": "https://assets.production.linktr.ee/static/linktree_theme/bliss/028524ac-8fa7-41fb-9649-84cc827fa54e_thumbnail-url-20250816-003048.webp",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/static/linktree_theme/bliss/028524ac-8fa7-41fb-9649-84cc827fa54e_thumbnail-url-20250816-003048.webp",
+                    "isBaseThemePro": true,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "blocks",
+                    "title": "Blocks",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "defaultFont": "oxanium",
+                    "editable": true,
+                    "category": "customizable",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/themes/blocks.webp",
+                    "assetUrl": "https://assets.production.linktr.ee/themes/blocks.webp",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/themes/blocks.webp",
+                    "isBaseThemePro": false,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "bloom-v2",
+                    "title": "Bloom",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "defaultFont": "poppins",
+                    "editable": true,
+                    "category": "customizable",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/themes/bloom-v2.mp4",
+                    "assetUrl": "https://assets.production.linktr.ee/themes/bloom-v2.mp4",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/themes/bloom-v2.mp4",
+                    "isBaseThemePro": true,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "breeze",
+                    "title": "Breeze",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "defaultFont": "crimson text",
+                    "editable": true,
+                    "category": "customizable",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/themes/breeze.mp4",
+                    "assetUrl": "https://assets.production.linktr.ee/themes/breeze.mp4",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/themes/breeze.mp4",
+                    "isBaseThemePro": true,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "encore",
+                    "title": "Encore",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "defaultFont": "space grotesk",
+                    "editable": true,
+                    "category": "customizable",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/static/linktree_theme/encore/7f17af30-fbf3-43a3-9a01-c505bfcf2bb7_thumbnail-url-20250816-002951.webp",
+                    "assetUrl": "https://assets.production.linktr.ee/static/linktree_theme/encore/7f17af30-fbf3-43a3-9a01-c505bfcf2bb7_thumbnail-url-20250816-002951.webp",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/static/linktree_theme/encore/7f17af30-fbf3-43a3-9a01-c505bfcf2bb7_thumbnail-url-20250816-002951.webp",
+                    "isBaseThemePro": true,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "grid",
+                    "title": "Grid",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "defaultFont": "link sans product",
+                    "editable": true,
+                    "category": "customizable",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/static/linktree_theme/grid/67dfb990-5e55-4ad3-99ae-1f911064aed0_thumbnail-url-20250827-180725.png",
+                    "assetUrl": "https://assets.production.linktr.ee/static/linktree_theme/grid/67dfb990-5e55-4ad3-99ae-1f911064aed0_thumbnail-url-20250827-180725.png",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/static/linktree_theme/grid/67dfb990-5e55-4ad3-99ae-1f911064aed0_thumbnail-url-20250827-180725.png",
+                    "isBaseThemePro": false,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "groove",
+                    "title": "Groove",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "defaultFont": "link sans product",
+                    "editable": true,
+                    "category": "customizable",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/static/linktree_theme/groove/895c17c8-d012-4fb3-9a35-ef49d83f7360_background-image-20250827-180659.png",
+                    "assetUrl": "https://assets.production.linktr.ee/static/linktree_theme/groove/895c17c8-d012-4fb3-9a35-ef49d83f7360_background-image-20250827-180659.png",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/static/linktree_theme/groove/3ad7a2e4-c474-4b10-be11-58d522ba6e3c_thumbnail-url-20250827-180659.webp",
+                    "isBaseThemePro": true,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "haven",
+                    "title": "Haven",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "defaultFont": "inter regular",
+                    "editable": true,
+                    "category": "customizable",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/static/linktree_theme/haven/f3714d79-ebbb-47aa-849e-ad423cf75d9c_thumbnail-url-20250816-002911.webp",
+                    "assetUrl": "https://assets.production.linktr.ee/static/linktree_theme/haven/f3714d79-ebbb-47aa-849e-ad423cf75d9c_thumbnail-url-20250816-002911.webp",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/static/linktree_theme/haven/f3714d79-ebbb-47aa-849e-ad423cf75d9c_thumbnail-url-20250816-002911.webp",
+                    "isBaseThemePro": true,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "lake",
+                    "title": "Lake",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "defaultFont": "link sans product",
+                    "editable": true,
+                    "category": "customizable",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/themes/lake.webp",
+                    "assetUrl": "https://assets.production.linktr.ee/themes/lake.webp",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/themes/lake.webp",
+                    "isBaseThemePro": false,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "mineral",
+                    "title": "Mineral",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "defaultFont": "space mono",
+                    "editable": true,
+                    "category": "customizable",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/themes/mineral.webp",
+                    "assetUrl": "https://assets.production.linktr.ee/themes/mineral.webp",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/themes/mineral.webp",
+                    "isBaseThemePro": false,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "nourish",
+                    "title": "Nourish",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "defaultFont": "manrope",
+                    "editable": true,
+                    "category": "customizable",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/static/linktree_theme/nourish/0acf5eb4-6122-41e3-9951-a2d15a07dead_thumbnail-url-20250816-003009.webp",
+                    "assetUrl": "https://assets.production.linktr.ee/static/linktree_theme/nourish/0acf5eb4-6122-41e3-9951-a2d15a07dead_thumbnail-url-20250816-003009.webp",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/static/linktree_theme/nourish/0acf5eb4-6122-41e3-9951-a2d15a07dead_thumbnail-url-20250816-003009.webp",
+                    "isBaseThemePro": true,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "rise",
+                    "title": "Rise",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "defaultFont": "link sans product",
+                    "editable": true,
+                    "category": "customizable",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/static/linktree_theme/rise/0d25b244-da5b-4b8b-bd8b-909f4eab9e2d_thumbnail-url-20250827-180720.png",
+                    "assetUrl": "https://assets.production.linktr.ee/static/linktree_theme/rise/0d25b244-da5b-4b8b-bd8b-909f4eab9e2d_thumbnail-url-20250827-180720.png",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/static/linktree_theme/rise/0d25b244-da5b-4b8b-bd8b-909f4eab9e2d_thumbnail-url-20250827-180720.png",
+                    "isBaseThemePro": false,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "sweat",
+                    "title": "Sweat",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "defaultFont": "epilogue",
+                    "editable": true,
+                    "category": "customizable",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/static/linktree_theme/sweat/2a815e51-986d-4150-8d4f-6c26aef7574e_thumbnail-url-20250816-002925.webp",
+                    "assetUrl": "https://assets.production.linktr.ee/static/linktree_theme/sweat/2a815e51-986d-4150-8d4f-6c26aef7574e_thumbnail-url-20250816-002925.webp",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/static/linktree_theme/sweat/2a815e51-986d-4150-8d4f-6c26aef7574e_thumbnail-url-20250816-002925.webp",
+                    "isBaseThemePro": true,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "tress",
+                    "title": "Tress",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "defaultFont": "poppins",
+                    "editable": true,
+                    "category": "customizable",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/static/linktree_theme/tress/961edaad-c7d2-4d3c-8e54-df011598234c_thumbnail-url-20250816-003023.webp",
+                    "assetUrl": "https://assets.production.linktr.ee/static/linktree_theme/tress/961edaad-c7d2-4d3c-8e54-df011598234c_thumbnail-url-20250816-003023.webp",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/static/linktree_theme/tress/961edaad-c7d2-4d3c-8e54-df011598234c_thumbnail-url-20250816-003023.webp",
+                    "isBaseThemePro": true,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "twilight",
+                    "title": "Twilight",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "defaultFont": "link sans product",
+                    "editable": true,
+                    "category": "customizable",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/static/linktree_theme/twilight/e37534ea-c686-46f6-a5ee-bf4883cac31b_thumbnail-url-20250827-180715.png",
+                    "assetUrl": "https://assets.production.linktr.ee/static/linktree_theme/twilight/e37534ea-c686-46f6-a5ee-bf4883cac31b_thumbnail-url-20250827-180715.png",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/static/linktree_theme/twilight/e37534ea-c686-46f6-a5ee-bf4883cac31b_thumbnail-url-20250827-180715.png",
+                    "isBaseThemePro": false,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "vox",
+                    "title": "Vox",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "defaultFont": "red hat display",
+                    "editable": true,
+                    "category": "customizable",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/static/linktree_theme/vox/8ccd3769-0d5f-4e97-9298-cd0b1f19dd5a_thumbnail-url-20250816-002937.png",
+                    "assetUrl": "https://assets.production.linktr.ee/static/linktree_theme/vox/8ccd3769-0d5f-4e97-9298-cd0b1f19dd5a_thumbnail-url-20250816-002937.png",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/static/linktree_theme/vox/8ccd3769-0d5f-4e97-9298-cd0b1f19dd5a_thumbnail-url-20250816-002937.png",
+                    "isBaseThemePro": true,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "billie-eilish-superfan",
+                    "title": "Billie Eilish",
+                    "featureFlag": null,
+                    "visibility": "UNLOCK",
+                    "defaultFont": "archivo black",
+                    "editable": false,
+                    "category": "curated",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/themes/billie-eilish-superfan.mp4",
+                    "assetUrl": "https://assets.production.linktr.ee/themes/billie-eilish-superfan.mp4",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/themes/billie-eilish-superfan.mp4",
+                    "isBaseThemePro": false,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "daniel-triendl",
+                    "title": "Daniel Triendl",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "defaultFont": "link sans product",
+                    "editable": false,
+                    "category": "curated",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/themes/daniel-triendl.webp",
+                    "assetUrl": "https://assets.production.linktr.ee/themes/daniel-triendl.webp",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/themes/daniel-triendl.webp",
+                    "isBaseThemePro": false,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "luke-john-matthew-arnold",
+                    "title": "Luke John Matthew Arnold",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "defaultFont": "link sans product",
+                    "editable": false,
+                    "category": "curated",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/themes/luke-john-matthew-arnold.webp",
+                    "assetUrl": "https://assets.production.linktr.ee/themes/luke-john-matthew-arnold.webp",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/themes/luke-john-matthew-arnold.webp",
+                    "isBaseThemePro": false,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "olivia-rodrigo-guts",
+                    "title": "Olivia Rodrigo",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "defaultFont": "special elite",
+                    "editable": false,
+                    "category": "curated",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/themes/olivia-rodrigo-guts.mp4",
+                    "assetUrl": "https://assets.production.linktr.ee/themes/olivia-rodrigo-guts.mp4",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/themes/olivia-rodrigo-guts.mp4",
+                    "isBaseThemePro": false,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "selena-gomez-benny-blanco",
+                    "title": "Selena + benny",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "defaultFont": "inter regular",
+                    "editable": false,
+                    "category": "curated",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/themes/selena-gomez-benny-blanco.mp4",
+                    "assetUrl": "https://assets.production.linktr.ee/themes/selena-gomez-benny-blanco.mp4",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/themes/selena-gomez-benny-blanco.mp4",
+                    "isBaseThemePro": false,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "starry-night",
+                    "title": "Starry Night",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "defaultFont": "space mono",
+                    "editable": false,
+                    "category": "curated",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/themes/starry-night.mp4",
+                    "assetUrl": "https://assets.production.linktr.ee/themes/starry-night.mp4",
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": "https://assets.production.linktr.ee/themes/starry-night.mp4",
+                    "isBaseThemePro": true,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "billie-eilish-general",
+                    "title": "Billie Eilish General",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "defaultFont": "dm sans",
+                    "editable": true,
+                    "category": "",
+                    "assetUrlWebp": null,
+                    "assetUrl": null,
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": null,
+                    "isBaseThemePro": false,
+                    "__typename": "AppearanceThemeOption"
+                },
+                {
+                    "id": "confetti",
+                    "title": "Confetti",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "defaultFont": "quicksand",
+                    "editable": false,
+                    "category": "",
+                    "assetUrlWebp": null,
+                    "assetUrl": null,
+                    "baseThemeVisibility": "PUBLIC",
+                    "thumbnailUrl": null,
+                    "isBaseThemePro": true,
+                    "__typename": "AppearanceThemeOption"
+                }
+            ],
+            "backgrounds": [
+                {
+                    "id": "flat",
+                    "title": "Fill",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": null,
+                    "subOptions": null,
+                    "__typename": "AppearanceBackgroundOption"
+                },
+                {
+                    "id": "gradient",
+                    "title": "Gradient",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": null,
+                    "subOptions": [
+                        {
+                            "title": "Gradient",
+                            "options": [
+                                {
+                                    "id": "colorup",
+                                    "title": "Up",
+                                    "featureFlag": null,
+                                    "visibility": "FULL",
+                                    "assetUrl": "",
+                                    "__typename": "AppearanceBackgroundSubOptionOptions"
+                                },
+                                {
+                                    "id": "colordown",
+                                    "title": "Down",
+                                    "featureFlag": null,
+                                    "visibility": "FULL",
+                                    "assetUrl": "",
+                                    "__typename": "AppearanceBackgroundSubOptionOptions"
+                                },
+                                {
+                                    "id": "gradientradial",
+                                    "title": "Radial",
+                                    "featureFlag": null,
+                                    "visibility": "PREVIEW",
+                                    "assetUrl": "",
+                                    "__typename": "AppearanceBackgroundSubOptionOptions"
+                                },
+                                {
+                                    "id": "gradientstill",
+                                    "title": "None",
+                                    "featureFlag": null,
+                                    "visibility": "FULL",
+                                    "assetUrl": "",
+                                    "__typename": "AppearanceBackgroundSubOptionOptions"
+                                },
+                                {
+                                    "id": "gradientanimated",
+                                    "title": "Animated",
+                                    "featureFlag": null,
+                                    "visibility": "PREVIEW",
+                                    "assetUrl": "",
+                                    "__typename": "AppearanceBackgroundSubOptionOptions"
+                                }
+                            ],
+                            "__typename": "AppearanceBackgroundSubOptions"
+                        }
+                    ],
+                    "__typename": "AppearanceBackgroundOption"
+                },
+                {
+                    "id": "blur",
+                    "title": "Blur",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": null,
+                    "subOptions": null,
+                    "__typename": "AppearanceBackgroundOption"
+                },
+                {
+                    "id": "pattern",
+                    "title": "Pattern",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": null,
+                    "subOptions": [
+                        {
+                            "title": "Pattern",
+                            "options": [
+                                {
+                                    "id": "grid",
+                                    "title": "Grid",
+                                    "featureFlag": null,
+                                    "visibility": "FULL",
+                                    "assetUrl": "",
+                                    "__typename": "AppearanceBackgroundSubOptionOptions"
+                                },
+                                {
+                                    "id": "morph",
+                                    "title": "Morph",
+                                    "featureFlag": null,
+                                    "visibility": "FULL",
+                                    "assetUrl": "",
+                                    "__typename": "AppearanceBackgroundSubOptionOptions"
+                                },
+                                {
+                                    "id": "organic",
+                                    "title": "Organic",
+                                    "featureFlag": null,
+                                    "visibility": "FULL",
+                                    "assetUrl": "",
+                                    "__typename": "AppearanceBackgroundSubOptionOptions"
+                                },
+                                {
+                                    "id": "matrix",
+                                    "title": "Matrix",
+                                    "featureFlag": null,
+                                    "visibility": "PREVIEW",
+                                    "assetUrl": "",
+                                    "__typename": "AppearanceBackgroundSubOptionOptions"
+                                }
+                            ],
+                            "__typename": "AppearanceBackgroundSubOptions"
+                        }
+                    ],
+                    "__typename": "AppearanceBackgroundOption"
+                },
+                {
+                    "id": "custom",
+                    "title": "Image",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "assetUrl": null,
+                    "subOptions": null,
+                    "__typename": "AppearanceBackgroundOption"
+                },
+                {
+                    "id": "video",
+                    "title": "Video",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "assetUrl": null,
+                    "subOptions": null,
+                    "__typename": "AppearanceBackgroundOption"
+                }
+            ],
+            "buttons": [
+                {
+                    "id": "fill",
+                    "title": "Fill",
+                    "group": "Fill",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "__typename": "AppearanceButtonOption"
+                },
+                {
+                    "id": "fillrounded",
+                    "title": "Fill Rounded",
+                    "group": "Fill",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "__typename": "AppearanceButtonOption"
+                },
+                {
+                    "id": "fillcircular",
+                    "title": "Fill Circular",
+                    "group": "Fill",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "__typename": "AppearanceButtonOption"
+                },
+                {
+                    "id": "outline",
+                    "title": "Outline",
+                    "group": "Outline",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "__typename": "AppearanceButtonOption"
+                },
+                {
+                    "id": "outlinerounded",
+                    "title": "Outline Rounded",
+                    "group": "Outline",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "__typename": "AppearanceButtonOption"
+                },
+                {
+                    "id": "outlinecircular",
+                    "title": "Outline Circular",
+                    "group": "Outline",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "__typename": "AppearanceButtonOption"
+                },
+                {
+                    "id": "softshadow",
+                    "title": "Soft shadow",
+                    "group": "Soft shadow",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "__typename": "AppearanceButtonOption"
+                },
+                {
+                    "id": "softshadowrounded",
+                    "title": "Soft shadow Rounded",
+                    "group": "Soft shadow",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "__typename": "AppearanceButtonOption"
+                },
+                {
+                    "id": "softshadowcircular",
+                    "title": "Soft shadow Circular",
+                    "group": "Soft shadow",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "__typename": "AppearanceButtonOption"
+                },
+                {
+                    "id": "hardshadow",
+                    "title": "Hardshadow",
+                    "group": "Hard shadow",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "__typename": "AppearanceButtonOption"
+                },
+                {
+                    "id": "hardshadowrounded",
+                    "title": "Hard shadow Rounded",
+                    "group": "Hard shadow",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "__typename": "AppearanceButtonOption"
+                },
+                {
+                    "id": "hardshadowcircular",
+                    "title": "Hard shadow Circular",
+                    "group": "Hard shadow",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "__typename": "AppearanceButtonOption"
+                },
+                {
+                    "id": "torn-edges",
+                    "title": "Torn",
+                    "group": "Special",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "__typename": "AppearanceButtonOption"
+                },
+                {
+                    "id": "jiggly-edges",
+                    "title": "Jiggly",
+                    "group": "Special",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "__typename": "AppearanceButtonOption"
+                },
+                {
+                    "id": "formal-2-stroke",
+                    "title": "Formal",
+                    "group": "Special",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "__typename": "AppearanceButtonOption"
+                },
+                {
+                    "id": "frost",
+                    "title": "Frost",
+                    "group": "Special",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "__typename": "AppearanceButtonOption"
+                },
+                {
+                    "id": "vector",
+                    "title": "Vetor",
+                    "group": "Special",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "__typename": "AppearanceButtonOption"
+                },
+                {
+                    "id": "alternating-shapes",
+                    "title": "Alternating Shapes",
+                    "group": "Special",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "__typename": "AppearanceButtonOption"
+                }
+            ],
+            "buttonStyles": [
+                {
+                    "id": "fill",
+                    "title": "Fill",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "__typename": "AppearanceButtonStyleOption"
+                },
+                {
+                    "id": "glass",
+                    "title": "Glass",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "__typename": "AppearanceButtonStyleOption"
+                },
+                {
+                    "id": "outline",
+                    "title": "Outline",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "__typename": "AppearanceButtonStyleOption"
+                }
+            ],
+            "buttonCornerStyles": [
+                {
+                    "id": "roundednone",
+                    "title": "None",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "__typename": "AppearanceButtonCornerOption"
+                },
+                {
+                    "id": "roundedsm",
+                    "title": "Small",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "__typename": "AppearanceButtonCornerOption"
+                },
+                {
+                    "id": "roundedlg",
+                    "title": "Large",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "__typename": "AppearanceButtonCornerOption"
+                },
+                {
+                    "id": "roundedfull",
+                    "title": "Full",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "__typename": "AppearanceButtonCornerOption"
+                }
+            ],
+            "buttonShadowStyles": [
+                {
+                    "id": "shadownone",
+                    "title": "None",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "__typename": "AppearanceButtonShadowOption"
+                },
+                {
+                    "id": "shadowsm",
+                    "title": "Small",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "__typename": "AppearanceButtonShadowOption"
+                },
+                {
+                    "id": "shadowlg",
+                    "title": "Large",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "__typename": "AppearanceButtonShadowOption"
+                },
+                {
+                    "id": "shadowfull",
+                    "title": "Full",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "__typename": "AppearanceButtonShadowOption"
+                }
+            ],
+            "fonts": [
+                {
+                    "id": "albert sans",
+                    "title": "Albert Sans",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Modern",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Albert+Sans.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "belanosima",
+                    "title": "Belanosima",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Unique",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Belanosima.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "bricolage grotesque",
+                    "title": "Bricolage Grotesque",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Modern",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Bricolage+Grotesque.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "dm sans",
+                    "title": "DM Sans",
+                    "fontSize": "16",
+                    "fontWeight": "500",
+                    "letterSpacing": "0.4",
+                    "group": "Modern",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/DM+Sans.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "epilogue",
+                    "title": "Epilogue",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Modern",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Epilogue.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "ibm plex sans",
+                    "title": "IBM Plex Sans",
+                    "fontSize": "16",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Modern",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/IBM+Plex+Sans.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "inter regular",
+                    "title": "Inter",
+                    "fontSize": "16",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Modern",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Inter.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "lato",
+                    "title": "Lato",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Modern",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Lato.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "link sans product",
+                    "title": "Link Sans",
+                    "fontSize": "16",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Modern",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Link+Sans.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "m plus rounded",
+                    "title": "M Plus Rounded",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Unique",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/M+Plus+Rounded.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "manrope",
+                    "title": "Manrope",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Modern",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Manrope.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "oxanium",
+                    "title": "Oxanium",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Modern",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Oxanium.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "poppins",
+                    "title": "Poppins",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Modern",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Poppins.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "red hat display",
+                    "title": "Red Hat Display",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Modern",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Red+Hat+Display.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "roboto",
+                    "title": "Roboto",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Modern",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Roboto.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "rubik",
+                    "title": "Rubik",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Modern",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Rubik.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "space grotesk",
+                    "title": "Space Grotesk",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Modern",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Space+Grotesk.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "syne",
+                    "title": "Syne",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Unique",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Syne.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "biorhyme",
+                    "title": "BioRhyme",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Unique",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Biorhyme.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "bitter",
+                    "title": "Bitter",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Classic",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Bitter.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "caudex",
+                    "title": "Caudex",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Unique",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Caudex.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "corben",
+                    "title": "Corben",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Unique",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Corben.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "domine",
+                    "title": "Domine",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Classic",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Domine.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "hahmlet",
+                    "title": "Hahmlet",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Classic",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Hahmlet.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "ibm plex serif",
+                    "title": "IBM Plex Serif",
+                    "fontSize": "14",
+                    "fontWeight": "500",
+                    "letterSpacing": "0",
+                    "group": "Classic",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/IBM+Plex+Serif.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "lora",
+                    "title": "Lora",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Classic",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Lora.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "merriweather",
+                    "title": "Merriweather",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Classic",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Merriweather.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "noto serif",
+                    "title": "Noto Serif",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Classic",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Noto+Serif.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "old standard tt",
+                    "title": "Old Standard TT",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Classic",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Old+Standard+Tt.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "pt serif",
+                    "title": "PT Serif",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Classic",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/PT+Serif.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "playfair display",
+                    "title": "Playfair Display",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Classic",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Playfair+Display.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "roboto serif",
+                    "title": "Roboto Serif",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Classic",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Roboto+Serif.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "roboto slab",
+                    "title": "Roboto Slab",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Classic",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Roboto+Slab.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "source serif pro",
+                    "title": "Source Serif Pro",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Classic",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Source+Serif+Pro.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "ibm plex mono",
+                    "title": "IBM Plex Mono",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Unique",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/IBM+Plex+Mono.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "space mono",
+                    "title": "Space Mono",
+                    "fontSize": "16",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Unique",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Space+Mono.svg",
+                    "__typename": "AppearanceFontOption"
+                },
+                {
+                    "id": "shantell sans",
+                    "title": "Shantell Sans",
+                    "fontSize": "16px",
+                    "fontWeight": "400",
+                    "letterSpacing": "0",
+                    "group": "Unique",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "assetUrl": "https://assets.production.linktr.ee/font-assets/Shantell+Sans.svg",
+                    "__typename": "AppearanceFontOption"
+                }
+            ],
+            "stylePresets": [
+                {
+                    "id": "minimal",
+                    "title": "Minimal",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "buttonStyle": "outline",
+                    "buttonShadowStyle": "shadownone",
+                    "buttonCornerStyle": "roundedlg",
+                    "fontStyle": "dm sans",
+                    "assetUrl": "https://assets.production.linktr.ee/style-preset-assets/minimal.svg",
+                    "isPro": false,
+                    "__typename": "AppearanceStylePresetOption"
+                },
+                {
+                    "id": "classic",
+                    "title": "Classic",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "buttonStyle": "fill",
+                    "buttonShadowStyle": "shadownone",
+                    "buttonCornerStyle": "roundednone",
+                    "fontStyle": "eb garamond",
+                    "assetUrl": "https://assets.production.linktr.ee/style-preset-assets/classic.svg",
+                    "isPro": false,
+                    "__typename": "AppearanceStylePresetOption"
+                },
+                {
+                    "id": "unique",
+                    "title": "Unique",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "buttonStyle": "fill",
+                    "buttonShadowStyle": "shadownone",
+                    "buttonCornerStyle": "roundedlg",
+                    "fontStyle": "hepta slab",
+                    "assetUrl": "https://assets.production.linktr.ee/style-preset-assets/unique.svg",
+                    "isPro": false,
+                    "__typename": "AppearanceStylePresetOption"
+                },
+                {
+                    "id": "zen",
+                    "title": "Zen",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "buttonStyle": "fill",
+                    "buttonShadowStyle": "shadowsm",
+                    "buttonCornerStyle": "roundedlg",
+                    "fontStyle": "link sans product",
+                    "assetUrl": "https://assets.production.linktr.ee/style-preset-assets/zen.svg",
+                    "isPro": false,
+                    "__typename": "AppearanceStylePresetOption"
+                },
+                {
+                    "id": "simple",
+                    "title": "Simple",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "buttonStyle": "fill",
+                    "buttonShadowStyle": "shadownone",
+                    "buttonCornerStyle": "roundedfull",
+                    "fontStyle": "ibm plex sans",
+                    "assetUrl": "https://assets.production.linktr.ee/style-preset-assets/simple.svg",
+                    "isPro": false,
+                    "__typename": "AppearanceStylePresetOption"
+                },
+                {
+                    "id": "precise",
+                    "title": "Precise",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "buttonStyle": "outline",
+                    "buttonShadowStyle": "shadownone",
+                    "buttonCornerStyle": "roundednone",
+                    "fontStyle": "gothic a1",
+                    "assetUrl": "https://assets.production.linktr.ee/style-preset-assets/precise.svg",
+                    "isPro": false,
+                    "__typename": "AppearanceStylePresetOption"
+                },
+                {
+                    "id": "retro",
+                    "title": "Retro",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "buttonStyle": "fill",
+                    "buttonShadowStyle": "shadowfull",
+                    "buttonCornerStyle": "roundedfull",
+                    "fontStyle": "roboto slab",
+                    "assetUrl": "https://assets.production.linktr.ee/style-preset-assets/retro.svg",
+                    "isPro": true,
+                    "__typename": "AppearanceStylePresetOption"
+                },
+                {
+                    "id": "modern",
+                    "title": "Modern",
+                    "featureFlag": null,
+                    "visibility": "PREVIEW",
+                    "buttonStyle": "glass",
+                    "buttonShadowStyle": "shadowsm",
+                    "buttonCornerStyle": "roundedlg",
+                    "fontStyle": "link sans product",
+                    "assetUrl": "https://assets.production.linktr.ee/style-preset-assets/modern.svg",
+                    "isPro": true,
+                    "__typename": "AppearanceStylePresetOption"
+                },
+                {
+                    "id": "industrial",
+                    "title": "Industrial",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "buttonStyle": "outline",
+                    "buttonShadowStyle": "shadownone",
+                    "buttonCornerStyle": "roundedfull",
+                    "fontStyle": "space mono",
+                    "assetUrl": "https://assets.production.linktr.ee/style-preset-assets/industrial.svg",
+                    "isPro": false,
+                    "__typename": "AppearanceStylePresetOption"
+                }
+            ],
+            "gradients": [
+                {
+                    "id": "pink",
+                    "title": "Pink",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": "https://assets.production.linktr.ee/gradient-preset-assets/gradient-preset-pink.png",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/gradient-preset-assets/gradient-preset-pink.webp",
+                    "colors": [
+                        "#F8CBD5",
+                        "#F692C8",
+                        "#C796DB",
+                        "#F2AFD0",
+                        "#DFA5D8"
+                    ],
+                    "__typename": "AppearanceGradientOption"
+                },
+                {
+                    "id": "orange",
+                    "title": "Orange",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": "https://assets.production.linktr.ee/gradient-preset-assets/gradient-preset-orange.png",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/gradient-preset-assets/gradient-preset-orange.webp",
+                    "colors": [
+                        "#ED8734",
+                        "#FFE17D",
+                        "#DC9894",
+                        "#F4B558",
+                        "#E8C488"
+                    ],
+                    "__typename": "AppearanceGradientOption"
+                },
+                {
+                    "id": "green",
+                    "title": "Green",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": "https://assets.production.linktr.ee/gradient-preset-assets/gradient-preset-green.png",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/gradient-preset-assets/gradient-preset-green.webp",
+                    "colors": [
+                        "#68AA71",
+                        "#C2F674",
+                        "#FFF480",
+                        "#95CA9A",
+                        "#DEF67A"
+                    ],
+                    "__typename": "AppearanceGradientOption"
+                },
+                {
+                    "id": "rainbow",
+                    "title": "Rainbow",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": "https://assets.production.linktr.ee/gradient-preset-assets/gradient-preset-rainbow.png",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/gradient-preset-assets/gradient-preset-rainbow.webp",
+                    "colors": [
+                        "#F4C43E",
+                        "#D07EA4",
+                        "#9FDF84",
+                        "#E2A171",
+                        "#B7AF94"
+                    ],
+                    "__typename": "AppearanceGradientOption"
+                },
+                {
+                    "id": "bloom",
+                    "title": "Bloom",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": "https://assets.production.linktr.ee/gradient-preset-assets/gradient-preset-bloom.png",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/gradient-preset-assets/gradient-preset-bloom.webp",
+                    "colors": [
+                        "#FF4A2F",
+                        "#545EEC",
+                        "#3D2078",
+                        "#8F466B",
+                        "#6A44A5"
+                    ],
+                    "__typename": "AppearanceGradientOption"
+                },
+                {
+                    "id": "noir",
+                    "title": "Noir",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": "https://assets.production.linktr.ee/gradient-preset-assets/gradient-preset-noir.png",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/gradient-preset-assets/gradient-preset-noir.webp",
+                    "colors": [
+                        "#14134D",
+                        "#040428",
+                        "#EB9CFF",
+                        "#0C0A3A",
+                        "#7F6D93"
+                    ],
+                    "__typename": "AppearanceGradientOption"
+                },
+                {
+                    "id": "twilight",
+                    "title": "Twilight",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": "https://assets.production.linktr.ee/gradient-preset-assets/gradient-preset-twilight.png",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/gradient-preset-assets/gradient-preset-twilight.webp",
+                    "colors": [
+                        "#5B4E71"
+                    ],
+                    "__typename": "AppearanceGradientOption"
+                },
+                {
+                    "id": "rise",
+                    "title": "Rise",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": "https://assets.production.linktr.ee/gradient-preset-assets/gradient-preset-rise.png",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/gradient-preset-assets/gradient-preset-rise.webp",
+                    "colors": [
+                        "#D0B8D0"
+                    ],
+                    "__typename": "AppearanceGradientOption"
+                },
+                {
+                    "id": "glow",
+                    "title": "Glow",
+                    "featureFlag": null,
+                    "visibility": "FULL",
+                    "assetUrl": "https://assets.production.linktr.ee/gradient-preset-assets/gradient-preset-glow.png",
+                    "assetUrlWebp": "https://assets.production.linktr.ee/gradient-preset-assets/gradient-preset-glow.webp",
+                    "colors": [
+                        "#C54E3F"
+                    ],
+                    "__typename": "AppearanceGradientOption"
+                }
+            ],
+            "heading": {
+                "fonts": {
+                    "suggested": [
+                        {
+                            "id": "alfa slab one",
+                            "title": "Alfa Slab One",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Alfa+Slab+One.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Alfa+Slab+One+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "anton",
+                            "title": "Anton",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Anton.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Anton+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "belanosima",
+                            "title": "Belanosima",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "PREVIEW",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Belanosima.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Belanosima+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "biorhyme",
+                            "title": "BioRhyme",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "PREVIEW",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Biorhyme.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Biorhyme+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "black sansa",
+                            "title": "Black Sansa",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Black+Sansa.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Black+Sansa+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "chango",
+                            "title": "Chango",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Chango.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Chango+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "chillax",
+                            "title": "Chillax",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Chillax.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Chillax+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "domine",
+                            "title": "Domine",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Domine.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Domine+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "fustat",
+                            "title": "Fustat",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Fustat.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Fustat+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "gasoek one",
+                            "title": "Gasoek One",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Gasoek+One.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Gasoek-one+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "ibm plex sans",
+                            "title": "IBM Plex Sans",
+                            "fontSize": "16",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/IBM+Plex+Sans.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Ibm+Plex+Sans+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "kavivanar",
+                            "title": "Kavivanar",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Kavivanar.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Kavivanar+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "link sans product",
+                            "title": "Link Sans",
+                            "fontSize": "16",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Link+Sans.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Link+Sans+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "manrope",
+                            "title": "Manrope",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Manrope.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Manrope+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "misto",
+                            "title": "Misto",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Misto.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Misto+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "monofett",
+                            "title": "Monofett",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Monofett.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Monofett+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "old standard tt",
+                            "title": "Old Standard TT",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "PREVIEW",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Old+Standard+Tt.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Old+Standard+Tt+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "oxanium",
+                            "title": "Oxanium",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Oxanium.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Oxanium+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "playfair display",
+                            "title": "Playfair Display",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "PREVIEW",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Playfair+Display.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Playfair+Display+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "poppins",
+                            "title": "Poppins",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "PREVIEW",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Poppins.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Poppins+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "roboto",
+                            "title": "Roboto",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "PREVIEW",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Roboto.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Roboto+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "roboto slab",
+                            "title": "Roboto Slab",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "PREVIEW",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Roboto+Slab.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Roboto+Slab+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "salsa",
+                            "title": "Salsa",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Salsa.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Salsa+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "sonder",
+                            "title": "Sonder",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Sonder.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Sonder+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "space mono",
+                            "title": "Space Mono",
+                            "fontSize": "16",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Space+Mono.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Space+Mono+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "summer glow",
+                            "title": "Summer Glow",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Summer+Glow.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Summer-glow+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "viaoda libre",
+                            "title": "Viaoda Libre",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Viaoda+Libre.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Viaoda+Libre+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "wagon",
+                            "title": "Wagon",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Suggested",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Wagon.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Wagon+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        }
+                    ],
+                    "other": [
+                        {
+                            "id": "albert sans",
+                            "title": "Albert Sans",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Other",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Albert+Sans.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Albert+Sans+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "bricolage grotesque",
+                            "title": "Bricolage Grotesque",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Other",
+                            "featureFlag": null,
+                            "visibility": "PREVIEW",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Bricolage+Grotesque.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Bricolage+Grotesque+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "dm sans",
+                            "title": "DM Sans",
+                            "fontSize": "16",
+                            "fontWeight": "500",
+                            "letterSpacing": "0.4",
+                            "group": "Other",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/DM+Sans.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Dm+Sans+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "epilogue",
+                            "title": "Epilogue",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Other",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Epilogue.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Epilogue+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "inter regular",
+                            "title": "Inter",
+                            "fontSize": "16",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Other",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Inter.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Inter+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "lato",
+                            "title": "Lato",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Other",
+                            "featureFlag": null,
+                            "visibility": "PREVIEW",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Lato.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Lato+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "m plus rounded",
+                            "title": "M Plus Rounded",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Other",
+                            "featureFlag": null,
+                            "visibility": "PREVIEW",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/M+Plus+Rounded.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/M+Plus+Rounded+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "red hat display",
+                            "title": "Red Hat Display",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Other",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Red+Hat+Display.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Red+Hat+Display+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "rubik",
+                            "title": "Rubik",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Other",
+                            "featureFlag": null,
+                            "visibility": "PREVIEW",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Rubik.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Rubik+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "space grotesk",
+                            "title": "Space Grotesk",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Other",
+                            "featureFlag": null,
+                            "visibility": "PREVIEW",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Space+Grotesk.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Space+Grotesk+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "syne",
+                            "title": "Syne",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Other",
+                            "featureFlag": null,
+                            "visibility": "PREVIEW",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Syne.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Syne+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "bitter",
+                            "title": "Bitter",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Other",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Bitter.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Bitter+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "caudex",
+                            "title": "Caudex",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Other",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Caudex.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Caudex+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "corben",
+                            "title": "Corben",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Other",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Corben.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Corben+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "hahmlet",
+                            "title": "Hahmlet",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Other",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Hahmlet.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Hahmlet+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "ibm plex serif",
+                            "title": "IBM Plex Serif",
+                            "fontSize": "14",
+                            "fontWeight": "500",
+                            "letterSpacing": "0",
+                            "group": "Other",
+                            "featureFlag": null,
+                            "visibility": "PREVIEW",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/IBM+Plex+Serif.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Ibm+Plex+Serif+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "lora",
+                            "title": "Lora",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Other",
+                            "featureFlag": null,
+                            "visibility": "PREVIEW",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Lora.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Lora+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "merriweather",
+                            "title": "Merriweather",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Other",
+                            "featureFlag": null,
+                            "visibility": "PREVIEW",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Merriweather.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Merriweather+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "noto serif",
+                            "title": "Noto Serif",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Other",
+                            "featureFlag": null,
+                            "visibility": "PREVIEW",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Noto+Serif.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Noto+Serif+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "pt serif",
+                            "title": "PT Serif",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Other",
+                            "featureFlag": null,
+                            "visibility": "PREVIEW",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/PT+Serif.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Pt+Serif+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "roboto serif",
+                            "title": "Roboto Serif",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Other",
+                            "featureFlag": null,
+                            "visibility": "FULL",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Roboto+Serif.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Roboto+Serif+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "source serif pro",
+                            "title": "Source Serif Pro",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Other",
+                            "featureFlag": null,
+                            "visibility": "PREVIEW",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Source+Serif+Pro.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Source+Serif+Pro+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "ibm plex mono",
+                            "title": "IBM Plex Mono",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Other",
+                            "featureFlag": null,
+                            "visibility": "PREVIEW",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/IBM+Plex+Mono.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Ibm+Plex+Mono+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        },
+                        {
+                            "id": "shantell sans",
+                            "title": "Shantell Sans",
+                            "fontSize": "16px",
+                            "fontWeight": "400",
+                            "letterSpacing": "0",
+                            "group": "Other",
+                            "featureFlag": null,
+                            "visibility": "PREVIEW",
+                            "assetUrl": "https://assets.production.linktr.ee/font-assets/Shantell+Sans.svg",
+                            "unpaddedAssetUrl": "https://assets.production.linktr.ee/font-assets/Shantell+Sans+Unpadded.svg",
+                            "__typename": "AppearanceFontOption"
+                        }
+                    ],
+                    "__typename": "AppearanceHeadingFonts"
+                },
+                "options": {
+                    "sizes": [
+                        {
+                            "label": "Normal",
+                            "value": "normal",
+                            "classname": "text-body-xs",
+                            "__typename": "AppearanceHeadingSize"
+                        },
+                        {
+                            "label": "Large",
+                            "value": "large",
+                            "classname": "text-body-base",
+                            "__typename": "AppearanceHeadingSize"
+                        }
+                    ],
+                    "types": [
+                        {
+                            "label": "Text",
+                            "value": "text",
+                            "__typename": "AppearanceHeadingType"
+                        },
+                        {
+                            "label": "Logo",
+                            "value": "logo",
+                            "__typename": "AppearanceHeadingType"
+                        },
+                        {
+                            "label": "None",
+                            "value": "none",
+                            "__typename": "AppearanceHeadingType"
+                        }
+                    ],
+                    "logoSizes": [
+                        {
+                            "label": "Normal",
+                            "value": "normal",
+                            "classname": "text-body-sm",
+                            "__typename": "AppearanceHeadingLogoSize"
+                        },
+                        {
+                            "label": "Large",
+                            "value": "large",
+                            "classname": "text-body-lg",
+                            "__typename": "AppearanceHeadingLogoSize"
+                        }
+                    ],
+                    "effects": [
+                        {
+                            "label": "None",
+                            "value": "none",
+                            "__typename": "AppearanceHeadingEffect"
+                        },
+                        {
+                            "label": "Shadow",
+                            "value": "shadow",
+                            "__typename": "AppearanceHeadingEffect"
+                        },
+                        {
+                            "label": "Outline",
+                            "value": "outline",
+                            "__typename": "AppearanceHeadingEffect"
+                        }
+                    ],
+                    "__typename": "AppearanceHeadingOptions"
+                },
+                "__typename": "AppearanceHeadingOption"
+            },
+            "backgroundImageEffects": [
+                {
+                    "label": "None",
+                    "value": "NONE",
+                    "__typename": "AppearanceImageBackgroundEffect"
+                },
+                {
+                    "label": "Mono",
+                    "value": "MONO",
+                    "__typename": "AppearanceImageBackgroundEffect"
+                },
+                {
+                    "label": "Blur",
+                    "value": "BLUR",
+                    "__typename": "AppearanceImageBackgroundEffect"
+                },
+                {
+                    "label": "Halftone",
+                    "value": "HALFTONE",
+                    "__typename": "AppearanceImageBackgroundEffect"
+                }
+            ],
+            "__typename": "AppearanceOptions"
+        }
+    }
+}

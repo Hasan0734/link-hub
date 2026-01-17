@@ -30,7 +30,7 @@ import { Separator } from "./ui/separator";
 const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
   { name: "Links", href: "/dashboard/links", icon: Link2 },
-  { name: "Pages", href: "/dashboard/pages", icon: FileText },
+  // { name: "Pages", href: "/dashboard/pages", icon: FileText },
   { name: "Short URls", href: "/dashboard/short-urls", icon: LinkIcon },
   { name: "Appearance", href: "/dashboard/appearance", icon: Palette },
   { name: "Analytics", href: "/dashboard/analytics", icon: ChartBar },

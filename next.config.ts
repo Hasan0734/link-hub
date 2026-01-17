@@ -8,6 +8,16 @@ const nextConfig: NextConfig = {
       bodySizeLimit: '2mb',
     },
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "assets.production.linktr.ee",
+        port: '',
+        pathname: '/**'
+      }
+    ],
+  },
 };
 
 export default nextConfig;

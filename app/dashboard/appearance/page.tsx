@@ -1,3 +1,4 @@
+import Themes from "@/components/appearance/Themes";
 import AppHeader from "@/components/AppHeader";
 import DashboardTitle from "@/components/DashboardTitle";
 import { Button } from "@/components/ui/button";
@@ -19,7 +20,6 @@ import {
 } from "@/components/ui/shadcn-io/color-picker";
 
 const Appearance = () => {
-  
   const themes = [
     { name: "Light", bg: "bg-white", accent: "bg-slate-900" },
     { name: "Dark", bg: "bg-slate-900", accent: "bg-white" },
@@ -58,45 +58,18 @@ const Appearance = () => {
                 details="Choose a theme or customize your own colors"
               />
 
-              <div className="grid grid-cols-1 xl:grid-cols-2 gap-5 ">
-                <Card className="shadow-md">
+              <div className="grid grid-cols-1 xl:grid-cols-8 gap-5 items-start">
+                <Card className="shadow-md col-span-2">
                   <CardHeader>
-                    <CardTitle>Theme</CardTitle>
+                    <CardTitle>Custom Colors</CardTitle>
                     <CardDescription>
-                      Choose a theme for your profile page
+                      Personalize your brand colors
                     </CardDescription>
                   </CardHeader>
-                  <CardContent>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                      {themes.map((theme) => (
-                        <button
-                          key={theme.name}
-                          className="group relative aspect-3/4 rounded-xl overflow-hidden border-2 border-border hover:border-primary transition-all"
-                        >
-                          <div className={`absolute inset-0 ${theme.bg}`} />
-                          <div className="absolute inset-x-4 top-1/2 -translate-y-1/2 space-y-2">
-                            <div
-                              className={`h-8 ${theme.accent} rounded-full opacity-80`}
-                            />
-                            <div
-                              className={`h-8 ${theme.accent} rounded-full opacity-80`}
-                            />
-                            <div
-                              className={`h-8 ${theme.accent} rounded-full opacity-80`}
-                            />
-                          </div>
-                          <div className="absolute bottom-0 inset-x-0 p-3 bg-background/80 backdrop-blur-sm">
-                            <p className="text-sm font-medium text-center">
-                              {theme.name}
-                            </p>
-                          </div>
-                        </button>
-                      ))}
-                    </div>
-                  </CardContent>
                 </Card>
+                <Themes />
 
-                <Card className="shadow-md">
+                <Card className="shadow-md col-span-2">
                   <CardHeader>
                     <CardTitle>Custom Colors</CardTitle>
                     <CardDescription>

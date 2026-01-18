@@ -24,7 +24,7 @@ const Themes = () => {
     <Card id="theme" className="shadow-none border-0 ">
       <Tabs defaultValue="customizable">
         <CardHeader className="px-0">
-          <CardTitle>Theme</CardTitle>
+          <CardTitle className="text-2xl">Theme</CardTitle>
           <CardDescription>
             Choose a theme for your profile page
           </CardDescription>

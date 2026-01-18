@@ -1,7 +1,7 @@
 "use client";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
-import { Plus, UserCircle } from "lucide-react";
+import { ChevronRight, Plus, UserCircle } from "lucide-react";
 import { IconUserScan } from "@tabler/icons-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
@@ -9,7 +9,11 @@ import { Separator } from "../ui/separator";
 import SelectorButton from "./SelectorButton";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
-import ColorPicker from "../ui/color-picker";
+
+import ColorPicker2 from "../ui/color-picker2";
+
+
+import SelectFont from "./SelectFont";
 
 const DesignHeader = () => {
   const [layout, setLayout] = useState("classic");
@@ -99,7 +103,7 @@ const DesignHeader = () => {
 
             <div
               className={cn(
-                "border border-dashed border-primary  transition hover:bg-accent relative flex flex-col justify-between flex-1  w-full rounded-lg h-0 min-h-0 invisible  duration-500 opacity-0",
+                "border border-dashed border-primary  transition hover:bg-accent relative flex flex-col justify-between flex-1  w-full rounded-lg h-0 min-h-0 invisible  duration-500 opacity-30",
                 {
                   "visible h-auto min-h-40 py-8 opacity-100":
                     "logo" === titleStyle,
@@ -128,6 +132,7 @@ const DesignHeader = () => {
               </label>
             </div>
           </div>
+
           <div className="space-y-3">
             <h4 className="text-base font-medium">Size</h4>
             <div className="flex items-center gap-4">
@@ -159,11 +164,16 @@ const DesignHeader = () => {
               type="text"
             />
           </div>
-          <div>
-            <ColorPicker
+          <SelectFont />
+          <div className="space-y-3">
+            <Label htmlFor="titleColor" className="text-base font-medium">
+              Title Color
+            </Label>
+            <ColorPicker2
+              className="w-full h-12 rounded-2xl"
               color={"#ffffff"}
               onChange={(newColor) => {
-                console.log(newColor)
+                console.log(newColor);
               }}
             />
           </div>

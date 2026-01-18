@@ -62,6 +62,7 @@ const hexToHsl = (hex: string): [number, number, number] => {
 }
 
 const normalizeColor = (color: string): string => {
+  console.log(color)
   if (color.startsWith("#")) {
     return color.toUpperCase()
   } else if (color.startsWith("hsl")) {

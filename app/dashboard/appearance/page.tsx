@@ -15,6 +15,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import {
   ColorPicker,
   ColorPickerAlpha,
@@ -68,12 +69,21 @@ const Appearance = () => {
 
               <div className="grid grid-cols-1 xl:grid-cols-9 gap-5 items-start relative">
                 <DesignSidebar />
-                <div className="col-span-4">
+                <div className="col-span-4 space-y-10">
                   <DesignHeader />
+                  <Separator />
                   <Themes />
+                  <Separator />
+
                   <Wallpaper />
+                  <Separator />
+
                   <DesignText />
+                  <Separator />
+
                   <DesignButtons />
+                  <Separator />
+
                   <DesignFooter />
                 </div>
 

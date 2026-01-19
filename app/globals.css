@@ -372,3 +372,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+:has(> span[data-slot="slider-thumb"]) {
+  z-index: 200;
+}

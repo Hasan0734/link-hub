@@ -15,7 +15,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { ScrollArea } from "../ui/scroll-area";
 
-const SelectFont = () => {
+const SelectFont = ({title}: {title:string}) => {
   const [isToggle, setToggle] = useState(false);
   const [selectedFont, setSelectedFont] = useState({
     title: "Epilogue",
@@ -31,7 +31,7 @@ const SelectFont = () => {
             size={"lg"}
             className="h-12 cursor-pointer rounded-2xl w-full flex items-center justify-between"
           >
-            <span> Title Font</span>
+            <span>{title}</span>
             <div className="flex items-center gap-2">
               {selectedFont.title} <ChevronRight />
             </div>

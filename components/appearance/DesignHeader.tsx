@@ -10,15 +10,13 @@ import SelectorButton from "./SelectorButton";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 
-import ColorPicker2 from "../ui/color-picker2";
-
-
 import SelectFont from "./SelectFont";
+import TitleColorPicker from "./TitleColorPicker";
+import TextSize from "./TextSize";
 
 const DesignHeader = () => {
   const [layout, setLayout] = useState("classic");
   const [titleStyle, setTitleStyle] = useState("text");
-  const [size, setSize] = useState("small");
 
   const handleState = (state: string) => {};
 
@@ -133,25 +131,7 @@ const DesignHeader = () => {
             </div>
           </div>
 
-          <div className="space-y-3">
-            <h4 className="text-base font-medium">Size</h4>
-            <div className="flex items-center gap-4">
-              <SelectorButton
-                state={size}
-                handleState={setSize}
-                keyValue={"small"}
-                btnTitle="Small"
-              />
-              <SelectorButton
-                state={size}
-                handleState={setSize}
-                isPro
-                keyValue={"large"}
-                btnTitle="Large"
-              />
-            </div>
-          </div>
-
+          <TextSize />
           <div className="space-y-3">
             <Label htmlFor="text" className="text-base font-medium">
               Text
@@ -164,19 +144,8 @@ const DesignHeader = () => {
               type="text"
             />
           </div>
-          <SelectFont />
-          <div className="space-y-3">
-            <Label htmlFor="titleColor" className="text-base font-medium">
-              Title Color
-            </Label>
-            <ColorPicker2
-              className="w-full h-12 rounded-2xl"
-              color={"#ffffff"}
-              onChange={(newColor) => {
-                console.log(newColor);
-              }}
-            />
-          </div>
+          <SelectFont title="Title Font" />
+          <TitleColorPicker title="Title Color" />
         </CardContent>
       </Card>
     </section>

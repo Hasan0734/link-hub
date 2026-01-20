@@ -12,6 +12,8 @@ import { CaseSensitive } from "lucide-react";
 import { useParams, usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { Link as ScrollLink, DirectLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+
 const items = [
   { name: "Header", key: "header", icon: IconUserSquare },
   { name: "Theme", key: "theme", icon: IconLayoutBoard },
@@ -37,7 +39,6 @@ const DesignSidebar = () => {
     }
   }, [pathname, searchParams, hash]);
 
-  console.log(hash);
 
   return (
     <Card className="shadow-none border-0 col-span-2 sticky top-28 py-0">

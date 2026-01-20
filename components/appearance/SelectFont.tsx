@@ -15,7 +15,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { ScrollArea } from "../ui/scroll-area";
 
-const SelectFont = ({title}: {title:string}) => {
+const SelectFont = ({ title }: { title: string }) => {
   const [isToggle, setToggle] = useState(false);
   const [selectedFont, setSelectedFont] = useState({
     title: "Epilogue",
@@ -41,11 +41,7 @@ const SelectFont = ({title}: {title:string}) => {
           <DialogHeader>
             <DialogTitle className="text-center">Title Font</DialogTitle>
           </DialogHeader>
-          <Button
-            variant={"outline"}
-            size={"lg"}
-            className="h-12 group cursor-pointer rounded-2xl w-full flex items-center justify-between"
-          >
+          <div className="h-12 text-sm border border-primary/20 shadow-xs dark:bg-input/30 px-3  group cursor-pointer rounded-2xl w-full flex items-center justify-between">
             <span>Customize title font</span>
             <div className="flex items-center gap-2">
               <ProButton className="inline-flex! relative top-0 right-0" />
@@ -54,7 +50,7 @@ const SelectFont = ({title}: {title:string}) => {
                 onCheckedChange={(val) => setToggle(val)}
               />
             </div>
-          </Button>
+          </div>
           <ScrollArea
             className={cn("max-h-0 opacity-0", {
               "max-h-[500px] opacity-100": isToggle,

@@ -1,7 +1,7 @@
 "use client";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
-import { ChevronRight, Plus, UserCircle } from "lucide-react";
+import { ChevronRight, Pencil, Plus, UserCircle } from "lucide-react";
 import { IconUserScan } from "@tabler/icons-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
@@ -45,16 +45,7 @@ const DesignHeader = () => {
               type="button"
               className="flex h-11 items-center justify-center gap-2 rounded-lg py-2.5 pl-3.5 pr-5 transition-colors focus-visible:outline-none focus-visible:ring-1 active:scale-[0.99] disabled:pointer-events-none disabled:opacity-50 border border-primary bg-transparent hover:bg-background-secondary md:hover:bg-background-primary"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20px"
-                height="20px"
-                fill="currentColor"
-                viewBox="0 0 256 256"
-                className="text-black"
-              >
-                <path d="M227.31,73.37,182.63,28.68a16,16,0,0,0-22.63,0L36.69,152A15.86,15.86,0,0,0,32,163.31V208a16,16,0,0,0,16,16H92.69A15.86,15.86,0,0,0,104,219.31L227.31,96a16,16,0,0,0,0-22.63ZM92.69,208H48V163.31l88-88L180.69,120ZM192,108.68,147.31,64l24-24L216,84.68Z"></path>
-              </svg>
+              <Pencil size={20}/>
               <span className="text-body-sm font-medium">Edit</span>
             </button>
           </div>
@@ -137,6 +128,7 @@ const DesignHeader = () => {
               Text
             </Label>
             <Input
+                onChange={e => console.log(e.target.value)}
               className="h-12 rounded-2xl focus-visible:ring-1"
               value={"jahid0734"}
               id="text"

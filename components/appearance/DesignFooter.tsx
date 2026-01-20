@@ -15,10 +15,8 @@ const DesignFooter = () => {
           <CardTitle className="text-2xl">Buttons</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6 px-0">
-          <Button
-            variant={"outline"}
-            size={"lg"}
-            className="h-12 group cursor-pointer rounded-2xl w-full flex items-center justify-between"
+          <div
+            className="h-12 text-sm border border-primary/20 shadow-xs dark:bg-input/30 px-3 group cursor-pointer rounded-2xl w-full flex items-center justify-between"
           >
             <div className="flex items-center gap-2">
                 <IconLayoutBottombar />
@@ -31,7 +29,7 @@ const DesignFooter = () => {
                 onCheckedChange={(val) => setToggle(val)}
               />
             </div>
-          </Button>
+          </div>
         </CardContent>
       </Card>
     </section>

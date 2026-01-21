@@ -24,6 +24,18 @@ export function formatDate(date: Date | undefined) {
 }
 
 
+export const findScrollContainer = (el: any): Element => {
+  if (el.scrollHeight > el.clientHeight || el.scrollWidth > el.clientWidth) {
+    return el;
+  } else if (el.parentElement) {
+    return findScrollContainer(el.parentElement);
+  } else {
+    return document.scrollingElement || document.documentElement;
+  }
+};
+
+
+
 
 //  window.linktreeFederationHostEnv = {
 //                 MESH_ENDPOINT: 'https://graph.linktr.ee/graphql',

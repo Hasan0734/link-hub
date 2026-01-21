@@ -1,12 +1,13 @@
 "use client";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { ScrollSpySection } from "../ui/scroll-spy";
 import SelectFont from "./SelectFont";
 import TextSize from "./TextSize";
 import TitleColorPicker from "./TitleColorPicker";
 
 const DesignText = () => {
   return (
-    <section id="text">
+    <div id="headerText">
       <Card className="shadow-none border-0 ">
         <CardHeader className="px-0">
           <CardTitle className="text-2xl">Text</CardTitle>
@@ -24,7 +25,7 @@ const DesignText = () => {
           <TitleColorPicker title="Button text color" />
         </CardContent>
       </Card>
-    </section>
+    </div>
   );
 };
 

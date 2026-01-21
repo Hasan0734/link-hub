@@ -8,6 +8,7 @@ import { Slider } from "../ui/slider";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import data from "@/data/design.json";
+import { ScrollSpySection } from "../ui/scroll-spy";
 
 const DesignButtons = () => {
   const [selectShadow, setShadow] = useState("none");
@@ -15,7 +16,7 @@ const DesignButtons = () => {
   const [buttonStyle, setButtonStyle] = useState("solid");
 
   return (
-    <section id="buttons">
+    <div  id="buttons">
       <Card className="shadow-none border-0 ">
         <CardHeader className="px-0">
           <CardTitle className="text-2xl">Buttons</CardTitle>
@@ -116,7 +117,7 @@ const DesignButtons = () => {
           </div>
         </CardContent>
       </Card>
-    </section>
+    </div>
   );
 };
 

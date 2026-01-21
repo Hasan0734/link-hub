@@ -21,8 +21,8 @@ const DesignHeader = () => {
   const handleState = (state: string) => {};
 
   return (
-    <section id="header">
-      <Card className="shadow-none border-0 ">
+    <div id={"header"} >
+      <Card className="shadow-none border-0 py-0">
         <CardHeader className="px-0">
           <CardTitle className="text-2xl">Header</CardTitle>
         </CardHeader>
@@ -45,7 +45,7 @@ const DesignHeader = () => {
               type="button"
               className="flex h-11 items-center justify-center gap-2 rounded-lg py-2.5 pl-3.5 pr-5 transition-colors focus-visible:outline-none focus-visible:ring-1 active:scale-[0.99] disabled:pointer-events-none disabled:opacity-50 border border-primary bg-transparent hover:bg-background-secondary md:hover:bg-background-primary"
             >
-              <Pencil size={20}/>
+              <Pencil size={20} />
               <span className="text-body-sm font-medium">Edit</span>
             </button>
           </div>
@@ -128,7 +128,7 @@ const DesignHeader = () => {
               Text
             </Label>
             <Input
-                onChange={e => console.log(e.target.value)}
+              onChange={(e) => console.log(e.target.value)}
               className="h-12 rounded-2xl focus-visible:ring-1"
               value={"jahid0734"}
               id="text"
@@ -140,7 +140,7 @@ const DesignHeader = () => {
           <TitleColorPicker title="Title Color" />
         </CardContent>
       </Card>
-    </section>
+    </div>
   );
 };
 

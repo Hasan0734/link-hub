@@ -5,22 +5,21 @@ import { Button } from "../ui/button";
 import ProButton from "./ProButton";
 import { Switch } from "../ui/switch";
 import { IconLayoutBottombar } from "@tabler/icons-react";
+import { ScrollSpySection } from "../ui/scroll-spy";
 
 const DesignFooter = () => {
   const [isToggle, setToggle] = useState(false);
   return (
-    <section id="footer">
+    <div id={"footer"}>
       <Card className="shadow-none border-0 ">
         <CardHeader className="px-0">
-          <CardTitle className="text-2xl">Buttons</CardTitle>
+          <CardTitle className="text-2xl">Footer</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6 px-0">
-          <div
-            className="h-12 text-sm border border-primary/20 shadow-xs dark:bg-input/30 px-3 group cursor-pointer rounded-2xl w-full flex items-center justify-between"
-          >
+          <div className="h-12 text-sm border border-primary/20 shadow-xs dark:bg-input/30 px-3 group cursor-pointer rounded-2xl w-full flex items-center justify-between">
             <div className="flex items-center gap-2">
-                <IconLayoutBottombar />
-            <span>Hide LinkHub footer</span>
+              <IconLayoutBottombar />
+              <span>Hide LinkHub footer</span>
             </div>
             <div className="flex items-center gap-2">
               <ProButton className="inline-flex! relative top-0 right-0" />
@@ -32,7 +31,7 @@ const DesignFooter = () => {
           </div>
         </CardContent>
       </Card>
-    </section>
+    </div>
   );
 };
 

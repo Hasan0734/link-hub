@@ -1,3 +1,4 @@
+"use client";
 import DesignButtons from "@/components/appearance/DesignButtons";
 import DesignFooter from "@/components/appearance/DesignFooter";
 import DesignHeader from "@/components/appearance/DesignHeader";
@@ -26,32 +27,9 @@ import {
   ColorPickerSelection,
 } from "@/components/ui/shadcn-io/color-picker";
 import Link from "next/link";
+import React from "react";
 
 const Appearance = () => {
-  const themes = [
-    { name: "Light", bg: "bg-white", accent: "bg-slate-900" },
-    { name: "Dark", bg: "bg-slate-900", accent: "bg-white" },
-    {
-      name: "Ocean",
-      bg: "bg-gradient-to-br from-blue-400 to-cyan-500",
-      accent: "bg-white",
-    },
-    {
-      name: "Sunset",
-      bg: "bg-gradient-to-br from-orange-400 to-pink-500",
-      accent: "bg-white",
-    },
-    {
-      name: "Forest",
-      bg: "bg-gradient-to-br from-green-400 to-emerald-600",
-      accent: "bg-white",
-    },
-    {
-      name: "Purple",
-      bg: "bg-gradient-to-br from-purple-400 to-pink-500",
-      accent: "bg-white",
-    },
-  ];
 
   return (
     <>
@@ -87,7 +65,7 @@ const Appearance = () => {
                   <DesignFooter />
                 </div>
 
-                <Card className="shadow-md col-span-3 sticky top-28">
+                {/* <Card className="shadow-md col-span-3 sticky top-28">
                   <CardHeader>
                     <CardTitle>Custom Colors</CardTitle>
                     <CardDescription>
@@ -110,7 +88,7 @@ const Appearance = () => {
                       </div>
                     </ColorPicker>
                   </CardContent>
-                </Card>
+                </Card> */}
               </div>
             </div>
           </div>

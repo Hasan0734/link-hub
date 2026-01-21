@@ -2,7 +2,7 @@ import React from 'react'
 
 const Wallpaper = () => {
   return (
-    <div>Wallpaper</div>
+    <div id="wallpaper">Wallpaper</div>
   )
 }
 

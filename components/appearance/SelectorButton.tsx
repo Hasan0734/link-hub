@@ -35,9 +35,7 @@ const SelectorButton = ({
           })}
           variant={ "outline"}
           size={"lg"}
-          style={{
-            backgroundImage: 'linear-gradient(#ffffff 100%, #000000 20%)',
-          }}
+        
         >
           {IconComponent && <IconComponent className="size-6" />}
           {btnTitle}

@@ -5,7 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import { cn, gradientEquivalent } from "@/lib/utils";
 import WallpaperCard from "./WallpaperCard";
 import { useState } from "react";
 import TitleColorPicker from "./TitleColorPicker";
@@ -13,6 +13,8 @@ import { Separator } from "../ui/separator";
 import SelectorButton from "./SelectorButton";
 import { ArrowDown, ArrowUp } from "lucide-react";
 import { IconCircleDot } from "@tabler/icons-react";
+import Gradient from "./Gradient";
+import { ProfileNoise } from "./ProfileNoise";
 
 const Wallpaper = () => {
   const [selectedStyle, setSelectedStyle] = useState("FILL");
@@ -29,6 +31,9 @@ const Wallpaper = () => {
     "#3783FF",
     "#4815AA",
   ];
+
+  const isGradient = true;
+  const backgroundNoise = true;
   return (
     <div id="wallpaper">
       <Card className="shadow-none border-0 -space-y-3">
@@ -47,13 +52,35 @@ const Wallpaper = () => {
                 background={selectedColor}
                 handleSelect={() => setSelectedStyle("FILL")}
               />
-              <WallpaperCard
+              {/* <WallpaperCard
+                selectedStyle={selectedStyle}
+                id="GRADIENT"
+                title="Gradient"
+                background={selectedColor}
+                handleSelect={() => setSelectedStyle("GRADIENT")}
+              /> */}
+
+              <Gradient
+                gradient={
+                  isGradient
+                    ? {
+                        backgroundGradient: [
+                          selectedColor,
+                          gradientEquivalent(selectedColor),
+                        ],
+                        gradientAssetUrl: "",
+                        direction: "",
+                      }
+                    : undefined
+                }
+                backgroundNoise={backgroundNoise}
                 selectedStyle={selectedStyle}
                 id="GRADIENT"
                 title="Gradient"
                 background={selectedColor}
                 handleSelect={() => setSelectedStyle("GRADIENT")}
               />
+
               <WallpaperCard
                 selectedStyle={selectedStyle}
                 id="BLUR"
@@ -63,6 +90,7 @@ const Wallpaper = () => {
                 isBlur
               />
             </div>
+            {backgroundNoise && <ProfileNoise />}
           </div>
           <Separator />
           <div className="flex items-center gap-2">
@@ -74,7 +102,11 @@ const Wallpaper = () => {
                 className={cn("size-7 rounded-full border", {
                   "border-2 border-primary": selectedColor === color,
                 })}
-                onClick={() => setSelectedColor(color)}
+                onClick={() => {
+                  setSelectedColor(color);
+                  console.log(gradientEquivalent(color));
+                  console.log(color);
+                }}
                 style={{ backgroundColor: color }}
               ></button>
             ))}

@@ -18,6 +18,9 @@ const WallpaperCard = ({
   title,
   handleSelect,
 }: WallpaperProps) => {
+
+
+    
   return (
     <div className="mb-4 last:mb-0">
       <div
@@ -28,7 +31,10 @@ const WallpaperCard = ({
             "border-2 border-primary": selectedStyle === id,
           },
         )}
-        style={{ backgroundColor: isBlur ? background : undefined }}
+        // style={{ backgroundColor: isBlur ? background : undefined }}
+          style={{
+            backgroundImage: 'linear-gradient(0deg, #F60000, rgb(0 0 0/50%))',
+          }}
       >
         {isBlur && (
           <div className="relative h-full w-full overflow-hidden ">

@@ -1,6 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { v4 as uuidv4 } from "uuid";
+import { adjustHue, parseToRgb, rgbToColorString } from 'polished'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -35,44 +36,63 @@ export const findScrollContainer = (el: any): Element => {
 };
 
 
+/**
+ * Returns a gradient equivalent color
+ * adjusts hue and lightens the original color
+ * accepts a color string
+ */
 
 
-//  window.linktreeFederationHostEnv = {
-//                 MESH_ENDPOINT: 'https://graph.linktr.ee/graphql',
-//                 LINK_TYPES_ASSETS_ENDPOINT: 'https://link-types-assets.production.linktr.ee',
-//                 LINK_TYPES_API_HOST: 'https://link-types.production.linktr.ee',
-//                 INTEGRATIONS_API_HOST: 'https://integrations.production.linktr.ee',
-//                 MONOLITH_API_ENDPOINT: 'https://linktr.ee/api',
-//                 INGRESS_API_ENDPOINT: 'https://ingress.linktr.ee/uLZfGRmpj7',
-//                 STATSIG_EDITOR_CLIENT_API_KEY: 'client-zvVFbtjWW5zrIxsTgCjbMGOJREJrzoEI7dEHQLjoF42',
-//                 AMPLITUDE_CLIENT_API_KEY: '1b48997a7049f3fff0cecf24099c0365',
-//                 GOLDEN_AMPLITUDE_CLIENT_API_KEY: '99681b5b192c190d708c1e659ff741a7',
-//                 INTERCOM_APP_ID: 'ruf6zij9',
-//                 STAGE: 'production',
-//                 STATSIG_CLIENT_API_KEY: 'client-7nmJB4FYdJqQfd3wxl3BFpMGitwlSj7Pz9iuzdXarXu',
-//                 STRIPE_PUBLISHABLE_KEY: 'pk_live_Le7CIKy9FHGbXVplQBQGiMxN'
-//             };
+const MIN_LIGHTNESS = 10
+const MAX_LIGHTNESS = 60
+const HUE_ROTATION = -32
 
+function lightenColor(color: string): string {
+  const asRgb = parseToRgb(color)
 
+  const minColor = Math.min(...(Object.values(asRgb) as number[]))
+  const maxColor = Math.max(...(Object.values(asRgb) as number[]))
 
-//  "environment": {
-//                             "INGRESS_API_ENDPOINT": "https://ingress.linktr.ee/uLZfGRmpj7",
-//                             "INGRESS_API_INSTRUMENTATION_ENDPOINT": "https://ingress.linktr.ee/i/uLZfGRmpj7",
-//                             "LINK_TYPES_ASSETS_ENDPOINT": "https://link-types-assets.production.linktr.ee",
-//                             "STRIPE_PAYMENTS_API_ENDPOINT": "https://stripe-payments.linktr.ee",
-//                             "STRIPE_PUBLISHABLE_KEY": "pk_live_51IdFBuL9SYJKPuFO2CTt5Wrpw46qcwd1ZjWC4MLOYi1aUXIfhfRbK7EkDJgMVQVaTcOceuPpCEnkv0g7J6TgkNdD00TD9bsb4o",
-//                             "STRIPE_PAYMENTS_PUBLISHABLE_KEY": "pk_live_51Oi0EUGvyzkgvy9S2SEkE4iyCqW6a9LFlqPgVqaz40N03QLLh6wKjOKLzGB0sDciohZzzTYNd07GRfhtySne076D00RGhZNo0d",
-//                             "PAYPAL_PAYMENTS_API_ENDPOINT": "https://paypal-payments.linktr.ee",
-//                             "PAYPAL_PAYMENTS_CLIENT_ID": "ATsU006_NqnC_Jk_W49YoQSnMh9kDXgMY_IVkUhJbutOkhQ7F8wlTWoJHyi2GteXaczfOGu22BSdWopq",
-//                             "SHOPIFY_INTEGRATIONS_API_ENDPOINT": "https://shopify-integrations.linktr.ee",
-//                             "META_IMAGE_URL": "https://assets.production.linktr.ee/profiles/_next/static/logo-assets/default-meta-image.png",
-//                             "RECAPTCHA_SITE_KEY": "6LdGYT4cAAAAANW9oE1Sa2AxBi8b9ZAbmvYBPnZm",
-//                             "RECAPTCHA_SITE_KEY_INVISIBLE": "6LcGlm0dAAAAAMfsVsJl3MZtjI-cKhBYzq5RPEo4",
-//                             "GRAPHQL_API_ENDPOINT": "https://graph.linktr.ee/graphql",
-//                             "GRAPHQL_API_CLIENT_NAME": "profiles",
-//                             "GRAPHQL_API_CLIENT_VERSION": "1.0.0",
-//                             "BASE_PROFILE_URL": "https://linktr.ee",
-//                             "CDN_DISTRIBUTION_URL": "https://assets.production.linktr.ee/profiles/",
-//                             "LTAUTH_ENDPOINT": "https://public.ltauth.production.linktr.ee",
-//                             "CHAT_SERVICE_API_KEY": "rvs79kmnjdrs"
-//                         },
+  // For light input we should pick return a darker color
+  const isVeryLight = minColor > 200 && maxColor > 200
+  const darkenAmount = 100
+
+  if (isVeryLight) {
+    // build object with all the values reduced by the darken amount
+    const newColor = Object.entries(asRgb).reduce(
+      (acc, [key, value]: [string, number]) => {
+        const newAmount = Math.max(value - darkenAmount, 0)
+        acc[key] = newAmount
+        return acc
+      },
+      {} as Record<string, number>
+    )
+    // @ts-expect-error: UIU-860 temp ignore TS Error [TS2345]
+    return rgbToColorString(newColor)
+  }
+
+  // figure out how much to lighten by
+  const targetRange = MAX_LIGHTNESS - MIN_LIGHTNESS
+  const range = maxColor - minColor
+  const lightenAmount = MIN_LIGHTNESS + Math.floor(MAX_LIGHTNESS - (range / 255) * targetRange)
+
+  // build object with all the values increased by the lighten amount
+  const newColor = Object.entries(asRgb).reduce(
+    (acc, [key, value]: [string, number]) => {
+      const newAmount = Math.min(value + lightenAmount, 255)
+      acc[key] = newAmount
+      return acc
+    },
+    {} as Record<string, number>
+  )
+// @ts-expect-error: UIU-860 temp ignore TS Error [TS2345]
+  return rgbToColorString(newColor)
+}
+
+export function gradientEquivalent(color: string): string {
+  if (!color) return color
+  const rotatedHue = adjustHue(HUE_ROTATION, color)
+  const lightened = lightenColor(rotatedHue)
+  return lightened
+}
+

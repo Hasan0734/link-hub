@@ -23,7 +23,7 @@ const items = [
 
 const DesignSidebar = () => {
   return (
-    <Card className="shadow-none border-0 col-span-1 2xl:col-span-2 sticky top-28 py-0">
+    <Card className="shadow-none border-0 col-span-2 sticky top-28 py-0">
       <CardContent className="px-0">
         <ScrollSpy activeClass="bg-secondary" rootMargin="-200px 0px 0px 0px">
           <ul className="space-y-3 flex flex-col gap-2.5">
@@ -39,7 +39,7 @@ const DesignSidebar = () => {
                     )}
                   >
                     <IconComponent className="size-5" />
-                    <span className="hidden 2xl:block">{item.name}</span>
+                    <span className="block">{item.name}</span>
                   </a>
                 </li>
               );

@@ -31,10 +31,8 @@ const WallpaperCard = ({
             "border-2 border-primary": selectedStyle === id,
           },
         )}
-        // style={{ backgroundColor: isBlur ? background : undefined }}
-          style={{
-            backgroundImage: 'linear-gradient(0deg, #F60000, rgb(0 0 0/50%))',
-          }}
+        style={{ backgroundColor: !isBlur ? background : undefined }}
+        
       >
         {isBlur && (
           <div className="relative h-full w-full overflow-hidden ">

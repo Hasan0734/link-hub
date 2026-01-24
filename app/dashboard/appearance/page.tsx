@@ -5,7 +5,7 @@ import DesignHeader from "@/components/appearance/DesignHeader";
 import DesignSidebar from "@/components/appearance/DesignSidebar";
 import DesignText from "@/components/appearance/DesignText";
 import Themes from "@/components/appearance/Themes";
-import Wallpaper from "@/components/appearance/Wallpaper";
+import Wallpaper from "@/components/appearance/backgrounds/Wallpaper";
 import AppHeader from "@/components/AppHeader";
 import DashboardTitle from "@/components/DashboardTitle";
 import { Button } from "@/components/ui/button";
@@ -28,9 +28,9 @@ import {
 } from "@/components/ui/shadcn-io/color-picker";
 import Link from "next/link";
 import React from "react";
+import ProfilePreview from "@/components/appearance/ProfilePreview";
 
 const Appearance = () => {
-
   return (
     <>
       <AppHeader actionButton={<Button>Save Changes</Button>} />
@@ -65,30 +65,7 @@ const Appearance = () => {
                   <DesignFooter />
                 </div>
 
-                {/* <Card className="shadow-md col-span-3 sticky top-28">
-                  <CardHeader>
-                    <CardTitle>Custom Colors</CardTitle>
-                    <CardDescription>
-                      Personalize your brand colors
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <ColorPicker className="h-[300px] max-w-sm rounded-md border bg-background p-4 shadow-sm">
-                      <ColorPickerSelection />
-                      <div className="flex items-center gap-4">
-                        <ColorPickerEyeDropper />
-                        <div className="grid w-full gap-1">
-                          <ColorPickerHue />
-                          <ColorPickerAlpha />
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <ColorPickerOutput />
-                        <ColorPickerFormat />
-                      </div>
-                    </ColorPicker>
-                  </CardContent>
-                </Card> */}
+                <ProfilePreview />
               </div>
             </div>
           </div>

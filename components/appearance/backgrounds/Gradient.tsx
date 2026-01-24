@@ -22,6 +22,7 @@ const Gradient = (props: WallpaperProps) => {
     selectedStyle,
     id,
     handleSelect,
+    title,
     backgroundNoise,
     gradient: { backgroundGradient, direction, gradientAssetUrl } = {},
   } = props;
@@ -60,6 +61,10 @@ const Gradient = (props: WallpaperProps) => {
           />
         )}
       </div>
+      <div>
+        <p className="text-sm font-medium text-center">{title}</p>
+      </div>
+      
     </div>
   );
 };
